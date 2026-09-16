@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { CategoryFilter } from './components/CategoryFilter';
+import { LeftSidebar } from './components/LeftSidebar';
 import { ProductGrid } from './components/ProductGrid';
 import { ProductDetailModal } from './components/ProductDetailModal';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { FlowResponseModal } from './components/FlowResponseModal';
-import { PortfolioShowcase } from './components/PortfolioShowcase';
-import { AboutSection } from './components/AboutSection';
+import { WhatsAppWidget } from './components/WhatsAppWidget';
 import { Footer } from './components/Footer';
 import { productRepository } from './services/productRepository';
 
 export default function App() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [activeCategory, setActiveCategory] = useState('all');
+  const [activeCategory, setActiveCategory] = useState('funebres');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('featured');
+  const [priceRange, setPriceRange] = useState(150000);
   const [loading, setLoading] = useState(true);
 
   // Modals & Drawers State
@@ -30,7 +29,7 @@ export default function App() {
   // Cart Items State
   const [cartItems, setCartItems] = useState(() => {
     try {
-      const saved = localStorage.getItem('lisar_cart');
+      const saved = localStorage.getItem('corona_cart');
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
@@ -39,13 +38,13 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('lisar_cart', JSON.stringify(cartItems));
+      localStorage.setItem('corona_cart', JSON.stringify(cartItems));
     } catch (err) {
       console.error('Error saving cart:', err);
     }
   }, [cartItems]);
 
-  // Load Products & Categories from ProductRepository Adapter
+  // Load Products & Categories
   useEffect(() => {
     async function loadCatalog() {
       setLoading(true);
@@ -53,32 +52,33 @@ export default function App() {
         productRepository.getProducts({ category: activeCategory, searchQuery, sortBy }),
         productRepository.getCategories()
       ]);
-      setProducts(prodsList);
+      const filteredByPrice = prodsList.filter(p => p.price <= priceRange);
+      setProducts(filteredByPrice);
       setCategories(catsList);
       setLoading(false);
     }
     loadCatalog();
-  }, [activeCategory, searchQuery, sortBy]);
+  }, [activeCategory, searchQuery, sortBy, priceRange]);
 
   // Cart operations
-  const handleAddToCart = (product, quantity = 1, variant = null) => {
+  const handleAddToCart = (product, quantity = 1, variant = null, ribbonText = '') => {
     setCartItems(prev => {
-      const existingIdx = prev.findIndex(item => item.id === product.id && item.selectedVariant?.name === variant?.name);
+      const existingIdx = prev.findIndex(item => item.id === product.id && item.selectedVariant?.name === variant?.name && item.ribbonText === ribbonText);
       if (existingIdx > -1) {
         const updated = [...prev];
         updated[existingIdx].quantity += quantity;
         return updated;
       }
-      return [...prev, { ...product, quantity, selectedVariant: variant }];
+      return [...prev, { ...product, quantity, selectedVariant: variant, ribbonText }];
     });
     setIsCartOpen(true);
     if (selectedProduct) setSelectedProduct(null);
   };
 
-  const handleBuyNowFlow = (product, quantity = 1, variant = null) => {
+  const handleBuyNowFlow = (product, quantity = 1, variant = null, ribbonText = '') => {
     const itemPrice = product.price + (variant ? variant.priceModifier : 0);
     const itemTotal = itemPrice * quantity;
-    setCartItems([{ ...product, quantity, selectedVariant: variant }]);
+    setCartItems([{ ...product, quantity, selectedVariant: variant, ribbonText }]);
     if (selectedProduct) setSelectedProduct(null);
     setCheckoutTotal(itemTotal);
     setIsCheckoutOpen(true);
@@ -107,17 +107,10 @@ export default function App() {
     setFlowResponseData(paymentDetails);
   };
 
-  const scrollToCatalog = () => {
-    const catalogEl = document.getElementById('catalog-section');
-    if (catalogEl) {
-      catalogEl.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-primary)' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#ffffff', color: '#1e293b' }}>
       {/* Header */}
       <Header
         cartCount={cartCount}
@@ -128,40 +121,50 @@ export default function App() {
         onSearchChange={setSearchQuery}
       />
 
-      {/* Main Content */}
-      <main style={{ flex: 1 }}>
-        <Hero onExploreClick={scrollToCatalog} />
+      {/* Breadcrumb line */}
+      <div className="container" style={{ padding: '0.85rem 1.5rem', fontSize: '0.78rem', color: '#64748b' }}>
+        <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>🏠 TIENDA DE FLORES</a>
+        <span style={{ margin: '0 0.4rem' }}>&gt;</span>
+        <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>VARIEDADES</a>
+        <span style={{ margin: '0 0.4rem' }}>&gt;</span>
+        <strong style={{ color: '#0f172a' }}>FÚNEBRES</strong>
+      </div>
 
-        <div id="catalog-section" className="container" style={{ paddingTop: '2.5rem' }}>
-          <CategoryFilter
-            categories={categories}
+      {/* Main 2-Column Layout */}
+      <main style={{ flex: 1, paddingBottom: '3rem' }}>
+        <div className="container app-main-grid" style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: '2.5rem', paddingTop: '1rem' }}>
+          {/* Left Column: Sidebar Accordion & Price Filter */}
+          <LeftSidebar
             activeCategory={activeCategory}
             onSelectCategory={setActiveCategory}
-            sortBy={sortBy}
-            onSortChange={setSortBy}
-            totalItems={products.length}
+            priceRange={priceRange}
+            onPriceChange={setPriceRange}
           />
 
-          {loading ? (
-            <div style={{ textAlign: 'center', padding: '4rem 0', color: '#a78bfa' }}>
-              Cargando catálogo oficial Lisar Studio...
-            </div>
-          ) : (
-            <ProductGrid
-              products={products}
-              onSelectProduct={setSelectedProduct}
-              onAddToCart={(p) => handleAddToCart(p, 1, p.variants?.[0] || null)}
-            />
-          )}
+          {/* Right Column: Product Grid & Header Controls */}
+          <div>
+            {loading ? (
+              <div style={{ textAlign: 'center', padding: '4rem 0', color: '#64748b' }}>
+                Cargando catálogo oficial Corona de Flores...
+              </div>
+            ) : (
+              <ProductGrid
+                products={products}
+                onSelectProduct={setSelectedProduct}
+                onAddToCart={(p) => handleAddToCart(p, 1, p.variants?.[0] || null)}
+                sortBy={sortBy}
+                onSortChange={setSortBy}
+              />
+            )}
+          </div>
         </div>
-
-        <PortfolioShowcase />
-        <AboutSection />
       </main>
-
 
       {/* Footer */}
       <Footer />
+
+      {/* Floating WhatsApp Widget */}
+      <WhatsAppWidget />
 
       {/* Modals & Drawers */}
       {selectedProduct && (
@@ -196,6 +199,12 @@ export default function App() {
           onClose={() => setFlowResponseData(null)}
         />
       )}
+
+      <style>{`
+        @media (max-width: 900px) {
+          .app-main-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </div>
   );
 }

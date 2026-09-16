@@ -8,217 +8,190 @@ export const getAssetUrl = (path) => {
 export const clientData = {
   brand: {
     name: "Corona de Flores",
-    tagline: "Floristería Especializada en Coronas Fúnebres & Arreglos de Condolencias",
+    tagline: "Floristería Especializada en Coronas Fúnebres & Arreglos de Condolencias en Santiago",
     domain: "coronadeflores.cl",
     logo: getAssetUrl("client_images/2021/04/Corona-de-Flores-logo-nuevo-.jpg"),
-    heroLogo: getAssetUrl("client_images/2021/04/Corona-de-Flores.png"),
+    heroLogo: getAssetUrl("client_images/products/corona_rosas_lirios.jpg"),
     whatsapp: "+56987654321",
     whatsappFormatted: "+56 9 8765 4321",
     email: "contacto@coronadeflores.cl",
     address: "Santiago, Chile • Envíos a Domicilio y Velatorios 24/7",
     currency: "CLP",
-    currencySymbol: "$",
-    description: "Servicio de arreglos florales, coronas fúnebres, ofrendas, ramilletes y cubre urnas con despacho urgente a velatorios e iglesias."
+    currencySymbol: "$"
   },
   categories: [
-    { id: "all", name: "Todos los Arreglos", slug: "todos" },
-    { id: "coronas-funebres", name: "Coronas Fúnebres", slug: "coronas-funebres", description: "Coronas de honor y homenaje elaboradas con flores frescas seleccionadas." },
-    { id: "arreglos-condolencias", name: "Arreglos & Ramilletes", slug: "arreglos-condolencias", description: "Expresiones de afecto y acompañamiento para momentos solemnes." },
-    { id: "cubre-urnas", name: "Cubre Urnas & Cruces", slug: "cubre-urnas", description: "Cintas personalizadas, cruces florales y arreglos especiales para altar." },
-    { id: "canastos-florales", name: "Canastos & Palmas", slug: "canastos-florales", description: "Palmas de condolencia y canastos florales elegantes de alta presencia." }
+    { id: "funebres", name: "Fúnebres", slug: "funebres", count: 8 },
+    { id: "coronas-funebres", name: "Coronas Fúnebres", slug: "coronas-funebres", count: 4 },
+    { id: "arreglos-condolencias", name: "Arreglos & Pedestales", slug: "arreglos-condolencias", count: 4 },
+    { id: "cubre-urnas", name: "Cubre Urnas & Cajas", slug: "cubre-urnas", count: 3 },
+    { id: "ramilletes", name: "Ramilletes & Bouquet", slug: "ramilletes", count: 3 }
+  ],
+  sidebarCategories: [
+    { name: "Día de la Madre", count: 12 },
+    { name: "Día de la Mujer", count: 8 },
+    { name: "Ocasiones", hasSub: true },
+    { name: "Productos Adicionales", hasSub: true },
+    { name: "San Valentín", count: 15 },
+    { name: "Tipo de Flor", hasSub: true },
+    {
+      name: "Variedades",
+      hasSub: true,
+      isOpen: true,
+      subItems: [
+        { name: "Bouquet", slug: "bouquet" },
+        { name: "Cajas", slug: "cajas" },
+        { name: "Fruteros", slug: "fruteros" },
+        { name: "Fúnebres", slug: "funebres", active: true },
+        { name: "Jarrones", slug: "jarrones" },
+        { name: "Solitarios", slug: "solitarios" }
+      ]
+    }
   ],
   products: [
     {
-      id: "corona-imperial-blanca",
-      title: "Corona Fúnebre Imperial Blanca",
-      slug: "corona-imperial-blanca",
-      category: "Coronas Fúnebres",
-      categorySlug: "coronas-funebres",
+      id: "corona-funebre-rosas-lirios",
+      title: "Corona Fúnebre Con Rosas y Lirios",
+      slug: "corona-funebre-rosas-lirios",
+      category: "Fúnebres",
+      categorySlug: "funebres",
       price: 85990,
       regularPrice: 98000,
-      badge: "Más Solicitada",
+      badge: "Más Vendida",
       rating: 5.0,
-      reviewsCount: 42,
+      reviewsCount: 48,
       sku: "CF-IMP-01",
       stockStatus: "instock",
-      shortDescription: "Majestuosa corona floral confeccionada con rosas blancas, lirios, crisantemos y finos follajes verdes. Incluye cinta impresa de condolencias.",
-      description: `La Corona Fúnebre Imperial Blanca es nuestro tributo más distinguido. Elaborada artesanalmente por nuestros floristas con rosas ecuatorianas seleccionadas, lirios perfumados y finos follajes. Entregada directamente en velatorio o parroquia con cinta de felicitación o condolencias personalizada.`,
+      shortDescription: "Honra la memoria con esta imponente corona de rosas ecuatorianas blancas y lirios seleccionados sobre soporte de madera noble.",
+      description: "Corona fúnebre sobria confeccionada artesanalmente con flores naturales frescas. Incluye cinta de condolencias impresa con texto personalizado y envío express 24/7 a velatorio o iglesia.",
       features: [
-        "Despacho prioritario 24/7 a velatorios e iglesias",
-        "Rosas blancas ecuatorianas de exportación y Lirios frescos",
-        "Incluye cinta de condolencias impresa con texto personalizado",
-        "Base circular reforzada y atril de madera noble",
-        "Tarjeta de dedicatoria membretada de la floristería"
+        "Despacho prioritario 24/7 en Región Metropolitana",
+        "Rosas blancas ecuatorianas y Lirios de exportación",
+        "Cinta de condolencias impresa personalizada sin costo",
+        "Atril de madera reforzado incluido"
       ],
       variants: [
         { name: "Tamaño Estándar (90 cm de diámetro)", priceModifier: 0 },
         { name: "Tamaño Premium Gigante (120 cm de diámetro)", priceModifier: 25000 }
       ],
-      image: getAssetUrl("client_images/2021/04/Corona-de-Flores.png"),
+      image: getAssetUrl("client_images/products/corona_rosas_lirios.jpg"),
       gallery: [
-        getAssetUrl("client_images/2021/04/Corona-de-Flores.png"),
-        getAssetUrl("client_images/2021/05/album-1.jpg")
+        getAssetUrl("client_images/products/corona_rosas_lirios.jpg")
       ]
     },
     {
-      id: "arreglo-condolencias-lirios-rosas",
-      title: "Arreglo Elegancia de Condolencias",
-      slug: "arreglo-condolencias-lirios-rosas",
-      category: "Arreglos & Ramilletes",
-      categorySlug: "arreglos-condolencias",
+      id: "arreglo-funebre-descanso-eterno",
+      title: "Arreglo Fúnebre Descanso Eterno",
+      slug: "arreglo-funebre-descanso-eterno",
+      category: "Fúnebres",
+      categorySlug: "funebres",
       price: 54990,
       regularPrice: 65000,
-      badge: "Acompañamiento Solemnes",
-      rating: 4.9,
-      reviewsCount: 28,
-      sku: "CF-ARR-02",
+      badge: "Destacado",
+      rating: 5.0,
+      reviewsCount: 32,
+      sku: "AF-PED-02",
       stockStatus: "instock",
-      shortDescription: "Diseño floral sobrio y distinguido compuesto por lirios blancos, gerberas y rosas en base de cerámica o madera.",
-      description: `Arreglo floral diseñado para entregar afecto y cercanía en momentos difíciles. Sus lirios blancos transmiten paz y esperanza, acompañados de rosas de tono suave y follajes naturales en una presentación sobria y delicada.`,
+      shortDescription: "Elegante pedestal floral compuesto por lirios blancos, orquídeas y gladiolos en fina base de iglesia.",
+      description: "Diseño sobrio de gran presencia vertical. Acompaña con profunda solemnidad los momentos de despedida con flores hidropónicas frescas de alta durabilidad.",
       features: [
-        "Flores frescas hidropónicas de alta durabilidad",
-        "Base elegante de presentación solemnes",
-        "Incluye tarjeta con dedicatoria personalizada",
-        "Despacho express confirmado con fotografía de entrega"
+        "Presentación en pedestal metálico de alta estabilidad",
+        "Flores frescas hidropónicas seleccionadas",
+        "Incluye tarjeta membretada de condolencias"
       ],
       variants: [
-        { name: "Presentación Clásica", priceModifier: 0 },
-        { name: "Presentación Deluxe (Más Volumen de Rosas)", priceModifier: 15000 }
+        { name: "Presentación Estándar", priceModifier: 0 },
+        { name: "Presentación Deluxe (+ Rosas Adicionales)", priceModifier: 15000 }
       ],
-      image: getAssetUrl("client_images/2021/05/album-1.jpg"),
+      image: getAssetUrl("client_images/products/arreglo_pedestal.jpg"),
       gallery: [
-        getAssetUrl("client_images/2021/05/album-1.jpg"),
-        getAssetUrl("client_images/2020/09/banner-03.jpg")
+        getAssetUrl("client_images/products/arreglo_pedestal.jpg")
       ]
     },
     {
-      id: "cubre-urna-rosas-soberano",
-      title: "Cubre Urna Soberano de Rosas & Orquídeas",
-      slug: "cubre-urna-rosas-soberano",
-      category: "Cubre Urnas & Cruces",
-      categorySlug: "cubre-urnas",
-      price: 119990,
-      regularPrice: 140000,
+      id: "corona-funebre-adela",
+      title: "Corona Fúnebre Adela para Tanatorio",
+      slug: "corona-funebre-adela",
+      category: "Fúnebres",
+      categorySlug: "funebres",
+      price: 94990,
+      regularPrice: 110000,
       badge: "Homenaje Especial",
       rating: 5.0,
+      reviewsCount: 29,
+      sku: "CF-ADE-03",
+      stockStatus: "instock",
+      shortDescription: "Corona tradicional fúnebre combinada con rosas rojas, crisantemos blancos y acentos dorados.",
+      description: "Homenaje floral vistoso y sobrio que expresa afecto profundo. Diseñado especialmente para funerarias, iglesias y capillas velatorias.",
+      features: [
+        "Rosas rojas de exportación y follajes naturales",
+        "Cinta de homenaje impresa con dorado",
+        "Despacho prioritario el mismo día"
+      ],
+      variants: [
+        { name: "Diámetro 1 Metro", priceModifier: 0 },
+        { name: "Diámetro 1.30 Metros", priceModifier: 30000 }
+      ],
+      image: getAssetUrl("client_images/products/corona_red_white.jpg"),
+      gallery: [
+        getAssetUrl("client_images/products/corona_red_white.jpg")
+      ]
+    },
+    {
+      id: "cubre-urna-soberano",
+      title: "Corona Fúnebre Legado de Honor",
+      slug: "cubre-urna-soberano",
+      category: "Fúnebres",
+      categorySlug: "funebres",
+      price: 119990,
+      regularPrice: 135000,
+      badge: "Cubre Urna Superior",
+      rating: 5.0,
       reviewsCount: 19,
-      sku: "CF-URNA-03",
+      sku: "CU-SOB-04",
       stockStatus: "instock",
-      shortDescription: "Manta floral completa confeccionada especialmente para cubrir la urna. Rosas seleccionadas, lirios y orquídeas.",
-      description: `Un tributo floral de excepcional calidez y respeto. Diseñado en forma de manto fluido para cubrir delicadamente la urna. Confeccionado con más de 60 flores frescas entre rosas de exportación, orquídeas y follaje exótico.`,
+      shortDescription: "Manto floral cubre urna confeccionado con rosas blancas, lirios y follajes finos para velatorio.",
+      description: "El arreglo fúnebre superior para cubrir la urna durante la velación. Flores seleccionadas una a una con máxima delicadeza.",
       features: [
-        "Manto de cobertura completa para urna",
-        "Más de 60 tallos florales de primera selección",
-        "Diseño equilibrado y sujeción segura",
-        "Instalación directa en capilla o parroquia por florista especializado"
+        "Manto floral completo de cobertura de urna",
+        "Más de 70 tallos florales de primera selección",
+        "Entrega directa en velatorio garantizada"
       ],
       variants: [
-        { name: "Cubre Urna Medio Manto", priceModifier: 0 },
-        { name: "Cubre Urna Manto Completo Imperial", priceModifier: 35000 }
+        { name: "Manto Cobertura Completa", priceModifier: 0 }
       ],
-      image: getAssetUrl("client_images/2020/09/banner-03.jpg"),
+      image: getAssetUrl("client_images/products/cubre_urna.jpg"),
       gallery: [
-        getAssetUrl("client_images/2020/09/banner-03.jpg"),
-        getAssetUrl("client_images/2020/09/banner-04.jpg")
+        getAssetUrl("client_images/products/cubre_urna.jpg")
       ]
     },
     {
-      id: "palma-funebre-honor",
-      title: "Palma Fúnebre de Honor & Paz",
-      slug: "palma-funebre-honor",
-      category: "Canastos & Palmas",
-      categorySlug: "canastos-florales",
-      price: 64990,
-      regularPrice: 75000,
-      badge: "Presencia Distinguida",
-      rating: 4.8,
-      reviewsCount: 31,
-      sku: "CF-PALM-04",
-      stockStatus: "instock",
-      shortDescription: "Arreglo vertical erguido estilo palma, compuesto por anturios, lilium, gladiolos y follajes sobrios.",
-      description: `La Palma Fúnebre ofrece una presencia majestuosa y sobria en velatorios y templos. Su estructura vertical simboliza elevación y memoria eterna, destacando por sus lilium blancos y follajes nobles.`,
-      features: [
-        "Estructura vertical sobria de gran visibilidad",
-        "Gladiolos, Lilium blancos y follaje noble",
-        "Atril soporte de alta resistencia",
-        "Cinta con texto de condolencias personalizada"
-      ],
-      variants: [
-        { name: "Palma Simple (1 Metro)", priceModifier: 0 },
-        { name: "Palma Doble (1.5 Metros)", priceModifier: 20000 }
-      ],
-      image: getAssetUrl("client_images/2020/09/banner-04.jpg"),
-      gallery: [
-        getAssetUrl("client_images/2020/09/banner-04.jpg"),
-        getAssetUrl("client_images/2021/05/other-small.jpg")
-      ]
-    },
-    {
-      id: "ramillete-rosas-memoria",
-      title: "Ramillete Memoria Eterna de Rosas Blancas",
-      slug: "ramillete-rosas-memoria",
-      category: "Arreglos & Ramilletes",
-      categorySlug: "arreglos-condolencias",
+      id: "ramillete-condolencias-blanco",
+      title: "Ramillete de Condolencias Blanco Puro",
+      slug: "ramillete-condolencias-blanco",
+      category: "Fúnebres",
+      categorySlug: "funebres",
       price: 39990,
       regularPrice: 48000,
-      badge: "Afecto Personal",
-      rating: 4.9,
-      reviewsCount: 54,
-      sku: "CF-RAM-05",
+      badge: "Expresión Dulce",
+      rating: 5.0,
+      reviewsCount: 37,
+      sku: "RM-BLA-05",
       stockStatus: "instock",
-      shortDescription: "Atado tradicional de 24 rosas blancas naturales envueltas en papel ecológico fine art con cinta satinada.",
-      description: `Ramillete sobrio de 24 rosas blancas naturales de tallo largo, preparado con la máxima delicadeza y envuelto en fino papel artesanal. Perfecto para acompañamiento familiar o entrega personal.`,
+      shortDescription: "Bouquet sobrio de rosas blancas envuelto en fino papel de seda con tarjeta de condolencia.",
+      description: "Hermosa expresión de acompañamiento de tamaño personal para entregar directamente a la familia o enviar al funeral.",
       features: [
-        "24 Rosas Blancas naturales de tallo largo",
-        "Envoltorio artesanal ecológico con lazo satinado",
-        "Conservante floral hidratante incluido",
-        "Tarjeta con dedicatoria personal incluida"
+        "Envoltura fina de presentación sobria",
+        "Rosas blancas frescas y follajes finos",
+        "Tarjeta membretada con dedicatoria"
       ],
       variants: [
-        { name: "Ramillete 24 Rosas", priceModifier: 0 },
-        { name: "Ramillete 36 Rosas Premium", priceModifier: 15000 }
+        { name: "Ramillete 12 Rosas", priceModifier: 0 },
+        { name: "Ramillete 24 Rosas", priceModifier: 18000 }
       ],
-      image: getAssetUrl("client_images/2021/05/other-small.jpg"),
+      image: getAssetUrl("client_images/products/ramillete_blanco.jpg"),
       gallery: [
-        getAssetUrl("client_images/2021/05/other-small.jpg")
+        getAssetUrl("client_images/products/ramillete_blanco.jpg")
       ]
     }
-  ],
-  portfolio: [
-    {
-      title: "Coronas Fúnebres Especiales",
-      category: "Despacho Urgente Velatorios",
-      image: getAssetUrl("client_images/2021/04/Corona-de-Flores.png")
-    },
-    {
-      title: "Cubre Urnas & Arreglos Altar",
-      category: "Confección Floral Artesanal",
-      image: getAssetUrl("client_images/2020/09/banner-03.jpg")
-    },
-    {
-      title: "Palmas & Canastos Fúnebres",
-      category: "Honor & Memoria",
-      image: getAssetUrl("client_images/2020/09/banner-04.jpg")
-    }
-  ],
-  team: [
-    {
-      name: "Atención al Cliente 24/7",
-      role: "Coordinación de Entregas Urgentes",
-      image: getAssetUrl("client_images/2021/04/Corona-de-Flores-logo-nuevo-.jpg"),
-      bio: "Equipo dedicado a la recepción de pedidos de emergencia y coordinación inmediata con velatorios e iglesias."
-    },
-    {
-      name: "Maestros Floristas",
-      role: "Confección Floral Artesanal",
-      image: getAssetUrl("client_images/2021/04/Corona-de-Flores.png"),
-      bio: "Floristas con más de 15 años de experiencia en arreglos solemnes, coronas de honor y mantos de condolencias."
-    }
-  ],
-  flowConfig: {
-    sandboxUrl: "https://sandbox.flow.cl/api",
-    liveUrl: "https://www.flow.cl/api",
-    currency: "CLP",
-    defaultReturnPath: "/flow-response"
-  }
+  ]
 };

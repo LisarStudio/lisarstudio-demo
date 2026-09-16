@@ -1,167 +1,156 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Search, MessageCircle, Menu, X, ShieldCheck, PhoneCall } from 'lucide-react';
+import { ShoppingCart, Search, User, Menu, X, Phone } from 'lucide-react';
 import { productRepository } from '../services/productRepository';
 
 export function Header({ cartCount, onOpenCart, activeCategory, onSelectCategory, searchQuery, onSearchChange }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const brand = productRepository.getBrandInfo();
-  const categories = [
-    { id: 'all', name: 'Todos los Arreglos' },
-    { id: 'coronas-funebres', name: 'Coronas Fúnebres' },
-    { id: 'arreglos-condolencias', name: 'Arreglos & Ramilletes' },
-    { id: 'cubre-urnas', name: 'Cubre Urnas & Cruces' },
-    { id: 'canastos-florales', name: 'Canastos & Palmas' }
-  ];
 
   return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 100, background: '#ffffff', borderBottom: '1px solid #e2e8f0', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
-      {/* Top Notification Bar */}
-      <div style={{
-        background: '#1b4230',
-        padding: '0.45rem 1rem',
-        fontSize: '0.82rem',
-        fontWeight: 600,
-        textAlign: 'center',
-        color: '#ffffff',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '0.5rem'
-      }}>
-        <ShieldCheck size={16} style={{ color: '#c59b27' }} />
-        <span>Despacho 24/7 Urgente a Velatorios, Iglesias y Parroquias en Santiago • Envíos el mismo día</span>
-      </div>
-
-      <div className="container" style={{ padding: '0.9rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem' }}>
-        {/* Brand Logo & Name */}
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '1rem', textDecoration: 'none' }}>
+    <header style={{ background: '#ffffff', borderBottom: '1px solid #e2e8f0' }}>
+      {/* Top Header Row */}
+      <div className="container" style={{ padding: '0.8rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem' }}>
+        {/* Brand Logo */}
+        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
           <img
             src={brand.logo}
             alt={brand.name}
-            style={{
-              height: '56px',
-              width: 'auto',
-              maxHeight: '56px',
-              borderRadius: '8px',
-              border: '2px solid #1b4230',
-              objectFit: 'contain',
-              background: '#ffffff',
-              padding: '2px'
-            }}
+            style={{ height: '52px', width: 'auto', objectFit: 'contain' }}
             onError={(e) => {
               e.target.style.display = 'none';
             }}
           />
           <div>
-            <span style={{ fontSize: '1.45rem', fontWeight: 800, color: '#1b4230', letterSpacing: '-0.02em', display: 'block', lineHeight: 1.1 }}>
-              CORONA DE <span style={{ color: '#c59b27' }}>FLORES</span>
+            <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#166534', letterSpacing: '-0.02em', display: 'block', lineHeight: 1.1, fontFamily: 'serif' }}>
+              Corona de <span style={{ color: '#c59b27' }}>Flores</span>
             </span>
-            <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-              FLORISTERÍA FÚNEBRE & CONDOLENCIAS CHILE
+            <span style={{ fontSize: '0.7rem', color: '#64748b', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+              FLORISTERÍA FÚNEBRE CHILE
             </span>
           </div>
         </a>
 
-        {/* Search Bar - Desktop */}
-        <div style={{ flex: '1', maxWidth: '400px', position: 'relative' }} className="desktop-only">
+        {/* Search Input Bar (Center) */}
+        <div style={{ flex: '1', maxWidth: '520px', position: 'relative', display: 'flex' }} className="desktop-only">
           <input
             type="text"
-            placeholder="Buscar coronas fúnebres, arreglos, cubre urnas..."
+            placeholder="Buscar..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="input-field"
-            style={{ paddingLeft: '2.5rem', borderRadius: '9999px', fontSize: '0.88rem', background: '#f8fafc' }}
-          />
-          <Search size={18} style={{ position: 'absolute', left: '0.9rem', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
-        </div>
-
-        {/* Action Buttons */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-          {/* Phone / WhatsApp Direct */}
-          <a
-            href={`https://wa.me/${brand.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hola Corona de Flores, necesito información urgente para enviar arreglos fúnebres.')}`}
-            target="_blank"
-            rel="noopener noreferrer"
             style={{
-              background: '#166534',
+              width: '100%',
+              padding: '0.65rem 1rem',
+              borderRadius: '25px 0 0 25px',
+              border: '1px solid #cbd5e1',
+              borderRight: 'none',
+              outline: 'none',
+              fontSize: '0.9rem',
+              color: '#1e293b'
+            }}
+          />
+          <button
+            style={{
+              background: '#66a105',
               color: '#ffffff',
-              fontWeight: 700,
-              padding: '0.6rem 1.1rem',
-              borderRadius: '9999px',
-              fontSize: '0.85rem',
-              display: 'inline-flex',
+              padding: '0 1.25rem',
+              borderRadius: '0 25px 25px 0',
+              display: 'flex',
               alignItems: 'center',
-              gap: '0.4rem',
-              boxShadow: '0 2px 8px rgba(22, 101, 52, 0.25)'
+              justifyContent: 'center'
             }}
           >
-            <MessageCircle size={18} />
-            <span className="desktop-only">Pedidos WhatsApp 24/7</span>
-          </a>
+            <Search size={18} />
+          </button>
+        </div>
 
-          {/* Cart Icon Button */}
-          <button
-            onClick={onOpenCart}
-            className="btn-primary"
-            style={{ position: 'relative', padding: '0.6rem 1.2rem', borderRadius: '9999px', fontSize: '0.88rem' }}
-          >
-            <ShoppingBag size={19} />
-            <span className="desktop-only">Mi Carrito</span>
-            {cartCount > 0 && (
+        {/* Account & Cart Icons (Right) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.75rem' }}>
+          {/* User Account */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }} className="desktop-only">
+            <User size={28} style={{ color: '#475569' }} />
+            <div>
+              <span style={{ fontSize: '0.72rem', color: '#64748b', display: 'block', lineHeight: 1 }}>Bienvenido(a)</span>
+              <span style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0f172a' }}>Mi Cuenta</span>
+            </div>
+          </div>
+
+          {/* Cart Icon */}
+          <div onClick={onOpenCart} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', position: 'relative' }}>
+            <div style={{ position: 'relative' }}>
+              <ShoppingCart size={26} style={{ color: '#0f172a' }} />
               <span style={{
                 position: 'absolute',
-                top: '-4px',
-                right: '-4px',
+                top: '-6px',
+                right: '-8px',
                 background: '#e11d48',
                 color: '#ffffff',
                 borderRadius: '9999px',
-                width: '22px',
-                height: '22px',
-                fontSize: '0.75rem',
+                width: '18px',
+                height: '18px',
+                fontSize: '0.7rem',
                 fontWeight: 800,
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                border: '2px solid #ffffff'
+                justifyContent: 'center'
               }}>
                 {cartCount}
               </span>
-            )}
-          </button>
+            </div>
+          </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            style={{ color: '#1b4230', padding: '0.5rem', display: 'none' }}
-            className="mobile-toggle"
-          >
-            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+          {/* Phone Info */}
+          <div style={{ fontSize: '0.82rem', color: '#475569', fontWeight: 600 }} className="desktop-only">
+            <span>¡Escríbenos! </span>
+            <span style={{ fontWeight: 700, color: '#0f172a' }}>{brand.whatsappFormatted}</span>
+          </div>
+
+          {/* Mobile menu toggle */}
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} style={{ display: 'none', color: '#0f172a' }} className="mobile-toggle">
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Navigation Sub-Bar */}
-      <nav style={{ borderTop: '1px solid #e2e8f0', background: '#1b4230' }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', overflowX: 'auto', padding: '0.5rem 1.5rem' }}>
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => onSelectCategory(cat.id)}
-              style={{
-                padding: '0.45rem 1.1rem',
-                borderRadius: '6px',
-                fontSize: '0.88rem',
-                fontWeight: activeCategory === cat.id ? 700 : 600,
-                color: activeCategory === cat.id ? '#1b4230' : '#ffffff',
-                background: activeCategory === cat.id ? '#ffffff' : 'transparent',
-                whiteSpace: 'nowrap',
-                transition: 'all 0.2s ease',
-                border: activeCategory === cat.id ? '1px solid #ffffff' : '1px solid transparent'
-              }}
-            >
-              {cat.name}
-            </button>
-          ))}
+      {/* Main Navigation Bar (Bright Green) */}
+      <nav style={{ background: '#ffffff', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', padding: '0 1.5rem' }}>
+          {/* Categories Button */}
+          <button
+            style={{
+              background: '#66a105',
+              color: '#ffffff',
+              fontWeight: 800,
+              fontSize: '0.88rem',
+              padding: '0.75rem 1.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              letterSpacing: '0.04em'
+            }}
+          >
+            <Menu size={18} />
+            <span>CATEGORIAS</span>
+          </button>
+
+          {/* Menu Items */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', overflowX: 'auto', padding: '0.75rem 0' }}>
+            {['Corona de Flores', 'Rosas y Flores', 'Ocasiones', 'Diseños y Estilos', 'Catálogo Completo'].map((item, idx) => (
+              <a
+                key={idx}
+                href="#catalog-section"
+                onClick={() => onSelectCategory('funebres')}
+                style={{
+                  fontSize: '0.88rem',
+                  fontWeight: idx === 3 || idx === 0 ? 700 : 500,
+                  color: idx === 3 ? '#66a105' : '#334155',
+                  whiteSpace: 'nowrap',
+                  textDecoration: 'none'
+                }}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
         </div>
       </nav>
 
