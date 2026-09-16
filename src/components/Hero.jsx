@@ -13,7 +13,7 @@ export function Hero({ onExploreClick }) {
       borderBottom: '1px solid var(--border-color)',
       overflow: 'hidden'
     }}>
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }} className="hero-grid">
+      <div className="container hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
         {/* Left Column: Headline & Value Prop */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', width: 'fit-content' }} className="badge badge-purple">

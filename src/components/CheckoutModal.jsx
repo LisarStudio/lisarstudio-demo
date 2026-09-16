@@ -134,7 +134,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
           </div>
         )}
 
-        <form onSubmit={handleSubmitCheckout} style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '2rem' }} className="checkout-grid">
+        <form onSubmit={handleSubmitCheckout} className="checkout-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '2rem' }}>
           {/* Left Column: Customer Form */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#ffffff', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem' }}>

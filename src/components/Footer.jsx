@@ -13,7 +13,7 @@ export function Footer() {
       color: '#94a3b8',
       fontSize: '0.88rem'
     }}>
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1.2fr', gap: '3rem', marginBottom: '3rem' }} className="footer-grid">
+      <div className="container footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1.2fr', gap: '3rem', marginBottom: '3rem' }}>
         {/* Brand & Slogan */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
