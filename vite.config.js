@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './', // Using relative paths ensures it loads smoothly on GitHub Pages & any demo host
+  base: '/lisarstudio-demo/', // Explicit base path for GitHub Pages deployment
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
