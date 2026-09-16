@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CreditCard, ShieldCheck, Lock, CheckCircle2, Building, Mail, Phone, User, FileText, ArrowRight } from 'lucide-react';
+import { X, CreditCard, ShieldCheck, Lock, Building, Mail, Phone, User } from 'lucide-react';
 import { flowService } from '../services/flowService';
 import { productRepository } from '../services/productRepository';
 
@@ -7,7 +7,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
   if (!isOpen) return null;
 
   const brand = productRepository.getBrandInfo();
-  const [paymentMethod, setPaymentMethod] = useState('flow'); // 'flow', 'transfer', 'whatsapp'
+  const [paymentMethod, setPaymentMethod] = useState('flow');
   const [formData, setFormData] = useState({
     name: '',
     rut: '',
@@ -38,7 +38,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
 
     setIsProcessing(true);
 
-    const orderId = 'LISAR-' + Math.floor(100000 + Math.random() * 900000);
+    const orderId = 'CORONA-' + Math.floor(100000 + Math.random() * 900000);
     const orderSubject = `Orden #${orderId} - ${brand.name}`;
 
     try {
@@ -62,7 +62,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
         });
       } else if (paymentMethod === 'whatsapp') {
         setIsProcessing(false);
-        const text = `*NUEVO PEDIDO EN LISAR STUDIO*\n*Orden:* ${orderId}\n*Cliente:* ${formData.name}\n*Email:* ${formData.email}\n*Teléfono:* ${formData.phone}\n*Total:* ${formatCLP(totalAmount)}\n*Método:* Pedido directo WhatsApp`;
+        const text = `*NUEVO PEDIDO CORONA DE FLORES*\n*Orden:* ${orderId}\n*Cliente:* ${formData.name}\n*Email:* ${formData.email}\n*Teléfono:* ${formData.phone}\n*Total:* ${formatCLP(totalAmount)}\n*Método:* Pedido directo WhatsApp`;
         window.open(`https://wa.me/${brand.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(text)}`, '_blank');
         onPaymentSuccess({
           orderId,
@@ -94,15 +94,16 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
         className="fade-in"
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: 'var(--bg-card)',
+          background: '#ffffff',
           borderRadius: 'var(--radius-xl)',
-          border: '1px solid var(--border-color)',
-          maxWidth: '750px',
+          border: '1px solid #e2e8f0',
+          maxWidth: '780px',
           width: '100%',
           maxHeight: '92vh',
           overflowY: 'auto',
           position: 'relative',
-          padding: '2rem'
+          padding: '2rem',
+          boxShadow: '0 20px 50px rgba(0,0,0,0.15)'
         }}
       >
         <button
@@ -111,25 +112,26 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
             position: 'absolute',
             top: '1.25rem',
             right: '1.25rem',
-            color: '#94a3b8',
-            background: 'rgba(255,255,255,0.06)',
+            color: '#64748b',
+            background: '#f1f5f9',
             borderRadius: '9999px',
-            padding: '0.4rem'
+            padding: '0.4rem',
+            border: '1px solid #e2e8f0'
           }}
         >
           <X size={20} />
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-          <ShieldCheck size={28} style={{ color: '#10b981' }} />
+          <ShieldCheck size={28} style={{ color: '#166534' }} />
           <div>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff' }}>Checkout Seguro</h2>
-            <p style={{ fontSize: '0.82rem', color: '#94a3b8' }}>Completa tus datos comerciales para procesar la orden mediante Pasarela Flow</p>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a' }}>Checkout Seguro</h2>
+            <p style={{ fontSize: '0.82rem', color: '#64748b' }}>Completa tus datos de despacho para procesar la orden mediante Pasarela Flow Webpay</p>
           </div>
         </div>
 
         {errorMsg && (
-          <div style={{ background: 'rgba(244, 63, 94, 0.15)', border: '1px solid #f43f5e', padding: '0.75rem 1rem', borderRadius: '8px', color: '#f43f5e', fontSize: '0.85rem', marginBottom: '1rem' }}>
+          <div style={{ background: '#fef2f2', border: '1px solid #fecaca', padding: '0.75rem 1rem', borderRadius: '8px', color: '#e11d48', fontSize: '0.85rem', marginBottom: '1rem' }}>
             {errorMsg}
           </div>
         )}
@@ -137,13 +139,13 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
         <form onSubmit={handleSubmitCheckout} className="checkout-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '2rem' }}>
           {/* Left Column: Customer Form */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#ffffff', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem' }}>
-              1. Datos del Cliente / Empresa
+            <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#1b4230', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.5rem' }}>
+              1. Datos del Solicitante / Despacho
             </h3>
 
             <div>
-              <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
-                Nombre y Apellido *
+              <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', display: 'block', marginBottom: '0.35rem' }}>
+                Nombre Completo *
               </label>
               <div style={{ position: 'relative' }}>
                 <input
@@ -156,13 +158,13 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
                   className="input-field"
                   style={{ paddingLeft: '2.4rem' }}
                 />
-                <User size={16} style={{ position: 'absolute', left: '0.8rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+                <User size={16} style={{ position: 'absolute', left: '0.8rem', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
               </div>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
+                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', display: 'block', marginBottom: '0.35rem' }}>
                   Correo Electrónico *
                 </label>
                 <div style={{ position: 'relative' }}>
@@ -170,18 +172,18 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
                     type="email"
                     name="email"
                     required
-                    placeholder="contacto@empresa.cl"
+                    placeholder="contacto@cliente.cl"
                     value={formData.email}
                     onChange={handleInputChange}
                     className="input-field"
                     style={{ paddingLeft: '2.4rem' }}
                   />
-                  <Mail size={16} style={{ position: 'absolute', left: '0.8rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+                  <Mail size={16} style={{ position: 'absolute', left: '0.8rem', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
                 </div>
               </div>
 
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
+                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', display: 'block', marginBottom: '0.35rem' }}>
                   Teléfono / WhatsApp *
                 </label>
                 <div style={{ position: 'relative' }}>
@@ -195,15 +197,15 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
                     className="input-field"
                     style={{ paddingLeft: '2.4rem' }}
                   />
-                  <Phone size={16} style={{ position: 'absolute', left: '0.8rem', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+                  <Phone size={16} style={{ position: 'absolute', left: '0.8rem', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
                 </div>
               </div>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
-                  RUT Empresa / Persona
+                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', display: 'block', marginBottom: '0.35rem' }}>
+                  RUT (Facturación/Boleta)
                 </label>
                 <input
                   type="text"
@@ -215,13 +217,13 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
                 />
               </div>
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', display: 'block', marginBottom: '0.35rem' }}>
-                  Razón Social / Proyecto
+                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', display: 'block', marginBottom: '0.35rem' }}>
+                  Velatorio / Dirección de Entrega
                 </label>
                 <input
                   type="text"
                   name="company"
-                  placeholder="Nombre de tu negocio"
+                  placeholder="Ej: Velatorio Parque del Recuerdo"
                   value={formData.company}
                   onChange={handleInputChange}
                   className="input-field"
@@ -229,7 +231,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
               </div>
             </div>
 
-            <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#ffffff', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem', marginTop: '0.5rem' }}>
+            <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#1b4230', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.5rem', marginTop: '0.5rem' }}>
               2. Método de Pago
             </h3>
 
@@ -241,8 +243,8 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
                 justifyContent: 'space-between',
                 padding: '0.85rem',
                 borderRadius: 'var(--radius-md)',
-                background: paymentMethod === 'flow' ? 'rgba(124, 58, 237, 0.15)' : 'rgba(255,255,255,0.03)',
-                border: paymentMethod === 'flow' ? '1px solid #8b5cf6' : '1px solid var(--border-color)',
+                background: paymentMethod === 'flow' ? '#f0fdf4' : '#f8fafc',
+                border: paymentMethod === 'flow' ? '1px solid #166534' : '1px solid #e2e8f0',
                 cursor: 'pointer'
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
@@ -254,13 +256,13 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
                     onChange={() => setPaymentMethod('flow')}
                   />
                   <div>
-                    <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#ffffff', display: 'block' }}>
-                      Flow (Webpay Plus / Tarjetas / Servipag)
+                    <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0f172a', display: 'block' }}>
+                      Flow (Webpay Plus / Tarjetas de Débito y Crédito)
                     </span>
-                    <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Pasarela Oficial en Pesos Chilenos (CLP)</span>
+                    <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Pasarela de pago 100% segura en CLP</span>
                   </div>
                 </div>
-                <CreditCard size={20} style={{ color: '#34d399' }} />
+                <CreditCard size={20} style={{ color: '#166534' }} />
               </label>
 
               {/* Transfer Radio */}
@@ -270,8 +272,8 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
                 justifyContent: 'space-between',
                 padding: '0.85rem',
                 borderRadius: 'var(--radius-md)',
-                background: paymentMethod === 'transfer' ? 'rgba(124, 58, 237, 0.15)' : 'rgba(255,255,255,0.03)',
-                border: paymentMethod === 'transfer' ? '1px solid #8b5cf6' : '1px solid var(--border-color)',
+                background: paymentMethod === 'transfer' ? '#f0fdf4' : '#f8fafc',
+                border: paymentMethod === 'transfer' ? '1px solid #166534' : '1px solid #e2e8f0',
                 cursor: 'pointer'
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
@@ -283,52 +285,52 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
                     onChange={() => setPaymentMethod('transfer')}
                   />
                   <div>
-                    <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#ffffff', display: 'block' }}>
+                    <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0f172a', display: 'block' }}>
                       Transferencia Bancaria Directa
                     </span>
-                    <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Datos de cuenta bancaria Lisar Studio</span>
+                    <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Datos de la cuenta de Corona de Flores</span>
                   </div>
                 </div>
-                <Building size={20} style={{ color: '#a78bfa' }} />
+                <Building size={20} style={{ color: '#c59b27' }} />
               </label>
             </div>
           </div>
 
           {/* Right Column: Order Summary */}
           <div style={{
-            background: 'rgba(18, 17, 26, 0.95)',
+            background: '#f8fafc',
             padding: '1.25rem',
             borderRadius: 'var(--radius-lg)',
-            border: '1px solid var(--border-color)',
+            border: '1px solid #e2e8f0',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
             gap: '1rem'
           }}>
             <div>
-              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#ffffff', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem', marginBottom: '0.85rem' }}>
+              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f172a', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.5rem', marginBottom: '0.85rem' }}>
                 Resumen del Pedido
               </h3>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', maxHeight: '200px', overflowY: 'auto' }}>
                 {cartItems.map((item, idx) => (
-                  <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: '#cbd5e1' }}>
+                  <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: '#334155' }}>
                     <span style={{ flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {item.quantity}x {item.title}
                     </span>
-                    <span style={{ fontWeight: 700, color: '#ffffff' }}>
+                    <span style={{ fontWeight: 700, color: '#0f172a' }}>
                       {formatCLP((item.price + (item.selectedVariant ? item.selectedVariant.priceModifier : 0)) * item.quantity)}
                     </span>
                   </div>
                 ))}
               </div>
 
-              <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '0.85rem', marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', color: '#94a3b8' }}>
+              <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '0.85rem', marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', color: '#64748b' }}>
                   <span>Moneda:</span>
                   <span>CLP (Pesos Chilenos)</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.25rem', fontWeight: 800, color: '#ffffff', marginTop: '0.3rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.25rem', fontWeight: 800, color: '#1b4230', marginTop: '0.3rem' }}>
                   <span>Total Final:</span>
                   <span>{formatCLP(totalAmount)}</span>
                 </div>
@@ -338,7 +340,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
             <button
               type="submit"
               disabled={isProcessing}
-              className="btn-emerald"
+              className="btn-primary"
               style={{ width: '100%', padding: '0.9rem', fontSize: '0.95rem', opacity: isProcessing ? 0.7 : 1 }}
             >
               {isProcessing ? (
@@ -346,7 +348,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
               ) : (
                 <>
                   <Lock size={18} />
-                  <span>Confirmar Pago ({formatCLP(totalAmount)})</span>
+                  <span>Confirmar y Pagar ({formatCLP(totalAmount)})</span>
                 </>
               )}
             </button>

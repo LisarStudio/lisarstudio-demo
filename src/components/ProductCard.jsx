@@ -11,21 +11,22 @@ export function ProductCard({ product, onSelectProduct, onAddToCart }) {
 
   return (
     <div style={{
-      background: 'var(--bg-card)',
+      background: '#ffffff',
       borderRadius: 'var(--radius-lg)',
-      border: '1px solid var(--border-color)',
+      border: '1px solid #e2e8f0',
       overflow: 'hidden',
       display: 'flex',
       flexDirection: 'column',
-      transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-      position: 'relative'
+      transition: 'all 0.3s ease',
+      position: 'relative',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
     }}
     className="product-card"
     >
       {/* Badge Overlay */}
       {product.badge && (
         <div style={{ position: 'absolute', top: '12px', left: '12px', zIndex: 2 }}>
-          <span className="badge badge-purple">{product.badge}</span>
+          <span className="badge badge-gold">{product.badge}</span>
         </div>
       )}
 
@@ -34,8 +35,8 @@ export function ProductCard({ product, onSelectProduct, onAddToCart }) {
         onClick={() => onSelectProduct(product)}
         style={{
           width: '100%',
-          height: '210px',
-          background: '#09090e',
+          height: '230px',
+          background: '#f8fafc',
           position: 'relative',
           overflow: 'hidden',
           cursor: 'pointer'
@@ -58,7 +59,7 @@ export function ProductCard({ product, onSelectProduct, onAddToCart }) {
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'rgba(9, 9, 14, 0.4)',
+          background: 'rgba(15, 23, 42, 0.3)',
           opacity: 0,
           transition: 'opacity 0.2s ease',
           display: 'flex',
@@ -71,7 +72,7 @@ export function ProductCard({ product, onSelectProduct, onAddToCart }) {
           <button
             onClick={(e) => { e.stopPropagation(); onSelectProduct(product); }}
             className="btn-secondary"
-            style={{ padding: '0.5rem 1rem', fontSize: '0.82rem', borderRadius: '9999px', background: 'rgba(255,255,255,0.9)', color: '#09090e' }}
+            style={{ padding: '0.55rem 1.1rem', fontSize: '0.84rem', borderRadius: '9999px', background: '#ffffff', color: '#1b4230', fontWeight: 700 }}
           >
             <Eye size={16} />
             <span>Ver Detalle</span>
@@ -82,44 +83,44 @@ export function ProductCard({ product, onSelectProduct, onAddToCart }) {
       {/* Product Info */}
       <div style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', flex: 1, gap: '0.75rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#a78bfa', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#166534', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             {product.category}
           </span>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-            <Star size={14} style={{ color: '#fbbf24', fill: '#fbbf24' }} />
-            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#ffffff' }}>{product.rating}</span>
+            <Star size={14} style={{ color: '#d97706', fill: '#d97706' }} />
+            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a' }}>{product.rating}</span>
             <span style={{ fontSize: '0.75rem', color: '#64748b' }}>({product.reviewsCount})</span>
           </div>
         </div>
 
         <h3
           onClick={() => onSelectProduct(product)}
-          style={{ fontSize: '1.15rem', fontWeight: 700, color: '#ffffff', cursor: 'pointer', lineHeight: 1.35 }}
+          style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0f172a', cursor: 'pointer', lineHeight: 1.35 }}
         >
           {product.title}
         </h3>
 
-        <p style={{ fontSize: '0.85rem', color: '#94a3b8', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', minHeight: '2.55rem' }}>
+        <p style={{ fontSize: '0.85rem', color: '#64748b', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', minHeight: '2.55rem' }}>
           {product.shortDescription}
         </p>
 
         {/* Feature bullets snippet */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', margin: '0.25rem 0' }}>
           {product.features.slice(0, 2).map((feat, idx) => (
-            <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#cbd5e1' }}>
-              <Check size={14} style={{ color: '#10b981', flexShrink: 0 }} />
+            <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#334155' }}>
+              <Check size={14} style={{ color: '#166534', flexShrink: 0 }} />
               <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{feat}</span>
             </div>
           ))}
         </div>
 
-        <div style={{ marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
+        <div style={{ marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
           <div>
-            <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff' }}>
+            <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#1b4230' }}>
               {formatCLP(product.price)}
             </div>
             {product.regularPrice > product.price && (
-              <div style={{ fontSize: '0.78rem', color: '#64748b', textDecoration: 'line-through' }}>
+              <div style={{ fontSize: '0.78rem', color: '#94a3b8', textDecoration: 'line-through' }}>
                 {formatCLP(product.regularPrice)}
               </div>
             )}
@@ -139,8 +140,8 @@ export function ProductCard({ product, onSelectProduct, onAddToCart }) {
       <style>{`
         .product-card:hover {
           transform: translateY(-4px);
-          border-color: var(--border-active);
-          box-shadow: var(--shadow-glow);
+          border-color: #cbd5e1;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
         .product-card:hover .product-img {
           transform: scale(1.05);

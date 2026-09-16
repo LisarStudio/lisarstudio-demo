@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Star, CheckCircle, ShieldCheck, ShoppingCart, CreditCard, Heart, Tag } from 'lucide-react';
+import { X, Star, CheckCircle, ShieldCheck, ShoppingCart, CreditCard, Tag } from 'lucide-react';
 import { getAssetUrl } from '../data/clientData';
 
 export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow }) {
@@ -32,9 +32,9 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
         className="fade-in"
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: 'var(--bg-card)',
+          background: '#ffffff',
           borderRadius: 'var(--radius-xl)',
-          border: '1px solid var(--border-color)',
+          border: '1px solid #e2e8f0',
           maxWidth: '850px',
           width: '100%',
           maxHeight: '90vh',
@@ -43,7 +43,8 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
           padding: '2rem',
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
-          gap: '2rem'
+          gap: '2rem',
+          boxShadow: '0 20px 50px rgba(0,0,0,0.15)'
         }}
         id="product-detail-modal"
       >
@@ -54,13 +55,14 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
             position: 'absolute',
             top: '1.25rem',
             right: '1.25rem',
-            color: '#cbd5e1',
-            background: 'rgba(255,255,255,0.06)',
+            color: '#64748b',
+            background: '#f1f5f9',
             borderRadius: '9999px',
             padding: '0.4rem',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            border: '1px solid #e2e8f0'
           }}
         >
           <X size={20} />
@@ -73,8 +75,8 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
             height: '320px',
             borderRadius: 'var(--radius-lg)',
             overflow: 'hidden',
-            background: '#071710',
-            border: '1px solid var(--border-color)'
+            background: '#f8fafc',
+            border: '1px solid #e2e8f0'
           }}>
             <img
               src={selectedImage}
@@ -101,7 +103,7 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
                     borderRadius: '8px',
                     objectFit: 'cover',
                     cursor: 'pointer',
-                    border: selectedImage === img ? '2px solid #d4af37' : '1px solid rgba(255,255,255,0.1)',
+                    border: selectedImage === img ? '2px solid #1b4230' : '1px solid #e2e8f0',
                     opacity: selectedImage === img ? 1 : 0.6
                   }}
                 />
@@ -111,18 +113,18 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
 
           {/* Guarantee Box */}
           <div style={{
-            background: 'rgba(16, 185, 129, 0.08)',
-            border: '1px solid rgba(16, 185, 129, 0.25)',
+            background: '#f0fdf4',
+            border: '1px solid #bbf7d0',
             borderRadius: 'var(--radius-md)',
             padding: '0.85rem 1rem',
             display: 'flex',
             alignItems: 'center',
             gap: '0.75rem'
           }}>
-            <ShieldCheck size={24} style={{ color: '#10b981', flexShrink: 0 }} />
+            <ShieldCheck size={24} style={{ color: '#166534', flexShrink: 0 }} />
             <div>
-              <h5 style={{ fontSize: '0.85rem', color: '#ffffff', fontWeight: 700 }}>Despacho Garantizado a Velatorio</h5>
-              <p style={{ fontSize: '0.78rem', color: '#cbd5e1' }}>Pago encriptado con Flow (Webpay Plus) en CLP.</p>
+              <h5 style={{ fontSize: '0.85rem', color: '#14532d', fontWeight: 700 }}>Despacho Garantizado a Velatorio</h5>
+              <p style={{ fontSize: '0.78rem', color: '#334155' }}>Pago encriptado con Flow (Webpay Plus) en CLP.</p>
             </div>
           </div>
         </div>
@@ -131,20 +133,20 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-              <span className="badge badge-purple">{product.category}</span>
+              <span className="badge badge-emerald">{product.category}</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                <Star size={15} style={{ color: '#fbbf24', fill: '#fbbf24' }} />
-                <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#ffffff' }}>{product.rating}</span>
-                <span style={{ fontSize: '0.78rem', color: '#cbd5e1' }}>({product.reviewsCount} evaluaciones)</span>
+                <Star size={15} style={{ color: '#d97706', fill: '#d97706' }} />
+                <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0f172a' }}>{product.rating}</span>
+                <span style={{ fontSize: '0.78rem', color: '#64748b' }}>({product.reviewsCount} evaluaciones)</span>
               </div>
             </div>
 
-            <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.25 }}>{product.title}</h2>
-            <p style={{ fontSize: '0.78rem', color: '#cbd5e1', marginTop: '0.2rem' }}>CÓDIGO: {product.sku}</p>
+            <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#0f172a', lineHeight: 1.25 }}>{product.title}</h2>
+            <p style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '0.2rem' }}>CÓDIGO: {product.sku}</p>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>
-            <span style={{ fontSize: '1.8rem', fontWeight: 800, color: '#d4af37' }}>
+            <span style={{ fontSize: '1.8rem', fontWeight: 800, color: '#1b4230' }}>
               {formatCLP(currentPrice * quantity)}
             </span>
             {product.regularPrice > product.price && (
@@ -154,14 +156,14 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
             )}
           </div>
 
-          <p style={{ fontSize: '0.9rem', color: '#cbd5e1', lineHeight: 1.5 }}>
+          <p style={{ fontSize: '0.9rem', color: '#475569', lineHeight: 1.5 }}>
             {product.description || product.shortDescription}
           </p>
 
           {/* Variants Selection */}
           {product.variants && product.variants.length > 0 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-              <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#d4af37', textTransform: 'uppercase' }}>
+              <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#1b4230', textTransform: 'uppercase' }}>
                 Tamaño / Dimensión:
               </label>
               <select
@@ -184,7 +186,7 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
 
           {/* Condolence Ribbon Text */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-            <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#d4af37', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#1b4230', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               <Tag size={14} />
               <span>Texto para la Cinta Impresa (Opcional):</span>
             </label>
@@ -200,29 +202,29 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
 
           {/* Quantity Selector */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#475569', textTransform: 'uppercase' }}>
               Cantidad:
             </span>
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid var(--border-color)',
+              background: '#f8fafc',
+              border: '1px solid #cbd5e1',
               borderRadius: 'var(--radius-md)',
               overflow: 'hidden'
             }}>
               <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                style={{ padding: '0.4rem 0.8rem', color: '#ffffff', fontSize: '1.1rem', fontWeight: 700 }}
+                style={{ padding: '0.4rem 0.8rem', color: '#0f172a', fontSize: '1.1rem', fontWeight: 700 }}
               >
                 -
               </button>
-              <span style={{ padding: '0.4rem 1rem', fontSize: '0.95rem', fontWeight: 700, color: '#ffffff' }}>
+              <span style={{ padding: '0.4rem 1rem', fontSize: '0.95rem', fontWeight: 700, color: '#0f172a' }}>
                 {quantity}
               </span>
               <button
                 onClick={() => setQuantity(quantity + 1)}
-                style={{ padding: '0.4rem 0.8rem', color: '#ffffff', fontSize: '1.1rem', fontWeight: 700 }}
+                style={{ padding: '0.4rem 0.8rem', color: '#0f172a', fontSize: '1.1rem', fontWeight: 700 }}
               >
                 +
               </button>
@@ -230,12 +232,12 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
           </div>
 
           {/* Features Checklist */}
-          <div style={{ background: 'rgba(255,255,255,0.03)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}>
-            <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.5rem' }}>El arreglo incluye:</h4>
+          <div style={{ background: '#f8fafc', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid #e2e8f0' }}>
+            <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0f172a', marginBottom: '0.5rem' }}>El arreglo incluye:</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
               {product.features.map((feat, idx) => (
-                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.82rem', color: '#cbd5e1' }}>
-                  <CheckCircle size={15} style={{ color: '#d4af37', flexShrink: 0 }} />
+                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.82rem', color: '#334155' }}>
+                  <CheckCircle size={15} style={{ color: '#166534', flexShrink: 0 }} />
                   <span>{feat}</span>
                 </div>
               ))}
@@ -248,7 +250,7 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
               <ShoppingCart size={18} />
               <span>Agregar al Carrito</span>
             </button>
-            <button onClick={handleBuyNow} className="btn-emerald" style={{ padding: '0.85rem', fontSize: '0.95rem' }}>
+            <button onClick={handleBuyNow} className="btn-gold" style={{ padding: '0.85rem', fontSize: '0.95rem' }}>
               <CreditCard size={18} />
               <span>Pagar Directo con Flow (Webpay)</span>
             </button>

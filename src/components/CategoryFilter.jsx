@@ -1,5 +1,5 @@
 import React from 'react';
-import { SlidersHorizontal, Grid, ArrowUpDown } from 'lucide-react';
+import { ArrowUpDown } from 'lucide-react';
 
 export function CategoryFilter({ categories, activeCategory, onSelectCategory, sortBy, onSortChange, totalItems }) {
   return (
@@ -11,7 +11,7 @@ export function CategoryFilter({ categories, activeCategory, onSelectCategory, s
       flexWrap: 'wrap',
       padding: '1.25rem 0',
       marginBottom: '1.5rem',
-      borderBottom: '1px solid rgba(255,255,255,0.06)'
+      borderBottom: '1px solid #e2e8f0'
     }}>
       {/* Category Pills */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
@@ -22,14 +22,14 @@ export function CategoryFilter({ categories, activeCategory, onSelectCategory, s
               key={cat.id}
               onClick={() => onSelectCategory(cat.slug || cat.id)}
               style={{
-                padding: '0.55rem 1.1rem',
+                padding: '0.55rem 1.2rem',
                 borderRadius: '9999px',
                 fontSize: '0.86rem',
-                fontWeight: isActive ? 700 : 500,
-                color: isActive ? '#ffffff' : '#94a3b8',
-                background: isActive ? 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)' : 'rgba(255,255,255,0.05)',
-                border: isActive ? '1px solid #8b5cf6' : '1px solid rgba(255,255,255,0.08)',
-                boxShadow: isActive ? '0 4px 12px rgba(124, 58, 237, 0.3)' : 'none',
+                fontWeight: isActive ? 700 : 600,
+                color: isActive ? '#ffffff' : '#475569',
+                background: isActive ? '#1b4230' : '#f1f5f9',
+                border: isActive ? '1px solid #1b4230' : '1px solid #cbd5e1',
+                boxShadow: isActive ? '0 4px 12px rgba(27, 66, 48, 0.2)' : 'none',
                 transition: 'all 0.2s ease',
                 cursor: 'pointer'
               }}
@@ -42,12 +42,12 @@ export function CategoryFilter({ categories, activeCategory, onSelectCategory, s
 
       {/* Sorting & Counter */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <span style={{ fontSize: '0.85rem', color: '#94a3b8', fontWeight: 500 }}>
-          {totalItems} {totalItems === 1 ? 'producto' : 'productos'} encontrados
+        <span style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: 600 }}>
+          {totalItems} {totalItems === 1 ? 'arreglo' : 'arreglos'} encontrados
         </span>
 
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <ArrowUpDown size={16} style={{ color: '#a78bfa' }} />
+          <ArrowUpDown size={16} style={{ color: '#166534' }} />
           <select
             value={sortBy}
             onChange={(e) => onSortChange(e.target.value)}
@@ -56,7 +56,9 @@ export function CategoryFilter({ categories, activeCategory, onSelectCategory, s
               padding: '0.45rem 2rem 0.45rem 0.8rem',
               fontSize: '0.85rem',
               borderRadius: '8px',
-              background: 'rgba(26, 24, 41, 0.9)',
+              background: '#ffffff',
+              border: '1px solid #cbd5e1',
+              color: '#0f172a',
               cursor: 'pointer',
               width: 'auto'
             }}
