@@ -1,4 +1,4 @@
-const getAssetUrl = (path) => {
+export const getAssetUrl = (path) => {
   const base = import.meta.env.BASE_URL || './';
   const cleanBase = base.endsWith('/') ? base : base + '/';
   const cleanPath = path.startsWith('/') ? path.substring(1) : path;
@@ -7,225 +7,212 @@ const getAssetUrl = (path) => {
 
 export const clientData = {
   brand: {
-    name: "Lisar Studio",
-    tagline: "Agencia Digital & Soluciones E-Commerce",
-    domain: "lisarstudio.com",
-    logo: getAssetUrl("client_images/uploads/2021/02/cropped-121077729_826729951406261_5130496571142149153_n.png"),
-    heroBanner: getAssetUrl("client_images/uploads/2021/05/Bannerlisar.jpeg"),
-    whatsapp: "+56912345678",
-    whatsappFormatted: "+56 9 1234 5678",
-    email: "contacto@lisarstudio.com",
-    address: "Santiago, Chile",
+    name: "Corona de Flores",
+    tagline: "Floristería Especializada en Coronas Fúnebres & Arreglos de Condolencias",
+    domain: "coronadeflores.cl",
+    logo: getAssetUrl("client_images/2021/04/Corona-de-Flores-logo-nuevo-.jpg"),
+    heroLogo: getAssetUrl("client_images/2021/04/Corona-de-Flores.png"),
+    whatsapp: "+56987654321",
+    whatsappFormatted: "+56 9 8765 4321",
+    email: "contacto@coronadeflores.cl",
+    address: "Santiago, Chile • Envíos a Domicilio y Velatorios 24/7",
     currency: "CLP",
     currencySymbol: "$",
-    description: "Diseño web profesional, tiendas online e-commerce con pasarela Flow, desarrollo a medida y mantenimiento web corporativo."
+    description: "Servicio de arreglos florales, coronas fúnebres, ofrendas, ramilletes y cubre urnas con despacho urgente a velatorios e iglesias."
   },
   categories: [
-    { id: "all", name: "Todos los Planes", slug: "todos" },
-    { id: "paginas-web", name: "Páginas Web", slug: "paginas-web", description: "Sitios web corporativos rápidos, modernos y 100% responsivos." },
-    { id: "e-commerce", name: "E-Commerce", slug: "e-commerce", description: "Tiendas online completas integradas con pasarela de pago Flow y Webpay." },
-    { id: "branding", name: "Branding & Diseño", slug: "branding", description: "Identidad corporativa, logotipos y recursos visuales." },
-    { id: "mantencion", name: "Mantención & Hosting", slug: "mantencion", description: "Servidores ultrarrápidos, copias de seguridad y soporte técnico continuo." }
+    { id: "all", name: "Todos los Arreglos", slug: "todos" },
+    { id: "coronas-funebres", name: "Coronas Fúnebres", slug: "coronas-funebres", description: "Coronas de honor y homenaje elaboradas con flores frescas seleccionadas." },
+    { id: "arreglos-condolencias", name: "Arreglos & Ramilletes", slug: "arreglos-condolencias", description: "Expresiones de afecto y acompañamiento para momentos solemnes." },
+    { id: "cubre-urnas", name: "Cubre Urnas & Cruces", slug: "cubre-urnas", description: "Cintas personalizadas, cruces florales y arreglos especiales para altar." },
+    { id: "canastos-florales", name: "Canastos & Palmas", slug: "canastos-florales", description: "Palmas de condolencia y canastos florales elegantes de alta presencia." }
   ],
   products: [
     {
-      id: "plan-basico",
-      title: "Plan Básico Web",
-      slug: "plan-basico",
-      category: "Páginas Web",
-      categorySlug: "paginas-web",
-      price: 49990,
+      id: "corona-imperial-blanca",
+      title: "Corona Fúnebre Imperial Blanca",
+      slug: "corona-imperial-blanca",
+      category: "Coronas Fúnebres",
+      categorySlug: "coronas-funebres",
+      price: 85990,
+      regularPrice: 98000,
+      badge: "Más Solicitada",
+      rating: 5.0,
+      reviewsCount: 42,
+      sku: "CF-IMP-01",
+      stockStatus: "instock",
+      shortDescription: "Majestuosa corona floral confeccionada con rosas blancas, lirios, crisantemos y finos follajes verdes. Incluye cinta impresa de condolencias.",
+      description: `La Corona Fúnebre Imperial Blanca es nuestro tributo más distinguido. Elaborada artesanalmente por nuestros floristas con rosas ecuatorianas seleccionadas, lirios perfumados y finos follajes. Entregada directamente en velatorio o parroquia con cinta de felicitación o condolencias personalizada.`,
+      features: [
+        "Despacho prioritario 24/7 a velatorios e iglesias",
+        "Rosas blancas ecuatorianas de exportación y Lirios frescos",
+        "Incluye cinta de condolencias impresa con texto personalizado",
+        "Base circular reforzada y atril de madera noble",
+        "Tarjeta de dedicatoria membretada de la floristería"
+      ],
+      variants: [
+        { name: "Tamaño Estándar (90 cm de diámetro)", priceModifier: 0 },
+        { name: "Tamaño Premium Gigante (120 cm de diámetro)", priceModifier: 25000 }
+      ],
+      image: getAssetUrl("client_images/2021/04/Corona-de-Flores.png"),
+      gallery: [
+        getAssetUrl("client_images/2021/04/Corona-de-Flores.png"),
+        getAssetUrl("client_images/2021/05/album-1.jpg")
+      ]
+    },
+    {
+      id: "arreglo-condolencias-lirios-rosas",
+      title: "Arreglo Elegancia de Condolencias",
+      slug: "arreglo-condolencias-lirios-rosas",
+      category: "Arreglos & Ramilletes",
+      categorySlug: "arreglos-condolencias",
+      price: 54990,
       regularPrice: 65000,
-      badge: "Más Popular Emprendedores",
+      badge: "Acompañamiento Solemnes",
       rating: 4.9,
-      reviewsCount: 18,
-      sku: "LISAR-WEB-01",
+      reviewsCount: 28,
+      sku: "CF-ARR-02",
       stockStatus: "instock",
-      shortDescription: "Orientado especialmente para el joven emprendedor. Una página completa con entrega rápida entre 1 a 3 días hábiles.",
-      description: `El Plan Básico de Lisar Studio está diseñado para emprendedores que necesitan lanzar su presencia digital de forma profesional y acelerada. Incluye diseño responsivo adaptado a móviles, botones directos a WhatsApp, catálogo inicial de servicios y optimización de velocidad de carga.`,
+      shortDescription: "Diseño floral sobrio y distinguido compuesto por lirios blancos, gerberas y rosas en base de cerámica o madera.",
+      description: `Arreglo floral diseñado para entregar afecto y cercanía en momentos difíciles. Sus lirios blancos transmiten paz y esperanza, acompañados de rosas de tono suave y follajes naturales en una presentación sobria y delicada.`,
       features: [
-        "Entrega express en 1 a 3 días hábiles",
-        "Diseño 100% responsive (Mobile, Tablet y Desktop)",
-        "Hasta 5 secciones principales (Inicio, Nosotros, Servicios, Galería, Contacto)",
-        "Integración directa a WhatsApp Business",
-        "Formulario de contacto con notificación por correo",
-        "Optimización de velocidad y SEO básico"
+        "Flores frescas hidropónicas de alta durabilidad",
+        "Base elegante de presentación solemnes",
+        "Incluye tarjeta con dedicatoria personalizada",
+        "Despacho express confirmado con fotografía de entrega"
       ],
       variants: [
-        { name: "Entrega Estándar (3 días)", priceModifier: 0 },
-        { name: "Entrega Prioritaria (24 horas)", priceModifier: 15000 }
+        { name: "Presentación Clásica", priceModifier: 0 },
+        { name: "Presentación Deluxe (Más Volumen de Rosas)", priceModifier: 15000 }
       ],
-      image: getAssetUrl("client_images/uploads/2021/05/Bannerlisar-600x337.jpeg"),
+      image: getAssetUrl("client_images/2021/05/album-1.jpg"),
       gallery: [
-        getAssetUrl("client_images/uploads/2021/05/Bannerlisar.jpeg"),
-        getAssetUrl("client_images/uploads/2021/04/LogoSmileProClinicaDentalsinborde-600x338.png")
+        getAssetUrl("client_images/2021/05/album-1.jpg"),
+        getAssetUrl("client_images/2020/09/banner-03.jpg")
       ]
     },
     {
-      id: "plan-pyme",
-      title: "Plan Pyme Corporativo",
-      slug: "plan-pyme",
-      category: "Páginas Web",
-      categorySlug: "paginas-web",
-      price: 99990,
-      regularPrice: 125000,
-      badge: "Recomendado Pymes",
+      id: "cubre-urna-rosas-soberano",
+      title: "Cubre Urna Soberano de Rosas & Orquídeas",
+      slug: "cubre-urna-rosas-soberano",
+      category: "Cubre Urnas & Cruces",
+      categorySlug: "cubre-urnas",
+      price: 119990,
+      regularPrice: 140000,
+      badge: "Homenaje Especial",
       rating: 5.0,
-      reviewsCount: 32,
-      sku: "LISAR-WEB-02",
+      reviewsCount: 19,
+      sku: "CF-URNA-03",
       stockStatus: "instock",
-      shortDescription: "Orientado para el emprendedor que quiera dar un gran paso en su negocio. Página completa con entrega en 1 a 1.5 semanas.",
-      description: `El Plan Pyme te otorga una plataforma digital de alto nivel con catálogo interactivo, cotizador de servicios, múltiples páginas internas, optimización para motores de búsqueda y arquitectura lista para conectar pasarela de pagos.`,
+      shortDescription: "Manta floral completa confeccionada especialmente para cubrir la urna. Rosas seleccionadas, lirios y orquídeas.",
+      description: `Un tributo floral de excepcional calidez y respeto. Diseñado en forma de manto fluido para cubrir delicadamente la urna. Confeccionado con más de 60 flores frescas entre rosas de exportación, orquídeas y follaje exótico.`,
       features: [
-        "Entrega entre 1 a 1.5 semanas",
-        "Diseño web corporativo a medida",
-        "Catálogo de productos/servicios con filtros interactivos",
-        "Integración comercial con WhatsApp y Redes Sociales",
-        "Certificado de seguridad SSL e integración de mapa Google Maps",
-        "Panel listo para administración futura (Admin Ready)"
+        "Manto de cobertura completa para urna",
+        "Más de 60 tallos florales de primera selección",
+        "Diseño equilibrado y sujeción segura",
+        "Instalación directa en capilla o parroquia por florista especializado"
       ],
       variants: [
-        { name: "Planes Estándar Pyme", priceModifier: 0 },
-        { name: "Incluye Dominio .CL por 1 año", priceModifier: 10000 }
+        { name: "Cubre Urna Medio Manto", priceModifier: 0 },
+        { name: "Cubre Urna Manto Completo Imperial", priceModifier: 35000 }
       ],
-      image: getAssetUrl("client_images/uploads/2021/04/LogoSmileProClinicaDentalsinborde-600x338.png"),
+      image: getAssetUrl("client_images/2020/09/banner-03.jpg"),
       gallery: [
-        getAssetUrl("client_images/uploads/2021/04/LogoSmileProClinicaDentalsinborde.png"),
-        getAssetUrl("client_images/uploads/2021/05/aniketpagina.png")
+        getAssetUrl("client_images/2020/09/banner-03.jpg"),
+        getAssetUrl("client_images/2020/09/banner-04.jpg")
       ]
     },
     {
-      id: "plan-ecommerce-flow",
-      title: "Plan E-Commerce Pro Flow",
-      slug: "plan-ecommerce-flow",
-      category: "E-Commerce",
-      categorySlug: "e-commerce",
-      price: 189990,
-      regularPrice: 240000,
-      badge: "Pasarela Flow Incluida",
-      rating: 5.0,
-      reviewsCount: 24,
-      sku: "LISAR-EC-01",
-      stockStatus: "instock",
-      shortDescription: "Tienda virtual completa con pasarela de pago Flow integrada (Webpay, Tarjetas de Crédito/Débito, Servipag, Mach).",
-      description: `Solución de comercio electrónico llave en mano. Tu cliente podrá seleccionar productos, agregar al carrito con variaciones, seleccionar método de envío y pagar de forma 100% segura mediante Flow.cl en pesos chilenos (CLP).`,
-      features: [
-        "Integración oficial de Pasarela de Pagos Flow (Webpay, Tarjetas, Servipag, Mach)",
-        "Catálogo responsivo e-commerce ilimitado",
-        "Carrito de compras interactivo con Drawer de actualización en vivo",
-        "Checkout optimizado de alta conversión con retornos y confirmación Flow",
-        "Gestión de stock, precios de oferta y variaciones de producto",
-        "Arquitectura desacoplada y lista para backend Admin API"
-      ],
-      variants: [
-        { name: "Licencia Flow Estándar", priceModifier: 0 },
-        { name: "Configuración Sandbox + Producción Asistida", priceModifier: 20000 }
-      ],
-      image: getAssetUrl("client_images/uploads/2021/04/Corona-de-Flores-600x600.png"),
-      gallery: [
-        getAssetUrl("client_images/uploads/2021/04/Corona-de-Flores.png"),
-        getAssetUrl("client_images/uploads/2021/05/album-1.jpg")
-      ]
-    },
-    {
-      id: "diseno-branding-corporativo",
-      title: "Diseño & Branding Corporativo",
-      slug: "diseno-branding-corporativo",
-      category: "Branding & Diseño",
-      categorySlug: "branding",
-      price: 79990,
-      regularPrice: 99000,
-      badge: "Identidad Visual",
+      id: "palma-funebre-honor",
+      title: "Palma Fúnebre de Honor & Paz",
+      slug: "palma-funebre-honor",
+      category: "Canastos & Palmas",
+      categorySlug: "canastos-florales",
+      price: 64990,
+      regularPrice: 75000,
+      badge: "Presencia Distinguida",
       rating: 4.8,
-      reviewsCount: 15,
-      sku: "LISAR-DES-01",
+      reviewsCount: 31,
+      sku: "CF-PALM-04",
       stockStatus: "instock",
-      shortDescription: "Creación de logotipo vectorial, manual de marca, paleta tipográfica y assets gráficos comerciales.",
-      description: `Destaca de tu competencia con una identidad de marca moderna y memorable. Incluye propuestas conceptuales, revisiones sin límite de tiempo y entrega de archivos vectoriales listos para imprenta y web.`,
+      shortDescription: "Arreglo vertical erguido estilo palma, compuesto por anturios, lilium, gladiolos y follajes sobrios.",
+      description: `La Palma Fúnebre ofrece una presencia majestuosa y sobria en velatorios y templos. Su estructura vertical simboliza elevación y memoria eterna, destacando por sus lilium blancos y follajes nobles.`,
       features: [
-        "3 Propuestas conceptuales iniciales",
-        "Entrega en formatos vectoriales (AI, SVG, PNG, PDF)",
-        "Paleta de colores corporativos (HEX, RGB, CMYK)",
-        "Manual básico de uso de marca y tipografías",
-        "Banner e imágenes de perfil adaptadas para Instagram y Facebook"
+        "Estructura vertical sobria de gran visibilidad",
+        "Gladiolos, Lilium blancos y follaje noble",
+        "Atril soporte de alta resistencia",
+        "Cinta con texto de condolencias personalizada"
       ],
       variants: [
-        { name: "Pack Marca Esencial", priceModifier: 0 },
-        { name: "Pack Marca + Plantillas RRSS", priceModifier: 25000 }
+        { name: "Palma Simple (1 Metro)", priceModifier: 0 },
+        { name: "Palma Doble (1.5 Metros)", priceModifier: 20000 }
       ],
-      image: getAssetUrl("client_images/uploads/2021/05/aniketpagina.png"),
+      image: getAssetUrl("client_images/2020/09/banner-04.jpg"),
       gallery: [
-        getAssetUrl("client_images/uploads/2021/05/aniketpagina.png"),
-        getAssetUrl("client_images/uploads/2021/05/album-1.jpg")
+        getAssetUrl("client_images/2020/09/banner-04.jpg"),
+        getAssetUrl("client_images/2021/05/other-small.jpg")
       ]
     },
     {
-      id: "hosting-mantencion-mensual",
-      title: "Plan Hosting & Mantenimiento Mensual",
-      slug: "hosting-mantencion-mensual",
-      category: "Mantención & Hosting",
-      categorySlug: "mantencion",
-      price: 19990,
-      regularPrice: 25000,
-      badge: "Servidor SSL Cero Caídas",
+      id: "ramillete-rosas-memoria",
+      title: "Ramillete Memoria Eterna de Rosas Blancas",
+      slug: "ramillete-rosas-memoria",
+      category: "Arreglos & Ramilletes",
+      categorySlug: "arreglos-condolencias",
+      price: 39990,
+      regularPrice: 48000,
+      badge: "Afecto Personal",
       rating: 4.9,
-      reviewsCount: 41,
-      sku: "LISAR-HOST-01",
+      reviewsCount: 54,
+      sku: "CF-RAM-05",
       stockStatus: "instock",
-      shortDescription: "Servidor dedicado ultrarrápido, copias de seguridad automáticas diarias y asistencia técnica continua.",
-      description: `Mantén tu sitio web 100% seguro, rápido y protegido. Nos encargamos del monitoreo de tiempo de actividad (uptime 99.9%), renovación de SSL, limpieza de caché y ajustes mensuales de contenido.`,
+      shortDescription: "Atado tradicional de 24 rosas blancas naturales envueltas en papel ecológico fine art con cinta satinada.",
+      description: `Ramillete sobrio de 24 rosas blancas naturales de tallo largo, preparado con la máxima delicadeza y envuelto en fino papel artesanal. Perfecto para acompañamiento familiar o entrega personal.`,
       features: [
-        "Hosting SSD de alta velocidad en Chile / EE.UU.",
-        "Certificado SSL de seguridad de 256 bits",
-        "Copias de respaldo diarias (Backups)",
-        "Monitoreo 24/7 de seguridad y malware",
-        "Soporte técnico preferente vía WhatsApp"
+        "24 Rosas Blancas naturales de tallo largo",
+        "Envoltorio artesanal ecológico con lazo satinado",
+        "Conservante floral hidratante incluido",
+        "Tarjeta con dedicatoria personal incluida"
       ],
       variants: [
-        { name: "Pago Mensual ($19.990/mes)", priceModifier: 0 },
-        { name: "Plan Anual (2 meses Gratis - $199.900/año)", priceModifier: 179910 }
+        { name: "Ramillete 24 Rosas", priceModifier: 0 },
+        { name: "Ramillete 36 Rosas Premium", priceModifier: 15000 }
       ],
-      image: getAssetUrl("client_images/uploads/2021/05/album-1.jpg"),
+      image: getAssetUrl("client_images/2021/05/other-small.jpg"),
       gallery: [
-        getAssetUrl("client_images/uploads/2021/05/album-1.jpg")
+        getAssetUrl("client_images/2021/05/other-small.jpg")
       ]
     }
   ],
   portfolio: [
     {
-      title: "Corona de Flores",
-      category: "E-Commerce & Pagos Flow",
-      image: getAssetUrl("client_images/uploads/2021/04/Corona-de-Flores.png")
+      title: "Coronas Fúnebres Especiales",
+      category: "Despacho Urgente Velatorios",
+      image: getAssetUrl("client_images/2021/04/Corona-de-Flores.png")
     },
     {
-      title: "SmilePro Clínica Dental",
-      category: "Sitio Web Corporativo",
-      image: getAssetUrl("client_images/uploads/2021/04/LogoSmileProClinicaDentalsinborde.png")
+      title: "Cubre Urnas & Arreglos Altar",
+      category: "Confección Floral Artesanal",
+      image: getAssetUrl("client_images/2020/09/banner-03.jpg")
     },
     {
-      title: "Aniket Marca & Web",
-      category: "Branding & Tienda Online",
-      image: getAssetUrl("client_images/uploads/2021/05/aniketpagina.png")
+      title: "Palmas & Canastos Fúnebres",
+      category: "Honor & Memoria",
+      image: getAssetUrl("client_images/2020/09/banner-04.jpg")
     }
   ],
   team: [
     {
-      name: "Silvio",
-      role: "CEO & Fundador",
-      image: getAssetUrl("client_images/uploads/2021/02/cropped-IMG_5951-scaled-1.jpg"),
-      bio: "Especialista en estrategia digital, desarrollo de negocios e integración de soluciones tecnológicas."
+      name: "Atención al Cliente 24/7",
+      role: "Coordinación de Entregas Urgentes",
+      image: getAssetUrl("client_images/2021/04/Corona-de-Flores-logo-nuevo-.jpg"),
+      bio: "Equipo dedicado a la recepción de pedidos de emergencia y coordinación inmediata con velatorios e iglesias."
     },
     {
-      name: "Pancho",
-      role: "Director de Desarrollo",
-      image: getAssetUrl("client_images/uploads/2021/05/fotopanchopag.png"),
-      bio: "Experto en arquitectura web, desarrollo frontend/backend y optimización e-commerce."
-    },
-    {
-      name: "Peter",
-      role: "Líder de Diseño & UX",
-      image: getAssetUrl("client_images/uploads/2021/05/fotopeterpagina.png"),
-      bio: "Diseñador especializado en experiencia de usuario, interfaz comercial e identidad corporativa."
+      name: "Maestros Floristas",
+      role: "Confección Floral Artesanal",
+      image: getAssetUrl("client_images/2021/04/Corona-de-Flores.png"),
+      bio: "Floristas con más de 15 años de experiencia en arreglos solemnes, coronas de honor y mantos de condolencias."
     }
   ],
   flowConfig: {

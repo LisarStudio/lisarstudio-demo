@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { X, Star, CheckCircle, ShieldCheck, ShoppingCart, CreditCard, ArrowRight } from 'lucide-react';
+import { X, Star, CheckCircle, ShieldCheck, ShoppingCart, CreditCard, Heart, Tag } from 'lucide-react';
+import { getAssetUrl } from '../data/clientData';
 
 export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow }) {
   if (!product) return null;
@@ -7,6 +8,7 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
   const [selectedVariant, setSelectedVariant] = useState(product.variants?.[0] || null);
   const [selectedImage, setSelectedImage] = useState(product.image);
   const [quantity, setQuantity] = useState(1);
+  const [ribbonText, setRibbonText] = useState('');
 
   const formatCLP = (amount) => {
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(amount);
@@ -15,12 +17,14 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
   const currentPrice = product.price + (selectedVariant ? selectedVariant.priceModifier : 0);
 
   const handleAddToCart = () => {
-    onAddToCart(product, quantity, selectedVariant);
+    onAddToCart(product, quantity, selectedVariant, ribbonText);
   };
 
   const handleBuyNow = () => {
-    onBuyNowFlow(product, quantity, selectedVariant);
+    onBuyNowFlow(product, quantity, selectedVariant, ribbonText);
   };
+
+  const fallbackImg = getAssetUrl('client_images/2021/04/Corona-de-Flores.png');
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -50,7 +54,7 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
             position: 'absolute',
             top: '1.25rem',
             right: '1.25rem',
-            color: '#94a3b8',
+            color: '#cbd5e1',
             background: 'rgba(255,255,255,0.06)',
             borderRadius: '9999px',
             padding: '0.4rem',
@@ -66,10 +70,10 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div style={{
             width: '100%',
-            height: '300px',
+            height: '320px',
             borderRadius: 'var(--radius-lg)',
             overflow: 'hidden',
-            background: '#09090e',
+            background: '#071710',
             border: '1px solid var(--border-color)'
           }}>
             <img
@@ -77,7 +81,7 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
               alt={product.title}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               onError={(e) => {
-                e.target.src = '/client_images/uploads/woocommerce-placeholder-600x600.png';
+                e.target.src = fallbackImg;
               }}
             />
           </div>
@@ -97,7 +101,7 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
                     borderRadius: '8px',
                     objectFit: 'cover',
                     cursor: 'pointer',
-                    border: selectedImage === img ? '2px solid #8b5cf6' : '1px solid rgba(255,255,255,0.1)',
+                    border: selectedImage === img ? '2px solid #d4af37' : '1px solid rgba(255,255,255,0.1)',
                     opacity: selectedImage === img ? 1 : 0.6
                   }}
                 />
@@ -105,10 +109,10 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
             </div>
           )}
 
-          {/* Security Guarantee Box */}
+          {/* Guarantee Box */}
           <div style={{
             background: 'rgba(16, 185, 129, 0.08)',
-            border: '1px solid rgba(16, 185, 129, 0.2)',
+            border: '1px solid rgba(16, 185, 129, 0.25)',
             borderRadius: 'var(--radius-md)',
             padding: '0.85rem 1rem',
             display: 'flex',
@@ -117,8 +121,8 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
           }}>
             <ShieldCheck size={24} style={{ color: '#10b981', flexShrink: 0 }} />
             <div>
-              <h5 style={{ fontSize: '0.85rem', color: '#ffffff', fontWeight: 700 }}>Garantía & Pago Seguro Flow</h5>
-              <p style={{ fontSize: '0.78rem', color: '#94a3b8' }}>Transacción encriptada Webpay Plus en CLP.</p>
+              <h5 style={{ fontSize: '0.85rem', color: '#ffffff', fontWeight: 700 }}>Despacho Garantizado a Velatorio</h5>
+              <p style={{ fontSize: '0.78rem', color: '#cbd5e1' }}>Pago encriptado con Flow (Webpay Plus) en CLP.</p>
             </div>
           </div>
         </div>
@@ -131,20 +135,20 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
                 <Star size={15} style={{ color: '#fbbf24', fill: '#fbbf24' }} />
                 <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#ffffff' }}>{product.rating}</span>
-                <span style={{ fontSize: '0.78rem', color: '#64748b' }}>({product.reviewsCount} reseñas)</span>
+                <span style={{ fontSize: '0.78rem', color: '#cbd5e1' }}>({product.reviewsCount} evaluaciones)</span>
               </div>
             </div>
 
             <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.25 }}>{product.title}</h2>
-            <p style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '0.2rem' }}>SKU: {product.sku}</p>
+            <p style={{ fontSize: '0.78rem', color: '#cbd5e1', marginTop: '0.2rem' }}>CÓDIGO: {product.sku}</p>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>
-            <span style={{ fontSize: '1.8rem', fontWeight: 800, color: '#ffffff' }}>
+            <span style={{ fontSize: '1.8rem', fontWeight: 800, color: '#d4af37' }}>
               {formatCLP(currentPrice * quantity)}
             </span>
             {product.regularPrice > product.price && (
-              <span style={{ fontSize: '1rem', color: '#64748b', textDecoration: 'line-through' }}>
+              <span style={{ fontSize: '1rem', color: '#94a3b8', textDecoration: 'line-through' }}>
                 {formatCLP(product.regularPrice * quantity)}
               </span>
             )}
@@ -157,8 +161,8 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
           {/* Variants Selection */}
           {product.variants && product.variants.length > 0 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-              <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase' }}>
-                Opciones / Variantes del Plan:
+              <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#d4af37', textTransform: 'uppercase' }}>
+                Tamaño / Dimensión:
               </label>
               <select
                 value={selectedVariant ? selectedVariant.name : ''}
@@ -178,9 +182,25 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
             </div>
           )}
 
+          {/* Condolence Ribbon Text */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+            <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#d4af37', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <Tag size={14} />
+              <span>Texto para la Cinta Impresa (Opcional):</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Ej: Con profundo afecto de Familia González"
+              value={ribbonText}
+              onChange={(e) => setRibbonText(e.target.value)}
+              className="input-field"
+              style={{ fontSize: '0.88rem' }}
+            />
+          </div>
+
           {/* Quantity Selector */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#cbd5e1', textTransform: 'uppercase' }}>
               Cantidad:
             </span>
             <div style={{
@@ -211,11 +231,11 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
 
           {/* Features Checklist */}
           <div style={{ background: 'rgba(255,255,255,0.03)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}>
-            <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.5rem' }}>El plan incluye:</h4>
+            <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.5rem' }}>El arreglo incluye:</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
               {product.features.map((feat, idx) => (
-                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.82rem', color: '#e2e8f0' }}>
-                  <CheckCircle size={15} style={{ color: '#10b981', flexShrink: 0 }} />
+                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.82rem', color: '#cbd5e1' }}>
+                  <CheckCircle size={15} style={{ color: '#d4af37', flexShrink: 0 }} />
                   <span>{feat}</span>
                 </div>
               ))}

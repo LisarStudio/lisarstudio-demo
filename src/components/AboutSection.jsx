@@ -1,10 +1,12 @@
 import React from 'react';
 import { productRepository } from '../services/productRepository';
+import { getAssetUrl } from '../data/clientData';
 import { Award, Code2, Users, Sparkles } from 'lucide-react';
 
 export function AboutSection() {
   const team = productRepository.getTeamMembers();
   const brand = productRepository.getBrandInfo();
+  const fallbackAvatar = getAssetUrl('client_images/uploads/2020/09/client1-free-img.png');
 
   return (
     <section style={{
@@ -61,7 +63,7 @@ export function AboutSection() {
                   alt={member.name}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   onError={(e) => {
-                    e.target.src = '/client_images/uploads/2020/09/client1-free-img.png';
+                    e.target.src = fallbackAvatar;
                   }}
                 />
               </div>

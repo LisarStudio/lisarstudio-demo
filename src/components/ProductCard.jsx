@@ -1,10 +1,13 @@
 import React from 'react';
-import { Star, ShoppingCart, Eye, Check, Shield } from 'lucide-react';
+import { Star, ShoppingCart, Eye, Check } from 'lucide-react';
+import { getAssetUrl } from '../data/clientData';
 
 export function ProductCard({ product, onSelectProduct, onAddToCart }) {
   const formatCLP = (amount) => {
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(amount);
   };
+
+  const placeholderImg = getAssetUrl('client_images/uploads/woocommerce-placeholder-600x600.png');
 
   return (
     <div style={{
@@ -49,7 +52,7 @@ export function ProductCard({ product, onSelectProduct, onAddToCart }) {
           }}
           className="product-img"
           onError={(e) => {
-            e.target.src = '/client_images/uploads/woocommerce-placeholder-600x600.png';
+            e.target.src = placeholderImg;
           }}
         />
         <div style={{
