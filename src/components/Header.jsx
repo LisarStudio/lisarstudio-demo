@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Search, User, Menu, X, Phone } from 'lucide-react';
+import { ShoppingCart, Search, User, Menu, X } from 'lucide-react';
 import { productRepository } from '../services/productRepository';
 
-export function Header({ cartCount, onOpenCart, activeCategory, onSelectCategory, searchQuery, onSearchChange }) {
+export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, onSearchChange }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const brand = productRepository.getBrandInfo();
 

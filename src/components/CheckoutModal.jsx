@@ -4,8 +4,6 @@ import { flowService } from '../services/flowService';
 import { productRepository } from '../services/productRepository';
 
 export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPaymentSuccess }) {
-  if (!isOpen) return null;
-
   const brand = productRepository.getBrandInfo();
   const [paymentMethod, setPaymentMethod] = useState('flow');
   const [formData, setFormData] = useState({
@@ -18,6 +16,8 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
   });
   const [isProcessing, setIsProcessing] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+
+  if (!isOpen) return null;
 
   const formatCLP = (amount) => {
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(amount);
@@ -83,6 +83,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
         });
       }
     } catch (err) {
+      console.error('Checkout payment error:', err);
       setIsProcessing(false);
       setErrorMsg('Error al conectar con la pasarela de pagos. Por favor reintenta.');
     }

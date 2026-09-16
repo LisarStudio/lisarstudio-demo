@@ -3,12 +3,12 @@ import { X, Star, CheckCircle, ShieldCheck, ShoppingCart, CreditCard, Tag } from
 import { getAssetUrl } from '../data/clientData';
 
 export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow }) {
-  if (!product) return null;
-
-  const [selectedVariant, setSelectedVariant] = useState(product.variants?.[0] || null);
-  const [selectedImage, setSelectedImage] = useState(product.image);
+  const [selectedVariant, setSelectedVariant] = useState(product?.variants?.[0] || null);
+  const [selectedImage, setSelectedImage] = useState(product?.image || '');
   const [quantity, setQuantity] = useState(1);
   const [ribbonText, setRibbonText] = useState('');
+
+  if (!product) return null;
 
   const formatCLP = (amount) => {
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(amount);

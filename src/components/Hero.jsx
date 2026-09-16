@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, Heart, CreditCard, Clock, Truck, ShieldCheck } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Heart, Truck } from 'lucide-react';
 import { productRepository } from '../services/productRepository';
 import { getAssetUrl } from '../data/clientData';
 

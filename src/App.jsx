@@ -12,7 +12,7 @@ import { productRepository } from './services/productRepository';
 
 export default function App() {
   const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [_categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState('funebres');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('featured');
