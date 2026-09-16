@@ -1,10 +1,17 @@
+const getAssetUrl = (path) => {
+  const base = import.meta.env.BASE_URL || './';
+  const cleanBase = base.endsWith('/') ? base : base + '/';
+  const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+  return cleanBase + cleanPath;
+};
+
 export const clientData = {
   brand: {
     name: "Lisar Studio",
     tagline: "Agencia Digital & Soluciones E-Commerce",
     domain: "lisarstudio.com",
-    logo: "/client_images/uploads/2021/02/cropped-121077729_826729951406261_5130496571142149153_n.png",
-    heroBanner: "/client_images/uploads/2021/05/Bannerlisar.jpeg",
+    logo: getAssetUrl("client_images/uploads/2021/02/cropped-121077729_826729951406261_5130496571142149153_n.png"),
+    heroBanner: getAssetUrl("client_images/uploads/2021/05/Bannerlisar.jpeg"),
     whatsapp: "+56912345678",
     whatsappFormatted: "+56 9 1234 5678",
     email: "contacto@lisarstudio.com",
@@ -23,7 +30,7 @@ export const clientData = {
   products: [
     {
       id: "plan-basico",
-      title: "Plan Básico",
+      title: "Plan Básico Web",
       slug: "plan-basico",
       category: "Páginas Web",
       categorySlug: "paginas-web",
@@ -48,15 +55,15 @@ export const clientData = {
         { name: "Entrega Estándar (3 días)", priceModifier: 0 },
         { name: "Entrega Prioritaria (24 horas)", priceModifier: 15000 }
       ],
-      image: "/client_images/uploads/2021/05/Bannerlisar-600x337.jpeg",
+      image: getAssetUrl("client_images/uploads/2021/05/Bannerlisar-600x337.jpeg"),
       gallery: [
-        "/client_images/uploads/2021/05/Bannerlisar.jpeg",
-        "/client_images/uploads/2021/04/LogoSmileProClinicaDentalsinborde-600x338.png"
+        getAssetUrl("client_images/uploads/2021/05/Bannerlisar.jpeg"),
+        getAssetUrl("client_images/uploads/2021/04/LogoSmileProClinicaDentalsinborde-600x338.png")
       ]
     },
     {
       id: "plan-pyme",
-      title: "Plan Pyme",
+      title: "Plan Pyme Corporativo",
       slug: "plan-pyme",
       category: "Páginas Web",
       categorySlug: "paginas-web",
@@ -81,10 +88,10 @@ export const clientData = {
         { name: "Planes Estándar Pyme", priceModifier: 0 },
         { name: "Incluye Dominio .CL por 1 año", priceModifier: 10000 }
       ],
-      image: "/client_images/uploads/2021/04/LogoSmileProClinicaDentalsinborde-600x338.png",
+      image: getAssetUrl("client_images/uploads/2021/04/LogoSmileProClinicaDentalsinborde-600x338.png"),
       gallery: [
-        "/client_images/uploads/2021/04/LogoSmileProClinicaDentalsinborde.png",
-        "/client_images/uploads/2021/05/aniketpagina.png"
+        getAssetUrl("client_images/uploads/2021/04/LogoSmileProClinicaDentalsinborde.png"),
+        getAssetUrl("client_images/uploads/2021/05/aniketpagina.png")
       ]
     },
     {
@@ -114,10 +121,10 @@ export const clientData = {
         { name: "Licencia Flow Estándar", priceModifier: 0 },
         { name: "Configuración Sandbox + Producción Asistida", priceModifier: 20000 }
       ],
-      image: "/client_images/uploads/2021/04/Corona-de-Flores-600x600.png",
+      image: getAssetUrl("client_images/uploads/2021/04/Corona-de-Flores-600x600.png"),
       gallery: [
-        "/client_images/uploads/2021/04/Corona-de-Flores.png",
-        "/client_images/uploads/2021/05/album-1.jpg"
+        getAssetUrl("client_images/uploads/2021/04/Corona-de-Flores.png"),
+        getAssetUrl("client_images/uploads/2021/05/album-1.jpg")
       ]
     },
     {
@@ -146,10 +153,10 @@ export const clientData = {
         { name: "Pack Marca Esencial", priceModifier: 0 },
         { name: "Pack Marca + Plantillas RRSS", priceModifier: 25000 }
       ],
-      image: "/client_images/uploads/2021/05/aniketpagina.png",
+      image: getAssetUrl("client_images/uploads/2021/05/aniketpagina.png"),
       gallery: [
-        "/client_images/uploads/2021/05/aniketpagina.png",
-        "/client_images/uploads/2021/05/album-1.jpg"
+        getAssetUrl("client_images/uploads/2021/05/aniketpagina.png"),
+        getAssetUrl("client_images/uploads/2021/05/album-1.jpg")
       ]
     },
     {
@@ -178,29 +185,46 @@ export const clientData = {
         { name: "Pago Mensual ($19.990/mes)", priceModifier: 0 },
         { name: "Plan Anual (2 meses Gratis - $199.900/año)", priceModifier: 179910 }
       ],
-      image: "/client_images/uploads/2021/05/album-1.jpg",
+      image: getAssetUrl("client_images/uploads/2021/05/album-1.jpg"),
       gallery: [
-        "/client_images/uploads/2021/05/album-1.jpg"
+        getAssetUrl("client_images/uploads/2021/05/album-1.jpg")
       ]
+    }
+  ],
+  portfolio: [
+    {
+      title: "Corona de Flores",
+      category: "E-Commerce & Pagos Flow",
+      image: getAssetUrl("client_images/uploads/2021/04/Corona-de-Flores.png")
+    },
+    {
+      title: "SmilePro Clínica Dental",
+      category: "Sitio Web Corporativo",
+      image: getAssetUrl("client_images/uploads/2021/04/LogoSmileProClinicaDentalsinborde.png")
+    },
+    {
+      title: "Aniket Marca & Web",
+      category: "Branding & Tienda Online",
+      image: getAssetUrl("client_images/uploads/2021/05/aniketpagina.png")
     }
   ],
   team: [
     {
       name: "Silvio",
       role: "CEO & Fundador",
-      image: "/client_images/uploads/2021/02/cropped-IMG_5951-scaled-1.jpg",
+      image: getAssetUrl("client_images/uploads/2021/02/cropped-IMG_5951-scaled-1.jpg"),
       bio: "Especialista en estrategia digital, desarrollo de negocios e integración de soluciones tecnológicas."
     },
     {
       name: "Pancho",
       role: "Director de Desarrollo",
-      image: "/client_images/uploads/2021/05/fotopanchopag.png",
+      image: getAssetUrl("client_images/uploads/2021/05/fotopanchopag.png"),
       bio: "Experto en arquitectura web, desarrollo frontend/backend y optimización e-commerce."
     },
     {
       name: "Peter",
       role: "Líder de Diseño & UX",
-      image: "/client_images/uploads/2021/05/fotopeterpagina.png",
+      image: getAssetUrl("client_images/uploads/2021/05/fotopeterpagina.png"),
       bio: "Diseñador especializado en experiencia de usuario, interfaz comercial e identidad corporativa."
     }
   ],

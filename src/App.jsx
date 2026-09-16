@@ -7,6 +7,7 @@ import { ProductDetailModal } from './components/ProductDetailModal';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { FlowResponseModal } from './components/FlowResponseModal';
+import { PortfolioShowcase } from './components/PortfolioShowcase';
 import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
 import { productRepository } from './services/productRepository';
@@ -154,8 +155,10 @@ export default function App() {
           )}
         </div>
 
+        <PortfolioShowcase />
         <AboutSection />
       </main>
+
 
       {/* Footer */}
       <Footer />
