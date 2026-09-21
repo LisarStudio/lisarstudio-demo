@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './catalog.css';
+import { AccountSection } from './components/AccountSection';
 import { catalogMaxPrice } from './data/clientData';
 import { Header } from './components/Header';
 import { LeftSidebar } from './components/LeftSidebar';
@@ -13,6 +14,15 @@ import { Footer } from './components/Footer';
 import { productRepository } from './services/productRepository';
 
 export default function App() {
+  const [isAccountPage, setIsAccountPage] = useState(() => window.location.hash === '#mi-cuenta');
+  useEffect(() => {
+    const onHashChange = () => {
+      setIsAccountPage(window.location.hash === '#mi-cuenta');
+      if (window.location.hash === '#mi-cuenta') window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
   const [products, setProducts] = useState([]);
   const [_categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState('funebres');
@@ -123,6 +133,7 @@ export default function App() {
         onSearchChange={setSearchQuery}
       />
 
+      {isAccountPage ? <AccountSection /> : <>
       {/* Breadcrumb line */}
       <div className="container catalog-breadcrumb" style={{ padding: '0.85rem 1.5rem', fontSize: '0.78rem', color: '#64748b' }}>
         <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>🏠 TIENDA DE FLORES</a>
@@ -161,6 +172,8 @@ export default function App() {
           </div>
         </div>
       </main>
+
+      </>}
 
       {/* Footer */}
       <Footer />

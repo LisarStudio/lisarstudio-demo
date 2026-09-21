@@ -66,13 +66,13 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
         {/* Account & Cart Icons (Right) */}
         <div className="store-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '1.75rem' }}>
           {/* User Account */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }} className="desktop-only">
+          <a href="#mi-cuenta" aria-label="Mi cuenta" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }} className="desktop-only">
             <User size={28} style={{ color: '#475569' }} />
             <div>
               <span style={{ fontSize: '0.72rem', color: '#64748b', display: 'block', lineHeight: 1 }}>Bienvenido(a)</span>
               <span style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0f172a' }}>Mi Cuenta</span>
             </div>
-          </div>
+          </a>
 
           {/* Cart Icon */}
           <div onClick={onOpenCart} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', position: 'relative' }}>
@@ -134,6 +134,7 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
 
           {/* Menu Items */}
           <div className="store-nav-links" style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', overflowX: 'auto', padding: '0.75rem 0' }}>
+            <a href="#mi-cuenta" className="mobile-account-link" onClick={() => setMobileMenuOpen(false)}><User size={18} aria-hidden="true" /> Mi cuenta</a>
             {['Corona de Flores', 'Rosas y Flores', 'Ocasiones', 'Diseños y Estilos', 'Catálogo Completo'].map((item, idx) => (
               <a
                 key={idx}
