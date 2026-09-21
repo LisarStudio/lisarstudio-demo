@@ -32,32 +32,10 @@ export const clientData = {
     liveUrl: 'https://www.flow.cl/api'
   },
   categories: [
-    { id: "funebres", name: "Fúnebres", slug: "funebres", count: catalogProducts.length },
-    { id: "coronas-funebres", name: "Coronas Fúnebres", slug: "coronas-funebres", count: countCategories("coronas") },
-    { id: "arreglos-condolencias", name: "Arreglos & Pedestales", slug: "arreglos-condolencias", count: countCategories("arreglos", "ofrendas-florales") },
-    { id: "cubre-urnas", name: "Cubre Urnas & Cajas", slug: "cubre-urnas", count: countCategories("cubre-urnas") },
-    { id: "ramilletes", name: "Ramilletes & Bouquet", slug: "ramilletes", count: countCategories("ramos") }
-  ],
-  sidebarCategories: [
-    { name: "Día de la Madre", count: 12 },
-    { name: "Día de la Mujer", count: 8 },
-    { name: "Ocasiones", hasSub: true },
-    { name: "Productos Adicionales", hasSub: true },
-    { name: "San Valentín", count: 15 },
-    { name: "Tipo de Flor", hasSub: true },
-    {
-      name: "Variedades",
-      hasSub: true,
-      isOpen: true,
-      subItems: [
-        { name: "Bouquet", slug: "bouquet" },
-        { name: "Cajas", slug: "cajas" },
-        { name: "Fruteros", slug: "fruteros" },
-        { name: "Fúnebres", slug: "funebres", active: true },
-        { name: "Jarrones", slug: "jarrones" },
-        { name: "Solitarios", slug: "solitarios" }
-      ]
-    }
+    { id: 'funebres', name: 'Catálogo completo', slug: 'funebres', count: catalogProducts.length },
+    ...[['coronas', 'Coronas'], ['arreglos', 'Arreglos'], ['ofrendas-florales', 'Ofrendas florales'], ['cubre-urnas', 'Cubre urnas'], ['ramos', 'Ramos']]
+      .map(([slug, name]) => ({ id: slug, slug, name, count: countCategories(slug) }))
+      .filter(category => category.count > 0)
   ],
   products: catalogProducts.map(product => ({
     ...product,

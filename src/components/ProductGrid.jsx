@@ -1,5 +1,6 @@
-﻿import React from 'react';
+import React from 'react';
 import { ProductCard } from './ProductCard';
+import { clientData } from '../data/clientData';
 import { LayoutGrid, List } from 'lucide-react';
 
 export function CatalogViewToggle({ view, onViewChange }) {
@@ -9,11 +10,11 @@ export function CatalogViewToggle({ view, onViewChange }) {
   </div>;
 }
 
-export function ProductGrid({ products, onSelectProduct, sortBy, onSortChange, view = 'grid', onViewChange }) {
+export function ProductGrid({ products, category = 'funebres', onSelectProduct, sortBy, onSortChange, view = 'grid', onViewChange }) {
   return (
     <section id="catalog-section" className="catalog" aria-labelledby="catalog-title">
       <div className="catalog-intro">
-        <h1 id="catalog-title">Arreglos Fúnebres 🌸 y Coronas Fúnebres en Santiago</h1>
+        <h1 id="catalog-title">{category === 'funebres' ? 'Arreglos Fúnebres 🌸 y Coronas Fúnebres en Santiago' : clientData.categories.find(c => c.slug === category)?.name}</h1>
         <p>Honra la memoria de tu ser querido con coronas, pedestales y cubre cajas elaborados con flores frescas de exportación.<br />
           ⏱️ <strong>Entrega en 2 horas</strong> a cualquier funeraria de Santiago: Sendero, Parque del Recuerdo, Cementerio General, San Sebastián y más. ¿Necesitas un catálogo 100% especializado? Visita coronas fúnebres en Santiago con envío urgente garantizado.
         </p>
@@ -23,6 +24,7 @@ export function ProductGrid({ products, onSelectProduct, sortBy, onSortChange, v
           <label htmlFor="catalog-sort">Ordenar por:</label>
           <select id="catalog-sort" value={sortBy || 'featured'} onChange={e => onSortChange(e.target.value)}>
             <option value="featured">Destacados</option>
+            <option value="random">Aleatorio</option>
             <option value="price-low">Precio: Menor a Mayor</option>
             <option value="price-high">Precio: Mayor a Menor</option>
             <option value="rating">Mejor Valorados</option>

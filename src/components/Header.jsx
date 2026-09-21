@@ -1,10 +1,12 @@
-﻿import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ShoppingCart, Search, User, Menu, X, ChevronDown } from 'lucide-react';
 import { productRepository } from '../services/productRepository';
+import { clientData } from '../data/clientData';
 import './Header.css';
 
 export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, onSearchChange }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const searchInput = useRef(null);
   const brand = productRepository.getBrandInfo();
@@ -33,8 +35,15 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
     </div>
     <nav id="store-navigation" className={`store-nav${mobileMenuOpen ? ' is-open' : ''}`} aria-label="Navegación principal">
       <div className="container store-nav-inner">
-        <button type="button" className="store-categories" onClick={() => { onSelectCategory('funebres'); setMobileMenuOpen(false); }}><Menu size={20} /><span>CATEGORIAS</span></button>
-        <div className="store-nav-links"><a href="#mi-cuenta" className="mobile-account-link" onClick={() => setMobileMenuOpen(false)}><User size={18} /> Mi cuenta</a>{['Corona de Flores', 'Rosas y Flores', 'Ocasiones', 'Diseños y Estilos', 'Catálogo Completo'].map((item, idx) => <a key={item} href={idx === 0 ? '#inicio' : '#catalog-section'} className={idx === 3 ? 'store-nav-accent' : ''} onClick={() => { if (idx !== 0) onSelectCategory('funebres'); setMobileMenuOpen(false); }}>{item}</a>)}</div>
+        <div className="store-category-menu">
+          <button type="button" className="store-categories" aria-expanded={categoriesOpen} aria-controls="header-categories" onClick={() => setCategoriesOpen(open => !open)}><Menu size={20} /><span>CATEGORÍAS</span><ChevronDown size={14} /></button>
+          {categoriesOpen && <div id="header-categories" className="store-category-dropdown">{clientData.categories.map(c => <button key={c.slug} onClick={() => { onSelectCategory(c.slug); setCategoriesOpen(false); setMobileMenuOpen(false); }}>{c.name}<span>{c.count}</span></button>)}</div>}
+        </div>
+        <div className="store-nav-links">
+          <a href="#inicio" onClick={() => setMobileMenuOpen(false)}>Corona de Flores</a>
+          {clientData.categories.filter(c => c.slug !== 'ofrendas-florales').map(c => <a key={c.slug} href="#catalog-section" onClick={() => { onSelectCategory(c.slug); setMobileMenuOpen(false); }}>{c.name}</a>)}
+          <a href="#mi-cuenta" className="mobile-account-link" onClick={() => setMobileMenuOpen(false)}><User size={18} /> Mi cuenta</a>
+        </div>
         <p className="store-phone">¡Escríbenos! <span>{brand.whatsappFormatted}</span></p>
       </div>
     </nav>

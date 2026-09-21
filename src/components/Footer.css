@@ -1,0 +1,5 @@
+.store-footer { background: #222529; padding: 56px 0 32px; color: #cbd5e1; font: 14px/1.7 Arial, sans-serif; }
+.store-footer a:hover { color: #fff; text-decoration: underline; }
+.store-footer a:focus-visible { outline: 2px solid #6ea820; outline-offset: 4px; }
+.store-footer .footer-grid > div { min-width: 0; }
+.store-footer .footer-grid span { overflow-wrap: anywhere; }

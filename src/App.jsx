@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './catalog.css';
 import { HomePage } from './components/HomePage';
 import { AccountSection } from './components/AccountSection';
-import { catalogMaxPrice } from './data/clientData';
+import { catalogMaxPrice, clientData } from './data/clientData';
 import { Header } from './components/Header';
 import { LeftSidebar } from './components/LeftSidebar';
 import { Home, ChevronRight } from 'lucide-react';
@@ -22,6 +22,7 @@ export default function App() {
     const onHashChange = () => {
       setPage(getPage());
       window.scrollTo(0, 0);
+    document.body.scrollTo(0, 0);
     };
     window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);
@@ -62,6 +63,7 @@ export default function App() {
 
   // Load Products & Categories
   useEffect(() => {
+    let cancelled = false;
     async function loadCatalog() {
       setLoading(true);
       const [prodsList, catsList] = await Promise.all([
@@ -69,11 +71,13 @@ export default function App() {
         productRepository.getCategories()
       ]);
       const filteredByPrice = prodsList.filter(p => p.price <= priceRange);
+      if (cancelled) return;
       setProducts(filteredByPrice);
       setCategories(catsList);
       setLoading(false);
     }
     loadCatalog();
+    return () => { cancelled = true; };
   }, [activeCategory, searchQuery, sortBy, priceRange]);
 
   // Cart operations
@@ -129,6 +133,7 @@ export default function App() {
     setSearchQuery('');
     window.location.hash = 'catalog-section';
     window.scrollTo(0, 0);
+    document.body.scrollTo(0, 0);
   };
 
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -146,7 +151,7 @@ export default function App() {
       />
 
       {page === 'account' ? <AccountSection /> : page === 'home' ? <HomePage onSelectProduct={setSelectedProduct} onBrowse={browseCatalog} /> : <>
-      <div className="catalog-breadcrumb"><div className="container"><Home size={12} aria-hidden="true" /><ChevronRight size={12} aria-hidden="true" /><a href="#">TIENDA DE FLORES</a><ChevronRight size={12} aria-hidden="true" /><a href="#">VARIEDADES</a><ChevronRight size={12} aria-hidden="true" /><strong>FÚNEBRES</strong></div></div>
+      <div className="catalog-breadcrumb"><div className="container"><Home size={12} aria-hidden="true" /><ChevronRight size={12} aria-hidden="true" /><a href="#catalog-section" onClick={() => browseCatalog()}>TIENDA DE FLORES</a><ChevronRight size={12} aria-hidden="true" /><strong>{clientData.categories.find(c => c.slug === activeCategory)?.name}</strong></div></div>
       <div className="catalog-display-bar"><div className="container"><CatalogViewToggle view={catalogView} onViewChange={setCatalogView} /></div></div>
 
       {/* Main 2-Column Layout */}
@@ -155,7 +160,7 @@ export default function App() {
           {/* Left Column: Sidebar Accordion & Price Filter */}
           <LeftSidebar
             activeCategory={activeCategory}
-            onSelectCategory={setActiveCategory}
+            onSelectCategory={category => browseCatalog({ category })}
             priceRange={priceRange}
             onPriceChange={setPriceRange}
           />
@@ -169,6 +174,7 @@ export default function App() {
             ) : (
               <ProductGrid
                 products={products}
+                category={activeCategory}
                 onSelectProduct={setSelectedProduct}
                 onAddToCart={(p) => handleAddToCart(p, 1, p.variants?.[0] || null)}
                 view={catalogView}
@@ -184,7 +190,7 @@ export default function App() {
       </>}
 
       {/* Footer */}
-      <Footer />
+      <Footer onSelectCategory={category => browseCatalog({ category })} />
 
       {/* Floating WhatsApp Widget */}
       <WhatsAppWidget />

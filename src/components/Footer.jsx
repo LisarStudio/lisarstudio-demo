@@ -1,18 +1,14 @@
 import React from 'react';
 import { productRepository } from '../services/productRepository';
+import { clientData } from '../data/clientData';
+import './Footer.css';
 import { Mail, Phone, MapPin, ShieldCheck } from 'lucide-react';
 
-export function Footer() {
+export function Footer({ onSelectCategory }) {
   const brand = productRepository.getBrandInfo();
 
   return (
-    <footer style={{
-      background: '#0f291e',
-      borderTop: '1px solid #1b4230',
-      padding: '4rem 0 2rem 0',
-      color: '#cbd5e1',
-      fontSize: '0.88rem'
-    }}>
+    <footer className="store-footer">
       <div className="container footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1.2fr', gap: '3rem', marginBottom: '3rem' }}>
         {/* Brand & Slogan */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -41,11 +37,7 @@ export function Footer() {
         {/* Fast Links */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.25rem' }}>Categorías de Floristería</h4>
-          <a href="#" style={{ color: '#cbd5e1', transition: 'color 0.2s ease' }}>Coronas Fúnebres Imperiales</a>
-          <a href="#" style={{ color: '#cbd5e1', transition: 'color 0.2s ease' }}>Arreglos de Condolencias</a>
-          <a href="#" style={{ color: '#cbd5e1', transition: 'color 0.2s ease' }}>Cubre Urnas & Cruces</a>
-          <a href="#" style={{ color: '#cbd5e1', transition: 'color 0.2s ease' }}>Palmas & Canastos Florales</a>
-          <a href="#" style={{ color: '#cbd5e1', transition: 'color 0.2s ease' }}>Cintas de Condolencias Gratis</a>
+          {clientData.categories.map(c => <a key={c.slug} href="#catalog-section" onClick={() => onSelectCategory(c.slug)}>{c.name}</a>)}
         </div>
 
         {/* Contact Info */}

@@ -1,22 +1,17 @@
-﻿.whatsapp-widget { position: fixed; bottom: 24px; left: 20px; z-index: 30; display: flex; align-items: center; gap: 10px; color: #222529; text-decoration: none; }
+.whatsapp-widget { position: fixed; bottom: 16px; left: 20px; z-index: 45; display: flex; align-items: center; gap: 8px; color: #222529; text-decoration: none; }
 .whatsapp-widget-icon { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%; border: 3px solid #dcfce7; background: #25d366; color: #fff; box-shadow: 0 2px 8px #0002; }
-.whatsapp-widget-label { padding: 3px 9px; border-radius: 4px; background: #fff; box-shadow: 0 2px 8px #0002; font-size: 11px; line-height: 18px; font-weight: 700; }
+.whatsapp-widget-label { padding: 3px 9px; border-radius: 4px; background: #fff; box-shadow: 0 2px 8px #0002; font: 700 11px/18px Arial,sans-serif; }
 .whatsapp-widget:focus-visible { outline: 2px solid #365310; outline-offset: 3px; }
-/* In mobile/tablet the help link occupies the header utility row, outside the
-   product area. It scrolls with the header and never covers names or controls. */
-@media (max-width: 991px) {
+/* Reserved mobile rail: page content remains above the help link. */
+@media(max-width:767px) {
+  html { height: 100%; overflow: hidden; }
+  body { height: calc(100dvh - 66px); overflow-y: auto; scrollbar-width: none; }
+  .whatsapp-widget { bottom: 0; left: 0; width: 100%; height: 66px; padding: 6px 22px; background: #fff; border-top: 1px solid #eee; }
+}
+@media (min-width: 768px) {
   .whatsapp-widget { position: absolute; top: 6px; right: 20px; bottom: auto; left: auto; }
   .whatsapp-widget-icon { width: 33px; height: 33px; border-width: 2px; box-shadow: none; }
   .whatsapp-widget-icon svg { width: 21px; height: 21px; }
   .whatsapp-widget-label { display: none; }
-}
-
-/* The catalog help link stays in the utility row at desktop widths too, so it
-   cannot obscure the price filter or any product during scrolling. */
-@media (min-width: 992px) {
-  .store-page-catalog .whatsapp-widget { position: absolute; top: 6px; right: 20px; bottom: auto; left: auto; }
-  .store-page-catalog .whatsapp-widget-icon { width: 33px; height: 33px; border-width: 2px; box-shadow: none; }
-  .store-page-catalog .whatsapp-widget-icon svg { width: 21px; height: 21px; }
-  .store-page-catalog .whatsapp-widget-label { display: none; }
-  .store-page-catalog .store-topbar span { margin-right: 48px; }
+  .store-topbar span { margin-right: 48px; }
 }

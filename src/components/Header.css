@@ -1,4 +1,4 @@
-﻿/* Header measurements from the reference: 45px utility row, 71px main row,
+/* Header measurements from the reference: 45px utility row, 71px main row,
    64px navigation. The mobile header begins at the 991px breakpoint. */
 .store-header { background: #fff; color: #222529; padding-bottom: 16px; }
 .store-header .container { max-width: 1200px; padding-inline: 10px; }
@@ -25,7 +25,7 @@
 .mobile-toggle, .mobile-search-toggle { display: none; color: #222529; }
 .store-nav-inner { display: flex; align-items: center; gap: 25px; min-height: 64px; }
 .store-categories { display: flex; align-items: center; gap: 12px; background: #6ea820; color: #fff; border-radius: 2px; padding: 16px 28px; font-size: 13px; font-weight: 600; flex-shrink: 0; }
-.store-nav-links { display: flex; align-items: center; gap: 30px; flex: 1; }
+.store-nav-links { display: flex; align-items: center; gap: 20px; flex: 1; }
 .store-nav-links > a { font-size: 13px; font-weight: 600; white-space: nowrap; }
 .store-nav-links .store-nav-accent { color: #54801b; }
 .store-nav-links .mobile-account-link { display: none; }
@@ -33,7 +33,7 @@
 .store-header button:focus-visible, .store-header a:focus-visible, .store-header input:focus-visible { outline: 2px solid #365310; outline-offset: 3px; }
 @media (min-width: 1440px) {
   .store-header .container { max-width: 1460px; padding-inline: 20px; }
-  .store-nav-links { gap: 55px; }
+  .store-nav-links { gap: 24px; }
 }
 @media (min-width: 992px) and (max-width: 1219px) {
   .store-header .container { max-width: 960px; }
@@ -85,4 +85,40 @@
   .store-brand-name { font-size: 15px; }
   .store-brand-tagline { font-size: 5px; }
   .store-topbar span { font-size: 7px; }
+}
+
+.store-category-menu { position: relative; flex-shrink: 0; }
+.store-category-dropdown { position: absolute; left: 0; top: 100%; width: 250px; z-index: 60; background: white; border: 1px solid #e7e7e7; box-shadow: 0 5px 12px #0001; padding: 8px 16px; }
+.store-category-dropdown button { display: flex; width: 100%; justify-content: space-between; padding: 12px 0; text-align: left; font: 14px Arial,sans-serif; color: #555; }
+.store-category-dropdown button:hover { color: #6ea820; }
+@media(min-width:992px) and (max-width:1219px) {
+  .store-nav-links { gap: 14px; }
+  .store-nav-links > a { font-size: 12px; }
+  .store-categories { padding-inline: 12px; }
+  .store-nav-inner { gap: 16px; }
+}
+@media(max-width:991px) {
+  .store-category-dropdown { position: static; width: 100%; box-shadow: none; }
+  .store-categories { width: 100%; }
+}
+@media(max-width:767px) {
+  .store-header { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid #eee; }
+  .store-topbar { display: none; }
+  .store-header-row { display: block; height: 93px; min-height: 93px; }
+  .mobile-toggle { position: absolute; top: 3px; left: 22px; height: 30px; }
+  .store-brand { position: absolute; bottom: 9px; left: 22px; width: calc(100% - 100px); gap: 9px; }
+  .store-brand img { width: 43px; height: 43px; }
+  .store-brand-name { font-size: 21px; }
+  .store-brand-tagline { font-size: 7px; letter-spacing: .2px; }
+  .store-header-actions { position: absolute; right: 22px; top: 15px; flex-direction: column; gap: 4px; align-items: flex-end; }
+  .mobile-search-toggle { height: 32px; }
+  .mobile-search-toggle svg { width: 29px; height: 29px; stroke-width: 1.5; }
+  .store-cart { width: 54px; height: 29px; }
+  .store-cart-icon > svg { fill: #222529; stroke-width: 1.5; }
+  .store-nav.is-open { max-height: calc(100dvh - 94px); overflow-y: auto; }
+}
+@media(max-width:359px) {
+  .store-brand img { width: 36px; height: 36px; }
+  .store-brand-name { font-size: 17px; }
+  .store-brand-tagline { font-size: 6px; }
 }
