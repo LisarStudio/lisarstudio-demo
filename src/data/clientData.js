@@ -19,6 +19,10 @@ export const clientData = {
     currency: "CLP",
     currencySymbol: "$"
   },
+  flowConfig: {
+    sandboxUrl: 'https://sandbox.flow.cl/api',
+    liveUrl: 'https://www.flow.cl/api'
+  },
   categories: [
     { id: "funebres", name: "Fúnebres", slug: "funebres", count: 8 },
     { id: "coronas-funebres", name: "Coronas Fúnebres", slug: "coronas-funebres", count: 4 },
