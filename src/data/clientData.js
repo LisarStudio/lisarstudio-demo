@@ -1,4 +1,10 @@
 import recoveredProducts from './recoveredProducts.json';
+import colombianProducts from './colombianProducts.json';
+
+const catalogProducts = [...recoveredProducts, ...colombianProducts];
+const countCategories = (...slugs) => catalogProducts.filter(product =>
+  product.originalCategorySlugs.some(slug => slugs.includes(slug))
+).length;
 
 export const getAssetUrl = (path) => {
   const base = import.meta.env.BASE_URL || './';
@@ -26,11 +32,11 @@ export const clientData = {
     liveUrl: 'https://www.flow.cl/api'
   },
   categories: [
-    { id: "funebres", name: "Fúnebres", slug: "funebres", count: 42 },
-    { id: "coronas-funebres", name: "Coronas Fúnebres", slug: "coronas-funebres", count: 20 },
-    { id: "arreglos-condolencias", name: "Arreglos & Pedestales", slug: "arreglos-condolencias", count: 14 },
-    { id: "cubre-urnas", name: "Cubre Urnas & Cajas", slug: "cubre-urnas", count: 4 },
-    { id: "ramilletes", name: "Ramilletes & Bouquet", slug: "ramilletes", count: 4 }
+    { id: "funebres", name: "Fúnebres", slug: "funebres", count: catalogProducts.length },
+    { id: "coronas-funebres", name: "Coronas Fúnebres", slug: "coronas-funebres", count: countCategories("coronas") },
+    { id: "arreglos-condolencias", name: "Arreglos & Pedestales", slug: "arreglos-condolencias", count: countCategories("arreglos", "ofrendas-florales") },
+    { id: "cubre-urnas", name: "Cubre Urnas & Cajas", slug: "cubre-urnas", count: countCategories("cubre-urnas") },
+    { id: "ramilletes", name: "Ramilletes & Bouquet", slug: "ramilletes", count: countCategories("ramos") }
   ],
   sidebarCategories: [
     { name: "Día de la Madre", count: 12 },
@@ -53,7 +59,7 @@ export const clientData = {
       ]
     }
   ],
-  products: recoveredProducts.map(product => ({
+  products: catalogProducts.map(product => ({
     ...product,
     image: getAssetUrl(product.image),
     gallery: product.gallery.map(getAssetUrl)
