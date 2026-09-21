@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { clientData } from '../data/clientData';
+import { catalogMaxPrice, catalogMinPrice } from '../data/clientData';
 
 export function LeftSidebar({ activeCategory, onSelectCategory, priceRange, onPriceChange }) {
   const [openSections, setOpenSections] = useState({
@@ -80,16 +80,16 @@ export function LeftSidebar({ activeCategory, onSelectCategory, priceRange, onPr
         </h3>
         <input
           type="range"
-          min="30000"
-          max="150000"
+          min={catalogMinPrice}
+          max={catalogMaxPrice}
           step="5000"
-          value={priceRange || 150000}
+          value={priceRange ?? catalogMaxPrice}
           onChange={(e) => onPriceChange && onPriceChange(Number(e.target.value))}
           style={{ width: '100%', accentColor: '#66a105' }}
         />
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: '#64748b', marginTop: '0.5rem' }}>
-          <span>$30.000</span>
-          <span>Hasta: ${priceRange ? priceRange.toLocaleString('es-CL') : '150.000'}</span>
+          <span>${catalogMinPrice.toLocaleString('es-CL')}</span>
+          <span>Hasta: ${(priceRange ?? catalogMaxPrice).toLocaleString('es-CL')}</span>
         </div>
       </div>
     </aside>

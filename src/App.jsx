@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './catalog.css';
+import { catalogMaxPrice } from './data/clientData';
 import { Header } from './components/Header';
 import { LeftSidebar } from './components/LeftSidebar';
 import { ProductGrid } from './components/ProductGrid';
@@ -17,7 +18,7 @@ export default function App() {
   const [activeCategory, setActiveCategory] = useState('funebres');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('featured');
-  const [priceRange, setPriceRange] = useState(150000);
+  const [priceRange, setPriceRange] = useState(catalogMaxPrice);
   const [loading, setLoading] = useState(true);
 
   // Modals & Drawers State

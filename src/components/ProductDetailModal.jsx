@@ -164,7 +164,7 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
           {product.variants && product.variants.length > 0 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
               <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#1b4230', textTransform: 'uppercase' }}>
-                Tamaño / Dimensión:
+                {product.variantLabel || 'Tamaño / Dimensión:'}
               </label>
               <select
                 value={selectedVariant ? selectedVariant.name : ''}
