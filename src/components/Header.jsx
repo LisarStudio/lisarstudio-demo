@@ -9,9 +9,9 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
   return (
     <header style={{ background: '#ffffff', borderBottom: '1px solid #e2e8f0' }}>
       {/* Top Header Row */}
-      <div className="container" style={{ padding: '0.8rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem' }}>
+      <div className="container store-header-row" style={{ padding: '0.8rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem' }}>
         {/* Brand Logo */}
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
+        <a href="#" className="store-brand" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
           <img
             src={brand.logo}
             alt={brand.name}
@@ -21,10 +21,10 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
             }}
           />
           <div>
-            <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#166534', letterSpacing: '-0.02em', display: 'block', lineHeight: 1.1, fontFamily: 'serif' }}>
+            <span className="store-brand-name" style={{ fontSize: '1.35rem', fontWeight: 800, color: '#166534', letterSpacing: '-0.02em', display: 'block', lineHeight: 1.1, fontFamily: 'serif' }}>
               Corona de <span style={{ color: '#c59b27' }}>Flores</span>
             </span>
-            <span style={{ fontSize: '0.7rem', color: '#64748b', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+            <span className="store-brand-tagline" style={{ fontSize: '0.7rem', color: '#64748b', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
               FLORISTERÍA FÚNEBRE CHILE
             </span>
           </div>
@@ -50,7 +50,7 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
           />
           <button
             style={{
-              background: '#66a105',
+              background: '#6ea820',
               color: '#ffffff',
               padding: '0 1.25rem',
               borderRadius: '0 25px 25px 0',
@@ -64,7 +64,7 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
         </div>
 
         {/* Account & Cart Icons (Right) */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.75rem' }}>
+        <div className="store-header-actions" style={{ display: 'flex', alignItems: 'center', gap: '1.75rem' }}>
           {/* User Account */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }} className="desktop-only">
             <User size={28} style={{ color: '#475569' }} />
@@ -105,19 +105,19 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
           </div>
 
           {/* Mobile menu toggle */}
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} style={{ display: 'none', color: '#0f172a' }} className="mobile-toggle">
+          <button type="button" aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={mobileMenuOpen} aria-controls="store-navigation" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} style={{ display: 'none', color: '#0f172a' }} className="mobile-toggle">
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
       {/* Main Navigation Bar (Bright Green) */}
-      <nav style={{ background: '#ffffff', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', padding: '0 1.5rem' }}>
+      <nav id="store-navigation" className={`store-nav${mobileMenuOpen ? ' is-open' : ''}`} style={{ background: '#ffffff', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
+        <div className="container store-nav-inner" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', padding: '0 1.5rem' }}>
           {/* Categories Button */}
-          <button
+          <button onClick={() => { document.getElementById('catalog-filters')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
             style={{
-              background: '#66a105',
+              background: '#6ea820',
               color: '#ffffff',
               fontWeight: 800,
               fontSize: '0.88rem',
@@ -133,16 +133,16 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
           </button>
 
           {/* Menu Items */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', overflowX: 'auto', padding: '0.75rem 0' }}>
+          <div className="store-nav-links" style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', overflowX: 'auto', padding: '0.75rem 0' }}>
             {['Corona de Flores', 'Rosas y Flores', 'Ocasiones', 'Diseños y Estilos', 'Catálogo Completo'].map((item, idx) => (
               <a
                 key={idx}
                 href="#catalog-section"
-                onClick={() => onSelectCategory('funebres')}
+                onClick={() => { onSelectCategory('funebres'); setMobileMenuOpen(false); }}
                 style={{
                   fontSize: '0.88rem',
                   fontWeight: idx === 3 || idx === 0 ? 700 : 500,
-                  color: idx === 3 ? '#66a105' : '#334155',
+                  color: idx === 3 ? '#6ea820' : '#334155',
                   whiteSpace: 'nowrap',
                   textDecoration: 'none'
                 }}
@@ -152,6 +152,7 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
             ))}
           </div>
         </div>
+        <label className="mobile-search"><Search size={18} aria-hidden="true" /><input aria-label="Buscar productos" type="search" placeholder="Buscar productos…" value={searchQuery} onChange={e => onSearchChange(e.target.value)} /></label>
       </nav>
 
       <style>{`

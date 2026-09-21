@@ -15,7 +15,7 @@ export function LeftSidebar({ activeCategory, onSelectCategory, priceRange, onPr
   };
 
   return (
-    <aside style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <aside className="catalog-sidebar" id="catalog-filters" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       {/* Categories Accordion */}
       <div>
         <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0f172a', marginBottom: '1.25rem' }}>

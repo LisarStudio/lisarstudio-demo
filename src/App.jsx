@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './catalog.css';
 import { Header } from './components/Header';
 import { LeftSidebar } from './components/LeftSidebar';
 import { ProductGrid } from './components/ProductGrid';
@@ -122,7 +123,7 @@ export default function App() {
       />
 
       {/* Breadcrumb line */}
-      <div className="container" style={{ padding: '0.85rem 1.5rem', fontSize: '0.78rem', color: '#64748b' }}>
+      <div className="container catalog-breadcrumb" style={{ padding: '0.85rem 1.5rem', fontSize: '0.78rem', color: '#64748b' }}>
         <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>🏠 TIENDA DE FLORES</a>
         <span style={{ margin: '0 0.4rem' }}>&gt;</span>
         <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>VARIEDADES</a>
@@ -132,7 +133,7 @@ export default function App() {
 
       {/* Main 2-Column Layout */}
       <main style={{ flex: 1, paddingBottom: '3rem' }}>
-        <div className="container app-main-grid" style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: '2.5rem', paddingTop: '1rem' }}>
+        <div className="container app-main-grid">
           {/* Left Column: Sidebar Accordion & Price Filter */}
           <LeftSidebar
             activeCategory={activeCategory}
@@ -142,7 +143,7 @@ export default function App() {
           />
 
           {/* Right Column: Product Grid & Header Controls */}
-          <div>
+          <div className="catalog-column">
             {loading ? (
               <div style={{ textAlign: 'center', padding: '4rem 0', color: '#64748b' }}>
                 Cargando catálogo oficial Corona de Flores...
