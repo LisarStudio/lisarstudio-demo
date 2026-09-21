@@ -1,0 +1,88 @@
+﻿/* Header measurements from the reference: 45px utility row, 71px main row,
+   64px navigation. The mobile header begins at the 991px breakpoint. */
+.store-header { background: #fff; color: #222529; padding-bottom: 16px; }
+.store-header .container { max-width: 1200px; padding-inline: 10px; }
+.store-topbar .container { display: flex; align-items: center; gap: 30px; height: 45px; font-size: 11px; color: #555; }
+.store-topbar span { margin-left: auto; font-size: 10px; letter-spacing: .5px; }
+.store-header-row { position: relative; display: flex; align-items: center; gap: 30px; min-height: 71.42px; }
+.store-brand { display: flex; align-items: center; gap: 8px; width: 205px; flex-shrink: 0; color: #166534; }
+.store-brand img { display: block; width: 44px; height: 44px; object-fit: contain; }
+.store-brand-copy { min-width: 0; }
+.store-brand-name { display: block; white-space: nowrap; font-family: Georgia, serif; font-size: 18px; font-weight: 800; line-height: 1.1; letter-spacing: -.4px; }
+.store-brand-name > span { color: #c59b27; }
+.store-brand-tagline { display: block; font-size: 7.5px; font-weight: 600; color: #64748b; letter-spacing: .4px; margin-top: 5px; white-space: nowrap; }
+.store-search { display: flex; flex: 1; height: 38px; min-width: 0; border: 2px solid #6ea820; border-radius: 24px 0 0 24px; }
+.store-search input { width: 100%; min-width: 0; border: 0; background: transparent; border-radius: inherit; padding: 0 20px; font: inherit; font-size: 13px; color: #555; }
+.store-search button { display: grid; place-items: center; width: 54px; flex-shrink: 0; background: #6ea820; color: #fff; }
+.store-header-actions { display: flex; align-items: center; gap: 22px; margin-left: 45px; }
+.store-account { display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+.store-account > svg { width: 43px; height: 43px; border: 1.5px solid currentColor; border-radius: 50%; padding: 3px; stroke-width: 1.3; }
+.store-account small { display: block; font-size: 10px; line-height: 1.2; font-weight: 400; }
+.store-account strong { display: block; font-size: 14px; line-height: 1.3; }
+.store-cart { display: flex; align-items: center; justify-content: space-between; gap: 9px; width: 56px; color: #222529; }
+.store-cart-icon { position: relative; display: flex; }
+.store-cart-count { position: absolute; top: -7px; right: -7px; background: #ed5365; color: #fff; border-radius: 50%; min-width: 17px; height: 17px; line-height: 17px; text-align: center; padding-inline: 3px; font-size: 10px; font-weight: 600; }
+.mobile-toggle, .mobile-search-toggle { display: none; color: #222529; }
+.store-nav-inner { display: flex; align-items: center; gap: 25px; min-height: 64px; }
+.store-categories { display: flex; align-items: center; gap: 12px; background: #6ea820; color: #fff; border-radius: 2px; padding: 16px 28px; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+.store-nav-links { display: flex; align-items: center; gap: 30px; flex: 1; }
+.store-nav-links > a { font-size: 13px; font-weight: 600; white-space: nowrap; }
+.store-nav-links .store-nav-accent { color: #54801b; }
+.store-nav-links .mobile-account-link { display: none; }
+.store-phone { font-size: 11px; color: #777; white-space: nowrap; }
+.store-header button:focus-visible, .store-header a:focus-visible, .store-header input:focus-visible { outline: 2px solid #365310; outline-offset: 3px; }
+@media (min-width: 1440px) {
+  .store-header .container { max-width: 1460px; padding-inline: 20px; }
+  .store-nav-links { gap: 55px; }
+}
+@media (min-width: 992px) and (max-width: 1219px) {
+  .store-header .container { max-width: 960px; }
+  .store-header-row { gap: 20px; }
+  .store-header-actions { margin-left: 0; }
+  .store-nav-links { gap: 20px; }
+  .store-phone { display: none; }
+  .store-categories { padding-inline: 20px; }
+}
+@media (max-width: 991px) {
+  .store-header { padding-bottom: 0; }
+  .store-header .container { max-width: none; padding-inline: 20px; }
+  .store-topbar .container { gap: 18px; padding-right: 68px; }
+  .store-top-email { display: none; }
+  .store-topbar span { font-size: 8px; }
+  .store-header-row { display: grid; grid-template-columns: 32px minmax(0, 1fr) 100px; gap: 0; min-height: 69px; }
+  .mobile-toggle { display: grid; place-items: center start; width: 32px; height: 44px; }
+  .store-brand { width: 200px; max-width: 100%; gap: 7px; }
+  .store-brand img { width: 40px; height: 40px; }
+  .store-brand-name { font-size: 19px; }
+  .store-brand-tagline { font-size: 7px; letter-spacing: .15px; }
+  .store-header-actions { margin: 0; gap: 13px; justify-content: flex-end; }
+  .store-account { display: none; }
+  .mobile-search-toggle { display: grid; place-items: center; width: 31px; height: 44px; flex-shrink: 0; }
+  .store-search { display: none; }
+  .store-search.is-open { position: absolute; display: flex; top: 100%; left: 20px; right: 20px; height: 44px; background: #fff; z-index: 20; box-shadow: 0 6px 12px #0002; }
+  .store-search input { font-size: 16px; }
+  .store-nav { display: none; }
+  .store-nav.is-open { display: block; border-block: 1px solid #eee; }
+  .store-nav-inner { flex-direction: column; align-items: stretch; gap: 0; padding-block: 10px; }
+  .store-categories { padding: 12px; }
+  .store-nav-links { flex-direction: column; align-items: stretch; gap: 0; }
+  .store-nav-links > a { display: block; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 13px; }
+  .store-nav-links .mobile-account-link { display: flex; align-items: center; gap: 8px; }
+  .store-phone { padding-block: 12px; }
+}
+@media (max-width: 575px) { .store-header-row { min-height: 67.42px; } }
+@media (max-width: 480px) {
+  .store-brand-name { font-size: 17px; }
+  .store-brand img { width: 36px; height: 36px; }
+  .store-brand-tagline { font-size: 6px; }
+}
+@media (max-width: 359px) {
+  .store-header .container { padding-inline: 12px; }
+  .store-header-row { grid-template-columns: 28px minmax(0, 1fr) 87px; }
+  .store-header-actions { gap: 4px; }
+  .store-brand { gap: 4px; }
+  .store-brand img { width: 28px; height: 28px; }
+  .store-brand-name { font-size: 15px; }
+  .store-brand-tagline { font-size: 5px; }
+  .store-topbar span { font-size: 7px; }
+}

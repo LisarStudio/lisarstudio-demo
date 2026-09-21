@@ -23,12 +23,10 @@
 .account-option span span { display: block; color: #777; font-size: 13px; line-height: 1.7; }
 .account-page .account-destination { color: #777; font-size: 12px; margin-top: 24px; }
 .account-page a:focus-visible { outline: 2px solid #365310; outline-offset: 4px; }
-.mobile-account-link { display: none; }
 @media (max-width: 768px) {
   .account-page { padding-block: 20px 40px; }
   .account-layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .account-access { padding: 22px 18px; }
   .account-page h1 { font-size: 26px; }
   .account-primary { width: 100%; }
-  .store-nav-links .mobile-account-link { display: flex; align-items: center; gap: 8px; }
 }

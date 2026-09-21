@@ -1,97 +1,21 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { catalogMaxPrice, catalogMinPrice } from '../data/clientData';
 
 export function LeftSidebar({ activeCategory, onSelectCategory, priceRange, onPriceChange }) {
-  const [openSections, setOpenSections] = useState({
-    variedades: true,
-    ocasiones: false,
-    productosAdicionales: false,
-    tipoFlor: false
-  });
-
-  const toggleSection = (sectionKey) => {
-    setOpenSections(prev => ({ ...prev, [sectionKey]: !prev[sectionKey] }));
-  };
-
-  return (
-    <aside className="catalog-sidebar" id="catalog-filters" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-      {/* Categories Accordion */}
-      <div>
-        <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0f172a', marginBottom: '1.25rem' }}>
-          Categories
-        </h3>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.88rem', color: '#475569' }}>
-          <a href="#" style={{ color: '#475569', textDecoration: 'none' }}>Día de la Madre</a>
-          <a href="#" style={{ color: '#475569', textDecoration: 'none' }}>Día de la Mujer</a>
-          
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => toggleSection('ocasiones')}>
-            <span>Ocasiones</span>
-            <ChevronDown size={16} />
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => toggleSection('productosAdicionales')}>
-            <span>Productos Adicionales</span>
-            <ChevronDown size={16} />
-          </div>
-
-          <a href="#" style={{ color: '#475569', textDecoration: 'none' }}>San Valentín</a>
-
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => toggleSection('tipoFlor')}>
-            <span>Tipo de Flor</span>
-            <ChevronDown size={16} />
-          </div>
-
-          {/* Variedades Section (Expanded) */}
-          <div>
-            <div
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', fontWeight: 700, color: '#0f172a' }}
-              onClick={() => toggleSection('variedades')}
-            >
-              <span>Variedades</span>
-              {openSections.variedades ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-            </div>
-
-            {openSections.variedades && (
-              <div style={{ paddingLeft: '1rem', marginTop: '0.6rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <a href="#" style={{ color: '#475569', textDecoration: 'none' }}>Bouquet</a>
-                <a href="#" style={{ color: '#475569', textDecoration: 'none' }}>Cajas</a>
-                <a href="#" style={{ color: '#475569', textDecoration: 'none' }}>Fruteros</a>
-                <a
-                  href="#"
-                  onClick={(e) => { e.preventDefault(); onSelectCategory('funebres'); }}
-                  style={{ color: '#0f172a', fontWeight: 800, textDecoration: 'none' }}
-                >
-                  Fúnebres
-                </a>
-                <a href="#" style={{ color: '#475569', textDecoration: 'none' }}>Jarrones</a>
-                <a href="#" style={{ color: '#475569', textDecoration: 'none' }}>Solitarios</a>
-              </div>
-            )}
-          </div>
-        </div>
+  const [openSections, setOpenSections] = useState({ variedades: false, ocasiones: false, productosAdicionales: false, tipoFlor: false });
+  const toggleSection = key => setOpenSections(prev => ({ ...prev, [key]: !prev[key] }));
+  return <aside className="catalog-sidebar" id="catalog-filters">
+    <div><h3>Categories</h3><div className="sidebar-category-links">
+      <a href="#">Día de la Madre</a><a href="#">Día de la Mujer</a>
+      <button type="button" aria-expanded={openSections.ocasiones} onClick={() => toggleSection('ocasiones')}>Ocasiones<ChevronDown size={14} /></button>
+      <button type="button" aria-expanded={openSections.productosAdicionales} onClick={() => toggleSection('productosAdicionales')}>Productos Adicionales<ChevronDown size={14} /></button>
+      <a href="#">San Valentín</a>
+      <button type="button" aria-expanded={openSections.tipoFlor} onClick={() => toggleSection('tipoFlor')}>Tipo de Flor<ChevronDown size={14} /></button>
+      <div className="sidebar-varieties"><button type="button" aria-expanded={openSections.variedades} aria-controls="sidebar-varieties" onClick={() => toggleSection('variedades')}>Variedades{openSections.variedades ? <ChevronUp size={14} /> : <ChevronDown size={14} />}</button>
+        {openSections.variedades && <div id="sidebar-varieties" className="sidebar-varieties-links"><a href="#">Bouquet</a><a href="#">Cajas</a><a href="#">Fruteros</a><a href="#" aria-current={activeCategory === 'funebres' ? 'page' : undefined} onClick={e => { e.preventDefault(); onSelectCategory('funebres'); }}>Fúnebres</a><a href="#">Jarrones</a><a href="#">Solitarios</a></div>}
       </div>
-
-      {/* Price Filter Section */}
-      <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '1.5rem' }}>
-        <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0f172a', marginBottom: '1rem' }}>
-          Filtrar Por Precio
-        </h3>
-        <input
-          type="range"
-          min={catalogMinPrice}
-          max={catalogMaxPrice}
-          step="5000"
-          value={priceRange ?? catalogMaxPrice}
-          onChange={(e) => onPriceChange && onPriceChange(Number(e.target.value))}
-          style={{ width: '100%', accentColor: '#66a105' }}
-        />
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: '#64748b', marginTop: '0.5rem' }}>
-          <span>${catalogMinPrice.toLocaleString('es-CL')}</span>
-          <span>Hasta: ${(priceRange ?? catalogMaxPrice).toLocaleString('es-CL')}</span>
-        </div>
-      </div>
-    </aside>
-  );
+    </div></div>
+    <div className="sidebar-price"><h3>Filtrar Por Precio</h3><input aria-label="Precio máximo" type="range" min={catalogMinPrice} max={catalogMaxPrice} step="5000" value={priceRange ?? catalogMaxPrice} onChange={e => onPriceChange?.(Number(e.target.value))} /><div className="sidebar-price-labels"><span>${catalogMinPrice.toLocaleString('es-CL')}</span><span>Hasta: ${(priceRange ?? catalogMaxPrice).toLocaleString('es-CL')}</span></div></div>
+  </aside>;
 }

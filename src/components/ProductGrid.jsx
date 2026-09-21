@@ -1,9 +1,15 @@
-﻿import React, { useState } from 'react';
+﻿import React from 'react';
 import { ProductCard } from './ProductCard';
 import { LayoutGrid, List } from 'lucide-react';
 
-export function ProductGrid({ products, onSelectProduct, sortBy, onSortChange }) {
-  const [view, setView] = useState('grid');
+export function CatalogViewToggle({ view, onViewChange }) {
+  return <div className="catalog-view" aria-label="Presentación del catálogo">
+    <button type="button" aria-label="Ver cuadrícula" aria-pressed={view === 'grid'} onClick={() => onViewChange('grid')}><LayoutGrid size={17} /></button>
+    <button type="button" aria-label="Ver lista" aria-pressed={view === 'list'} onClick={() => onViewChange('list')}><List size={17} /></button>
+  </div>;
+}
+
+export function ProductGrid({ products, onSelectProduct, sortBy, onSortChange, view = 'grid', onViewChange }) {
   return (
     <section id="catalog-section" className="catalog" aria-labelledby="catalog-title">
       <div className="catalog-intro">
@@ -22,10 +28,7 @@ export function ProductGrid({ products, onSelectProduct, sortBy, onSortChange })
             <option value="rating">Mejor Valorados</option>
           </select>
         </div>
-        <div className="catalog-view" aria-label="Presentación del catálogo">
-          <button type="button" aria-label="Ver cuadrícula" aria-pressed={view === 'grid'} onClick={() => setView('grid')}><LayoutGrid size={17} /></button>
-          <button type="button" aria-label="Ver lista" aria-pressed={view === 'list'} onClick={() => setView('list')}><List size={17} /></button>
-        </div>
+        <CatalogViewToggle view={view} onViewChange={onViewChange} />
       </div>
       {products.length ? (
         <div className={`catalog-products${view === 'list' ? ' catalog-products--list' : ''}`}>

@@ -5,7 +5,8 @@ import { AccountSection } from './components/AccountSection';
 import { catalogMaxPrice } from './data/clientData';
 import { Header } from './components/Header';
 import { LeftSidebar } from './components/LeftSidebar';
-import { ProductGrid } from './components/ProductGrid';
+import { Home, ChevronRight } from 'lucide-react';
+import { ProductGrid, CatalogViewToggle } from './components/ProductGrid';
 import { ProductDetailModal } from './components/ProductDetailModal';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
@@ -29,6 +30,7 @@ export default function App() {
   const [_categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState('funebres');
   const [searchQuery, setSearchQuery] = useState('');
+  const [catalogView, setCatalogView] = useState('grid');
   const [sortBy, setSortBy] = useState('featured');
   const [priceRange, setPriceRange] = useState(catalogMaxPrice);
   const [loading, setLoading] = useState(true);
@@ -132,7 +134,7 @@ export default function App() {
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#ffffff', color: '#1e293b' }}>
+    <div className={`store-app store-page-${page}`} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#ffffff', color: '#1e293b' }}>
       {/* Header */}
       <Header
         cartCount={cartCount}
@@ -144,14 +146,8 @@ export default function App() {
       />
 
       {page === 'account' ? <AccountSection /> : page === 'home' ? <HomePage onSelectProduct={setSelectedProduct} onBrowse={browseCatalog} /> : <>
-      {/* Breadcrumb line */}
-      <div className="container catalog-breadcrumb" style={{ padding: '0.85rem 1.5rem', fontSize: '0.78rem', color: '#64748b' }}>
-        <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>🏠 TIENDA DE FLORES</a>
-        <span style={{ margin: '0 0.4rem' }}>&gt;</span>
-        <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>VARIEDADES</a>
-        <span style={{ margin: '0 0.4rem' }}>&gt;</span>
-        <strong style={{ color: '#0f172a' }}>FÚNEBRES</strong>
-      </div>
+      <div className="catalog-breadcrumb"><div className="container"><Home size={12} aria-hidden="true" /><ChevronRight size={12} aria-hidden="true" /><a href="#">TIENDA DE FLORES</a><ChevronRight size={12} aria-hidden="true" /><a href="#">VARIEDADES</a><ChevronRight size={12} aria-hidden="true" /><strong>FÚNEBRES</strong></div></div>
+      <div className="catalog-display-bar"><div className="container"><CatalogViewToggle view={catalogView} onViewChange={setCatalogView} /></div></div>
 
       {/* Main 2-Column Layout */}
       <main style={{ flex: 1, paddingBottom: '3rem' }}>
@@ -175,6 +171,8 @@ export default function App() {
                 products={products}
                 onSelectProduct={setSelectedProduct}
                 onAddToCart={(p) => handleAddToCart(p, 1, p.variants?.[0] || null)}
+                view={catalogView}
+                onViewChange={setCatalogView}
                 sortBy={sortBy}
                 onSortChange={setSortBy}
               />
@@ -224,12 +222,6 @@ export default function App() {
           onClose={() => setFlowResponseData(null)}
         />
       )}
-
-      <style>{`
-        @media (max-width: 900px) {
-          .app-main-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </div>
   );
 }
