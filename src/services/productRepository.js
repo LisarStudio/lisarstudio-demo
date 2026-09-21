@@ -28,7 +28,7 @@ export class ProductRepository {
     let items = [...clientData.products];
 
     if (category && category !== 'all' && category !== 'todos') {
-      items = items.filter(p => p.categorySlug === category || p.category === category);
+      items = items.filter(p => p.categorySlug === category || p.category === category || p.originalCategorySlugs?.includes(category));
     }
 
     if (searchQuery && searchQuery.trim() !== '') {

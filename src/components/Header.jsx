@@ -11,7 +11,7 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
       {/* Top Header Row */}
       <div className="container store-header-row" style={{ padding: '0.8rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem' }}>
         {/* Brand Logo */}
-        <a href="#" className="store-brand" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
+        <a href="#inicio" className="store-brand" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
           <img
             src={brand.logo}
             alt={brand.name}
@@ -115,7 +115,7 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
       <nav id="store-navigation" className={`store-nav${mobileMenuOpen ? ' is-open' : ''}`} style={{ background: '#ffffff', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
         <div className="container store-nav-inner" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', padding: '0 1.5rem' }}>
           {/* Categories Button */}
-          <button onClick={() => { document.getElementById('catalog-filters')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+          <button onClick={() => { onSelectCategory('funebres'); setMobileMenuOpen(false); }}
             style={{
               background: '#6ea820',
               color: '#ffffff',
@@ -138,8 +138,8 @@ export function Header({ cartCount, onOpenCart, onSelectCategory, searchQuery, o
             {['Corona de Flores', 'Rosas y Flores', 'Ocasiones', 'Diseños y Estilos', 'Catálogo Completo'].map((item, idx) => (
               <a
                 key={idx}
-                href="#catalog-section"
-                onClick={() => { onSelectCategory('funebres'); setMobileMenuOpen(false); }}
+                href={idx === 0 ? "#inicio" : "#catalog-section"}
+                onClick={() => { if (idx !== 0) onSelectCategory('funebres'); setMobileMenuOpen(false); }}
                 style={{
                   fontSize: '0.88rem',
                   fontWeight: idx === 3 || idx === 0 ? 700 : 500,

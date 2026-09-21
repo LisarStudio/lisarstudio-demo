@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './catalog.css';
+import { HomePage } from './components/HomePage';
 import { AccountSection } from './components/AccountSection';
 import { catalogMaxPrice } from './data/clientData';
 import { Header } from './components/Header';
@@ -14,11 +15,12 @@ import { Footer } from './components/Footer';
 import { productRepository } from './services/productRepository';
 
 export default function App() {
-  const [isAccountPage, setIsAccountPage] = useState(() => window.location.hash === '#mi-cuenta');
+  const getPage = () => window.location.hash === '#mi-cuenta' ? 'account' : window.location.hash.startsWith('#catalog') ? 'catalog' : 'home';
+  const [page, setPage] = useState(getPage);
   useEffect(() => {
     const onHashChange = () => {
-      setIsAccountPage(window.location.hash === '#mi-cuenta');
-      if (window.location.hash === '#mi-cuenta') window.scrollTo(0, 0);
+      setPage(getPage());
+      window.scrollTo(0, 0);
     };
     window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);
@@ -119,6 +121,14 @@ export default function App() {
     setFlowResponseData(paymentDetails);
   };
 
+  const browseCatalog = ({ category = 'funebres', priceRange: maxPrice = catalogMaxPrice } = {}) => {
+    setActiveCategory(category);
+    setPriceRange(maxPrice);
+    setSearchQuery('');
+    window.location.hash = 'catalog-section';
+    window.scrollTo(0, 0);
+  };
+
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -128,12 +138,12 @@ export default function App() {
         cartCount={cartCount}
         onOpenCart={() => setIsCartOpen(true)}
         activeCategory={activeCategory}
-        onSelectCategory={setActiveCategory}
+        onSelectCategory={category => browseCatalog({ category })}
         searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
+        onSearchChange={query => { setSearchQuery(query); setActiveCategory('funebres'); setPriceRange(catalogMaxPrice); window.location.hash = 'catalog-section'; }}
       />
 
-      {isAccountPage ? <AccountSection /> : <>
+      {page === 'account' ? <AccountSection /> : page === 'home' ? <HomePage onSelectProduct={setSelectedProduct} onBrowse={browseCatalog} /> : <>
       {/* Breadcrumb line */}
       <div className="container catalog-breadcrumb" style={{ padding: '0.85rem 1.5rem', fontSize: '0.78rem', color: '#64748b' }}>
         <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>🏠 TIENDA DE FLORES</a>
