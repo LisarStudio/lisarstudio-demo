@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { X, Star, CheckCircle, ShieldCheck, ShoppingCart, CreditCard, Tag } from 'lucide-react';
+import { X, Star, CheckCircle, ShieldCheck, ShoppingCart, CreditCard } from 'lucide-react';
 import { getAssetUrl } from '../data/clientData';
 
 export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow }) {
   const [selectedVariant, setSelectedVariant] = useState(product?.variants?.[0] || null);
   const [selectedImage, setSelectedImage] = useState(product?.image || '');
   const [quantity, setQuantity] = useState(1);
-  const [ribbonText, setRibbonText] = useState('');
 
   if (!product) return null;
 
@@ -17,11 +16,11 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
   const currentPrice = product.price + (selectedVariant ? selectedVariant.priceModifier : 0);
 
   const handleAddToCart = () => {
-    onAddToCart(product, quantity, selectedVariant, ribbonText);
+    onAddToCart(product, quantity, selectedVariant);
   };
 
   const handleBuyNow = () => {
-    onBuyNowFlow(product, quantity, selectedVariant, ribbonText);
+    onBuyNowFlow(product, quantity, selectedVariant);
   };
 
   const fallbackImg = getAssetUrl('client_images/2021/04/Corona-de-Flores.png');
@@ -50,6 +49,7 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
       >
         {/* Close Button */}
         <button
+          aria-label="Cerrar producto"
           onClick={onClose}
           style={{
             position: 'absolute',
@@ -160,6 +160,8 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
             {product.description || product.shortDescription}
           </p>
 
+          <p className="product-shipping" style={{ fontSize: '0.85rem', color: '#475569' }}>Envío: $4.000 por pedido.</p>
+
           {/* Variants Selection */}
           {product.variants && product.variants.length > 0 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
@@ -183,22 +185,6 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
               </select>
             </div>
           )}
-
-          {/* Condolence Ribbon Text */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-            <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#1b4230', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-              <Tag size={14} />
-              <span>Texto para la Cinta Impresa (Opcional):</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Ej: Con profundo afecto de Familia González"
-              value={ribbonText}
-              onChange={(e) => setRibbonText(e.target.value)}
-              className="input-field"
-              style={{ fontSize: '0.88rem' }}
-            />
-          </div>
 
           {/* Quantity Selector */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>

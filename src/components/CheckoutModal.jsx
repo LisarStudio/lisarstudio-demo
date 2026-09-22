@@ -3,7 +3,7 @@ import { X, CreditCard, ShieldCheck, Lock, Building, Mail, Phone, User } from 'l
 import { flowService } from '../services/flowService';
 import { productRepository } from '../services/productRepository';
 
-export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPaymentSuccess }) {
+export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, orderSummary, onPaymentSuccess }) {
   const brand = productRepository.getBrandInfo();
   const [paymentMethod, setPaymentMethod] = useState('flow');
   const [formData, setFormData] = useState({
@@ -57,6 +57,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
           paymentMethod: 'Flow (Webpay Plus)',
           customer: formData,
           totalAmount,
+          orderSummary,
           cartItems,
           flowResult
         });
@@ -69,6 +70,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
           paymentMethod: 'WhatsApp Directo',
           customer: formData,
           totalAmount,
+          orderSummary,
           cartItems
         });
       } else {
@@ -79,6 +81,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
           paymentMethod: 'Transferencia Bancaria Directa',
           customer: formData,
           totalAmount,
+          orderSummary,
           cartItems
         });
       }
@@ -108,6 +111,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
         }}
       >
         <button
+          aria-label="Cerrar checkout"
           onClick={onClose}
           style={{
             position: 'absolute',
@@ -137,7 +141,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
           </div>
         )}
 
-        <form onSubmit={handleSubmitCheckout} className="checkout-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '2rem' }}>
+        <form onSubmit={handleSubmitCheckout} className="checkout-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 1fr)', gap: '2rem' }}>
           {/* Left Column: Customer Form */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#1b4230', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.5rem' }}>
@@ -163,7 +167,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.75rem' }}>
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', display: 'block', marginBottom: '0.35rem' }}>
                   Correo Electrónico *
@@ -203,7 +207,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.75rem' }}>
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', display: 'block', marginBottom: '0.35rem' }}>
                   RUT (Facturación/Boleta)
@@ -331,6 +335,9 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, onPayme
                   <span>Moneda:</span>
                   <span>CLP (Pesos Chilenos)</span>
                 </div>
+                <div className="checkout-subtotal" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}><span>Subtotal:</span><span>{formatCLP(orderSummary.subtotal)}</span></div>
+                {orderSummary.discountAmount > 0 && <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}><span>Descuento:</span><span>-{formatCLP(orderSummary.discountAmount)}</span></div>}
+                <div className="checkout-shipping" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}><span>Envío por pedido:</span><span>{formatCLP(orderSummary.shipping)}</span></div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.25rem', fontWeight: 800, color: '#1b4230', marginTop: '0.3rem' }}>
                   <span>Total Final:</span>
                   <span>{formatCLP(totalAmount)}</span>

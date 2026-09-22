@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { X, Trash2, ShoppingBag, Tag, CreditCard, ShieldCheck } from 'lucide-react';
+import { X, Trash2, ShoppingBag, Tag, CreditCard } from 'lucide-react';
+import { calculateOrderTotals } from '../services/cart';
 import { getAssetUrl } from '../data/clientData';
 
 export function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantity, onRemoveItem, onProceedToCheckout }) {
@@ -15,13 +16,8 @@ export function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantity, onRem
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(amount);
   };
 
-  const subtotal = cartItems.reduce((sum, item) => {
-    const itemPrice = item.price + (item.selectedVariant ? item.selectedVariant.priceModifier : 0);
-    return sum + (itemPrice * item.quantity);
-  }, 0);
-
-  const discountAmount = Math.round((subtotal * discountPercent) / 100);
-  const total = Math.max(0, subtotal - discountAmount);
+  const summary = calculateOrderTotals(cartItems, discountPercent);
+  const { subtotal, discountAmount, shipping, total } = summary;
 
   const handleApplyCoupon = (e) => {
     e.preventDefault();
@@ -34,7 +30,7 @@ export function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantity, onRem
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose} style={{ justifyContent: 'flex-end', padding: 0 }}>
+    <div className="modal-overlay" role="dialog" aria-label="Carrito de compras" onClick={onClose} style={{ justifyContent: 'flex-end', padding: 0 }}>
       <div
         className="slide-in-right"
         onClick={(e) => e.stopPropagation()}
@@ -42,7 +38,7 @@ export function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantity, onRem
           background: '#ffffff',
           width: '100%',
           maxWidth: '450px',
-          height: '100vh',
+          height: '100dvh',
           display: 'flex',
           flexDirection: 'column',
           boxShadow: '0 10px 40px rgba(0,0,0,0.15)',
@@ -66,13 +62,13 @@ export function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantity, onRem
               <p style={{ fontSize: '0.78rem', color: '#cbd5e1' }}>{cartItems.length} {cartItems.length === 1 ? 'arreglo floral' : 'arreglos florales'}</p>
             </div>
           </div>
-          <button onClick={onClose} style={{ color: '#ffffff', padding: '0.4rem' }}>
+          <button aria-label="Cerrar carrito" onClick={onClose} style={{ color: '#ffffff', padding: '0.4rem' }}>
             <X size={22} />
           </button>
         </div>
 
         {/* Cart Items List */}
-        <div style={{ flex: 1, overflowY: 'auto', padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {cartItems.length === 0 ? (
             <div style={{ textAlign: 'center', margin: 'auto 0', padding: '2rem 1rem' }}>
               <ShoppingBag size={56} style={{ color: '#cbd5e1', margin: '0 auto 1rem auto' }} />
@@ -109,11 +105,6 @@ export function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantity, onRem
                     <h4 style={{ fontSize: '0.92rem', fontWeight: 700, color: '#0f172a', lineHeight: 1.2 }}>{item.title}</h4>
                     {item.selectedVariant && (
                       <span style={{ fontSize: '0.75rem', color: '#166534', fontWeight: 600 }}>{item.selectedVariant.name}</span>
-                    )}
-                    {item.ribbonText && (
-                      <span style={{ fontSize: '0.73rem', color: '#64748b', fontStyle: 'italic' }}>
-                        Cinta: "{item.ribbonText}"
-                      </span>
                     )}
                     <span style={{ fontSize: '0.9rem', fontWeight: 800, color: '#1b4230', marginTop: '0.2rem' }}>
                       {formatCLP(itemUnitPrice * item.quantity)}
@@ -194,6 +185,9 @@ export function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantity, onRem
                 <span>Subtotal:</span>
                 <span>{formatCLP(subtotal)}</span>
               </div>
+              <div className="cart-shipping" style={{ display: 'flex', justifyContent: 'space-between', color: '#64748b' }}>
+                <span>Envío por pedido:</span><span>{formatCLP(shipping)}</span>
+              </div>
               {discountAmount > 0 && (
                 <div style={{ display: 'flex', justifyContent: 'space-between', color: '#166534' }}>
                   <span>Descuento ({discountPercent}%):</span>
@@ -216,7 +210,7 @@ export function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantity, onRem
 
             {/* Checkout Action */}
             <button
-              onClick={() => { onClose(); onProceedToCheckout(total); }}
+              onClick={() => { onClose(); onProceedToCheckout(summary); }}
               className="btn-primary"
               style={{ width: '100%', padding: '0.85rem', fontSize: '0.95rem' }}
             >

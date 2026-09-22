@@ -15,13 +15,12 @@
     "reviewsCount": 0,
     "sku": "WC-803",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/394d29c59e508c6d.jpg",
@@ -45,11 +44,9 @@
     "reviewsCount": 0,
     "sku": "WC-804",
     "stockStatus": "instock",
-    "shortDescription": "Envío sin costo en todo Santiago.",
-    "description": "Envío sin costo en todo Santiago.",
-    "features": [
-      "Envío sin costo en todo Santiago."
-    ],
+    "shortDescription": "Envío: $4.000 por pedido.",
+    "description": "Envío: $4.000 por pedido.",
+    "features": [],
     "variants": [],
     "image": "client_images/recovered/0e9e0a8c56183ae7.jpg",
     "gallery": [
@@ -72,11 +69,9 @@
     "reviewsCount": 0,
     "sku": "WC-805",
     "stockStatus": "instock",
-    "shortDescription": "Envío sin costo en todo Santiago.",
-    "description": "Envío sin costo en todo Santiago.",
-    "features": [
-      "Envío sin costo en todo Santiago."
-    ],
+    "shortDescription": "Envío: $4.000 por pedido.",
+    "description": "Envío: $4.000 por pedido.",
+    "features": [],
     "variants": [],
     "image": "client_images/recovered/92b14a8d6bb942a0.jpg",
     "gallery": [
@@ -99,13 +94,12 @@
     "reviewsCount": 0,
     "sku": "WC-785",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/0715345de00f5b76.jpg",
@@ -129,13 +123,12 @@
     "reviewsCount": 0,
     "sku": "WC-784",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/ef77d1264062eec7.jpg",
@@ -153,20 +146,19 @@
     "originalCategorySlugs": [
       "coronas"
     ],
-    "price": 92990,
-    "regularPrice": 92990,
+    "price": 42990,
+    "regularPrice": 42990,
     "badge": "",
     "rating": 0.0,
     "reviewsCount": 0,
     "sku": "WC-783",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/6fdf8031eff67616.jpg",
@@ -190,13 +182,12 @@
     "reviewsCount": 0,
     "sku": "WC-884",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/5e2dc0fe2780ab00.jpg",
@@ -218,13 +209,12 @@
     "reviewsCount": 0,
     "sku": "WC-885",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/96f68000473a4803.jpg",
@@ -246,13 +236,12 @@
     "reviewsCount": 0,
     "sku": "WC-781",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/d7c4720551e3e6b6.jpg",
@@ -276,13 +265,12 @@
     "reviewsCount": 0,
     "sku": "WC-886",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/87e9fa263a58bcbd.jpg",
@@ -304,13 +292,12 @@
     "reviewsCount": 0,
     "sku": "WC-780",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/51cb32170f1264b1.jpg",
@@ -335,13 +322,12 @@
     "reviewsCount": 0,
     "sku": "WC-887",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/7ece51a06db51f51.jpg",
@@ -356,20 +342,19 @@
     "originalCategorySlugs": [
       "coronas"
     ],
-    "price": 52990,
-    "regularPrice": 52990,
+    "price": 42990,
+    "regularPrice": 42990,
     "badge": "",
     "rating": 0.0,
     "reviewsCount": 0,
     "sku": "WC-788",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/ae983b3a9aa3c648.jpg",
@@ -395,13 +380,12 @@
     "reviewsCount": 0,
     "sku": "WC-888",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/b92d7a48ef68352e.jpg",
@@ -423,13 +407,12 @@
     "reviewsCount": 0,
     "sku": "WC-779",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/cac5fddba3f96615.jpg",
@@ -453,13 +436,12 @@
     "reviewsCount": 0,
     "sku": "WC-787",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/27c48fea3c43efa2.jpg",
@@ -483,13 +465,12 @@
     "reviewsCount": 0,
     "sku": "WC-786",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/dbcce94edc64b421.jpg",
@@ -514,13 +495,12 @@
     "reviewsCount": 0,
     "sku": "WC-782",
     "stockStatus": "instock",
-    "shortDescription": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye atril – corona – cinta personalizada – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye atril – corona – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "atril",
       "corona",
-      "cinta personalizada",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/a3157793bd2889a6.jpeg",
@@ -590,11 +570,11 @@
     "reviewsCount": 0,
     "sku": "WC-792",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [
       {
@@ -656,11 +636,11 @@
     "reviewsCount": 0,
     "sku": "WC-793",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [
       {
@@ -707,18 +687,18 @@
     "originalCategorySlugs": [
       "arreglos"
     ],
-    "price": 27990,
-    "regularPrice": 27990,
+    "price": 34990,
+    "regularPrice": 34990,
     "badge": "",
     "rating": 0.0,
     "reviewsCount": 0,
     "sku": "WC-794",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [
       {
@@ -779,11 +759,11 @@
     "reviewsCount": 0,
     "sku": "WC-795",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [
       {
@@ -842,11 +822,11 @@
     "reviewsCount": 0,
     "sku": "WC-796",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [
       {
@@ -905,11 +885,11 @@
     "reviewsCount": 0,
     "sku": "WC-797",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [
       {
@@ -968,11 +948,9 @@
     "reviewsCount": 0,
     "sku": "WC-798",
     "stockStatus": "instock",
-    "shortDescription": "Envío sin costo en todo Santiago.",
-    "description": "Envío sin costo en todo Santiago.",
-    "features": [
-      "Envío sin costo en todo Santiago."
-    ],
+    "shortDescription": "Envío: $4.000 por pedido.",
+    "description": "Envío: $4.000 por pedido.",
+    "features": [],
     "variants": [
       {
         "id": "874",
@@ -1030,11 +1008,9 @@
     "reviewsCount": 0,
     "sku": "WC-799",
     "stockStatus": "instock",
-    "shortDescription": "Envío sin costo en todo Santiago.",
-    "description": "Envío sin costo en todo Santiago.",
-    "features": [
-      "Envío sin costo en todo Santiago."
-    ],
+    "shortDescription": "Envío: $4.000 por pedido.",
+    "description": "Envío: $4.000 por pedido.",
+    "features": [],
     "variants": [
       {
         "id": "876",
@@ -1078,25 +1054,25 @@
   },
   {
     "id": "legacy-880",
-    "title": "Canastilla",
+    "title": "Cruz del descanso",
     "slug": "canastilla",
     "category": "Arreglos",
     "categorySlug": "funebres",
     "originalCategorySlugs": [
       "arreglos"
     ],
-    "price": 38990,
-    "regularPrice": 38990,
+    "price": 59990,
+    "regularPrice": 59990,
     "badge": "",
     "rating": 0.0,
     "reviewsCount": 0,
     "sku": "WC-880",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/4f8a380f5c4e2858.jpg",
@@ -1120,11 +1096,11 @@
     "reviewsCount": 0,
     "sku": "WC-878",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral  – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral  – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral  – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral  – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/7d5cfd7cdf2ff1b7.jpg",
@@ -1143,18 +1119,18 @@
     "originalCategorySlugs": [
       "ofrendas-florales"
     ],
-    "price": 179990,
-    "regularPrice": 179990,
+    "price": 114990,
+    "regularPrice": 114990,
     "badge": "",
     "rating": 0.0,
     "reviewsCount": 0,
     "sku": "WC-778",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral  – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral  – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral  – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral  – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/a11c05d972c903eb.jpg",
@@ -1162,7 +1138,7 @@
   },
   {
     "id": "legacy-789",
-    "title": "Ofrendas Florales 2",
+    "title": "Hermoso escrito",
     "slug": "ofrendas-florales-2",
     "category": "Ofrendas Florales",
     "categorySlug": "funebres",
@@ -1176,11 +1152,11 @@
     "reviewsCount": 0,
     "sku": "WC-789",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/ef15ab119d02ccb8.jpg",
@@ -1190,25 +1166,25 @@
   },
   {
     "id": "legacy-790",
-    "title": "Ofrendas Florales 3",
+    "title": "Corona emotiva",
     "slug": "ofrendas-florales-3",
     "category": "Ofrendas Florales",
     "categorySlug": "funebres",
     "originalCategorySlugs": [
       "ofrendas-florales"
     ],
-    "price": 64990,
-    "regularPrice": 64990,
+    "price": 48990,
+    "regularPrice": 48990,
     "badge": "",
     "rating": 0.0,
     "reviewsCount": 0,
     "sku": "WC-790",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/0a37133a4a7b0cd5.jpg",
@@ -1218,25 +1194,25 @@
   },
   {
     "id": "legacy-791",
-    "title": "Ofrendas Florales 4",
+    "title": "Arreglo blanco delicado",
     "slug": "ofrendas-florales-4",
     "category": "Ofrendas Florales",
     "categorySlug": "funebres",
     "originalCategorySlugs": [
       "ofrendas-florales"
     ],
-    "price": 64990,
-    "regularPrice": 64990,
+    "price": 28990,
+    "regularPrice": 28990,
     "badge": "",
     "rating": 0.0,
     "reviewsCount": 0,
     "sku": "WC-791",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/115d8abcf3e3a3d9.jpg",
@@ -1260,11 +1236,11 @@
     "reviewsCount": 0,
     "sku": "WC-800",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral  – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral  – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral  – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral  – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/4c930a2c7bbf883c.jpg",
@@ -1286,11 +1262,9 @@
     "reviewsCount": 0,
     "sku": "WC-801",
     "stockStatus": "instock",
-    "shortDescription": "Envío sin costo en todo Santiago.",
-    "description": "Envío sin costo en todo Santiago.",
-    "features": [
-      "Envío sin costo en todo Santiago."
-    ],
+    "shortDescription": "Envío: $4.000 por pedido.",
+    "description": "Envío: $4.000 por pedido.",
+    "features": [],
     "variants": [],
     "image": "client_images/recovered/657451ae8d850b84.jpg",
     "gallery": []
@@ -1311,11 +1285,11 @@
     "reviewsCount": 0,
     "sku": "WC-802",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral  – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral  – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral  – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral  – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/8a9a631e494d9ab1.jpg",
@@ -1337,11 +1311,11 @@
     "reviewsCount": 0,
     "sku": "WC-879",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral  – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral  – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral  – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral  – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/f49279b9122c4e16.jpg",
@@ -1349,25 +1323,23 @@
   },
   {
     "id": "archive-573",
-    "title": "Arreglo con Ramos 1",
+    "title": "Ramo inolvidable",
     "slug": "ramos-historico",
     "category": "Ramos",
     "categorySlug": "funebres",
     "originalCategorySlugs": [
       "ramos"
     ],
-    "price": 19900,
-    "regularPrice": 19900,
+    "price": 34990,
+    "regularPrice": 34990,
     "badge": "",
     "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-573",
     "stockStatus": "instock",
-    "shortDescription": "Envío sin costo en todo Santiago.",
-    "description": "Envío sin costo en todo Santiago.",
-    "features": [
-      "Envío sin costo en todo Santiago."
-    ],
+    "shortDescription": "Envío: $4.000 por pedido.",
+    "description": "Envío: $4.000 por pedido.",
+    "features": [],
     "variants": [],
     "image": "client_images/recovered/8d83f0fe4dd0b7d3.jpg",
     "gallery": [
@@ -1392,11 +1364,11 @@
     "reviewsCount": 0,
     "sku": "WC-881",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/722b2dcb197e18f8.jpg",
@@ -1418,11 +1390,11 @@
     "reviewsCount": 0,
     "sku": "WC-882",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/0be66c0e125a2dd4.jpg",
@@ -1444,11 +1416,11 @@
     "reviewsCount": 0,
     "sku": "WC-883",
     "stockStatus": "instock",
-    "shortDescription": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
-    "description": "Incluye arreglo floral – envío Y tarjeta”\nDESPACHO INMEDIATO",
+    "shortDescription": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
+    "description": "Incluye arreglo floral – tarjeta\nDESPACHO INMEDIATO",
     "features": [
       "arreglo floral",
-      "envío Y tarjeta"
+      "tarjeta"
     ],
     "variants": [],
     "image": "client_images/recovered/06c2bc74e443c846.jpg",

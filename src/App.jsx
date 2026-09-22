@@ -14,6 +14,7 @@ import { FlowResponseModal } from './components/FlowResponseModal';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
 import { Footer } from './components/Footer';
 import { productRepository } from './services/productRepository';
+import { calculateOrderTotals, restoreCart } from './services/cart';
 
 export default function App() {
   const getPage = () => window.location.hash === '#mi-cuenta' ? 'account' : window.location.hash.startsWith('#catalog') ? 'catalog' : 'home';
@@ -40,14 +41,14 @@ export default function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
-  const [checkoutTotal, setCheckoutTotal] = useState(0);
+  const [checkoutSummary, setCheckoutSummary] = useState(() => calculateOrderTotals([]));
   const [flowResponseData, setFlowResponseData] = useState(null);
 
   // Cart Items State
   const [cartItems, setCartItems] = useState(() => {
     try {
       const saved = localStorage.getItem('corona_cart');
-      return saved ? JSON.parse(saved) : [];
+      return saved ? restoreCart(JSON.parse(saved), clientData.products) : [];
     } catch {
       return [];
     }
@@ -81,26 +82,25 @@ export default function App() {
   }, [activeCategory, searchQuery, sortBy, priceRange]);
 
   // Cart operations
-  const handleAddToCart = (product, quantity = 1, variant = null, ribbonText = '') => {
+  const handleAddToCart = (product, quantity = 1, variant = null) => {
     setCartItems(prev => {
-      const existingIdx = prev.findIndex(item => item.id === product.id && item.selectedVariant?.name === variant?.name && item.ribbonText === ribbonText);
+      const existingIdx = prev.findIndex(item => item.id === product.id && item.selectedVariant?.name === variant?.name);
       if (existingIdx > -1) {
         const updated = [...prev];
-        updated[existingIdx].quantity += quantity;
+        updated[existingIdx] = { ...updated[existingIdx], quantity: updated[existingIdx].quantity + quantity };
         return updated;
       }
-      return [...prev, { ...product, quantity, selectedVariant: variant, ribbonText }];
+      return [...prev, { ...product, quantity, selectedVariant: variant }];
     });
     setIsCartOpen(true);
     if (selectedProduct) setSelectedProduct(null);
   };
 
-  const handleBuyNowFlow = (product, quantity = 1, variant = null, ribbonText = '') => {
-    const itemPrice = product.price + (variant ? variant.priceModifier : 0);
-    const itemTotal = itemPrice * quantity;
-    setCartItems([{ ...product, quantity, selectedVariant: variant, ribbonText }]);
+  const handleBuyNowFlow = (product, quantity = 1, variant = null) => {
+    const orderItems = [{ ...product, quantity, selectedVariant: variant }];
+    setCartItems([{ ...product, quantity, selectedVariant: variant }]);
     if (selectedProduct) setSelectedProduct(null);
-    setCheckoutTotal(itemTotal);
+    setCheckoutSummary(calculateOrderTotals(orderItems));
     setIsCheckoutOpen(true);
   };
 
@@ -116,8 +116,8 @@ export default function App() {
     setCartItems(prev => prev.filter((_, i) => i !== index));
   };
 
-  const handleProceedToCheckout = (total) => {
-    setCheckoutTotal(total);
+  const handleProceedToCheckout = (summary) => {
+    setCheckoutSummary(summary);
     setIsCheckoutOpen(true);
   };
 
@@ -218,7 +218,8 @@ export default function App() {
         isOpen={isCheckoutOpen}
         onClose={() => setIsCheckoutOpen(false)}
         cartItems={cartItems}
-        totalAmount={checkoutTotal}
+        totalAmount={checkoutSummary.total}
+        orderSummary={checkoutSummary}
         onPaymentSuccess={handlePaymentSuccess}
       />
 

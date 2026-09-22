@@ -34,7 +34,7 @@ export function Hero({ onExploreClick }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', margin: '0.5rem 0' }}>
             {[
               "Despacho prioritario 24/7 a velatorios e iglesias de la Región Metropolitana",
-              "Incluye cinta de condolencias impresa personalizada sin costo adicional",
+              "Envío por pedido: $4.000",
               "Pago 100% seguro con Pasarela Flow (Webpay Plus, Tarjetas de Débito y Crédito)"
             ].map((text, idx) => (
               <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: '#334155', fontSize: '0.92rem', fontWeight: 500 }}>
