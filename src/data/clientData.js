@@ -7,7 +7,7 @@ const countCategories = (...slugs) => catalogProducts.filter(product =>
 ).length;
 
 export const getAssetUrl = (path) => {
-  const base = import.meta.env.BASE_URL || './';
+  const base = (typeof window !== 'undefined' && window.__CDF_ASSET_BASE__) || import.meta.env.BASE_URL || './';
   const cleanBase = base.endsWith('/') ? base : base + '/';
   const cleanPath = path.startsWith('/') ? path.substring(1) : path;
   return cleanBase + cleanPath;

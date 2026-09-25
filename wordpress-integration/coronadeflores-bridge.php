@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Corona de Flores - Frontend & Flow REST Bridge
  * Plugin URI: https://coronadeflores.cl
- * Description: Puente de integración entre el frontend React y WooCommerce / Flow. Registra pedidos con datos de condolencia y conecta automáticamente con la pasarela Flow ya configurada.
- * Version: 1.0.0
+ * Description: Puente de integración oficial entre el nuevo Frontend React y WooCommerce / Flow. Muestra la nueva tienda en la portada y procesa pedidos con datos de condolencia y pasarela Flow.
+ * Version: 2.0.0
  * Author: Lisar Studio
  * Author URI: https://lisarstudio.com
  * Text Domain: coronadeflores-bridge
@@ -13,15 +13,22 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+define('CDF_BRIDGE_VERSION', '2.0.0');
+define('CDF_BRIDGE_PATH', plugin_dir_path(__FILE__));
+define('CDF_BRIDGE_URL', plugin_dir_url(__FILE__));
+
+/**
+ * 1. Inicialización de Endpoints REST API
+ */
 add_action('rest_api_init', function () {
-    // 1. Endpoint para crear pedidos y redirigir a Flow
+    // Endpoint para procesar compras desde React y conectar con Flow
     register_rest_route('coronadeflores/v1', '/create-order', [
         'methods' => 'POST',
         'callback' => 'cdf_rest_create_order',
         'permission_callback' => '__return_true'
     ]);
 
-    // 2. Endpoint para sincronizar catálogo de productos
+    // Endpoint para catálogo
     register_rest_route('coronadeflores/v1', '/catalog', [
         'methods' => 'GET',
         'callback' => 'cdf_rest_get_catalog',
@@ -30,7 +37,86 @@ add_action('rest_api_init', function () {
 });
 
 /**
- * Procesa el pedido enviado desde el Frontend y lo conecta con Flow
+ * 2. Renderizado Automático del Frontend React en la Portada / Tienda
+ */
+add_action('template_include', 'cdf_serve_react_frontend', 9999);
+
+function cdf_serve_react_frontend($template) {
+    // No interceptar áreas administrativas, REST API, login o llamadas AJAX
+    if (is_admin() || wp_doing_ajax() || (defined('REST_REQUEST') && REST_REQUEST)) {
+        return $template;
+    }
+
+    // Permitir acceso a wp-login.php y wp-admin
+    if (strpos($_SERVER['REQUEST_URI'] ?? '', 'wp-login.php') !== false || strpos($_SERVER['REQUEST_URI'] ?? '', 'wp-admin') !== false) {
+        return $template;
+    }
+
+    // Permitir llamadas de pasarelas de pago (Flow, Webpay) y confirmaciones WooCommerce
+    if (isset($_GET['wc-api']) || isset($_GET['order-received']) || isset($_GET['flow_return']) || isset($_GET['wc-ajax'])) {
+        return $template;
+    }
+
+    // Si el usuario quiere ver el WordPress clásico mediante parámetro
+    if (isset($_GET['classic_wp']) && $_GET['classic_wp'] == '1') {
+        return $template;
+    }
+
+    $app_index = CDF_BRIDGE_PATH . 'app/index.html';
+    $app_url = CDF_BRIDGE_URL . 'app/';
+    $html = '';
+
+    if (file_exists($app_index)) {
+        // Modo 1: Aplicación empaquetada localmente
+        $html = file_get_contents($app_index);
+        $html = str_replace('href="./', 'href="' . $app_url, $html);
+        $html = str_replace('src="./', 'src="' . $app_url, $html);
+    } else {
+        // Modo 2: Carga en tiempo real desde CDN GitHub Pages
+        $cdn_base = 'https://lisarstudio.github.io/lisarstudio-demo/';
+        $response = wp_remote_get($cdn_base, ['timeout' => 10]);
+        if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+            $html = wp_remote_retrieve_body($response);
+            $app_url = $cdn_base;
+            $html = str_replace('href="/lisarstudio-demo/', 'href="' . $cdn_base, $html);
+            $html = str_replace('src="/lisarstudio-demo/', 'src="' . $cdn_base, $html);
+            $html = str_replace('href="./', 'href="' . $cdn_base, $html);
+            $html = str_replace('src="./', 'src="' . $cdn_base, $html);
+        } else {
+            return $template;
+        }
+    }
+
+    // Inyectar configuración de URLs para scripts y WooCommerce Bridge
+    $asset_config = sprintf(
+        "<script>
+            window.__CDF_ASSET_BASE__ = '%s';
+            window.__CORONADEFLORES_CONFIG__ = {
+                restUrl: '%s',
+                createOrderUrl: '%s',
+                siteUrl: '%s'
+            };
+        </script>",
+        esc_url($app_url),
+        esc_url(rest_url()),
+        esc_url(rest_url('coronadeflores/v1/create-order')),
+        esc_url(home_url('/'))
+    );
+
+    // Inyectar config y base href en el <head>
+    if (strpos($html, '<head>') !== false) {
+        $html = str_replace('<head>', "<head>\n    <base href=\"" . esc_url($app_url) . "\">\n    " . $asset_config, $html);
+    }
+
+    // Enviar encabezados HTTP limpios y el HTML completo
+    status_header(200);
+    header('Content-Type: text/html; charset=UTF-8');
+    echo $html;
+    exit;
+}
+
+/**
+ * 3. Procesa el pedido enviado desde el Frontend y lo conecta con Flow
  */
 function cdf_rest_create_order(WP_REST_Request $request) {
     if (!class_exists('WooCommerce')) {
@@ -176,7 +262,7 @@ function cdf_rest_create_order(WP_REST_Request $request) {
 }
 
 /**
- * Obtiene catálogo en tiempo real desde WooCommerce
+ * 4. Obtiene catálogo en tiempo real desde WooCommerce
  */
 function cdf_rest_get_catalog() {
     $products = wc_get_products(['limit' => 100, 'status' => 'publish']);
