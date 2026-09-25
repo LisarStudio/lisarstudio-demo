@@ -61,3 +61,16 @@ test('client logo and revised product images exist on disk', () => {
   }
 });
 
+test('25 September revisions: Misericordia price and gallery infographics removed', () => {
+  const colProducts = JSON.parse(fs.readFileSync(new URL('../src/data/colombianProducts.json', import.meta.url), 'utf8'));
+  const misericordia = colProducts.find(p => p.id === 'colombia-73908' || p.title.includes('Misericordia'));
+  assert.ok(misericordia, 'Misericordia product must exist in catalog');
+  assert.equal(misericordia.price, 138990);
+  assert.equal(misericordia.regularPrice, 138990);
+
+  // Assert no product has infographic image f79bcff4914fff60.jpg
+  for (const p of products) {
+    assert.ok(!(p.gallery || []).some(g => g.includes('f79bcff4914fff60')), `Product ${p.id} must not contain infographic in gallery`);
+  }
+});
+

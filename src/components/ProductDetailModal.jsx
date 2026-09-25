@@ -72,16 +72,20 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div style={{
             width: '100%',
-            height: '320px',
+            height: '350px',
             borderRadius: 'var(--radius-lg)',
             overflow: 'hidden',
-            background: '#f8fafc',
-            border: '1px solid #e2e8f0'
+            background: '#ffffff',
+            border: '1px solid #e2e8f0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '0.5rem'
           }}>
             <img
               src={selectedImage}
               alt={product.title}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              style={{ maxWidth: '100%', maxHeight: '100%', width: 'auto', height: 'auto', objectFit: 'contain' }}
               onError={(e) => {
                 e.target.src = fallbackImg;
               }}
@@ -90,23 +94,37 @@ export function ProductDetailModal({ product, onClose, onAddToCart, onBuyNowFlow
 
           {/* Thumbnails */}
           {product.gallery && product.gallery.length > 0 && (
-            <div style={{ display: 'flex', gap: '0.6rem', overflowX: 'auto' }}>
+            <div style={{ display: 'flex', gap: '0.6rem', overflowX: 'auto', paddingBottom: '4px' }}>
               {[product.image, ...product.gallery].map((img, idx) => (
-                <img
+                <button
                   key={idx}
-                  src={img}
-                  alt={`Thumbnail ${idx}`}
+                  type="button"
                   onClick={() => setSelectedImage(img)}
                   style={{
-                    width: '60px',
-                    height: '60px',
+                    width: '64px',
+                    height: '64px',
+                    padding: '2px',
                     borderRadius: '8px',
-                    objectFit: 'cover',
+                    background: '#ffffff',
                     cursor: 'pointer',
                     border: selectedImage === img ? '2px solid #1b4230' : '1px solid #e2e8f0',
-                    opacity: selectedImage === img ? 1 : 0.6
+                    opacity: selectedImage === img ? 1 : 0.7,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
                   }}
-                />
+                >
+                  <img
+                    src={img}
+                    alt={`Thumbnail ${idx}`}
+                    style={{
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                      objectFit: 'contain'
+                    }}
+                  />
+                </button>
               ))}
             </div>
           )}

@@ -7,12 +7,12 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, orderSu
   const brand = productRepository.getBrandInfo();
   const [paymentMethod, setPaymentMethod] = useState('flow');
   const [formData, setFormData] = useState({
+    recipient: '',
+    deliveryAddress: '',
+    cardMessage: '',
     name: '',
-    rut: '',
     email: '',
-    phone: '',
-    company: '',
-    notes: ''
+    phone: ''
   });
   const [isProcessing, setIsProcessing] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -31,8 +31,8 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, orderSu
     e.preventDefault();
     setErrorMsg('');
 
-    if (!formData.name || !formData.email || !formData.phone) {
-      setErrorMsg('Por favor completa los campos obligatorios: Nombre, Email y Teléfono.');
+    if (!formData.recipient || !formData.deliveryAddress || !formData.cardMessage || !formData.name || !formData.phone) {
+      setErrorMsg('Por favor completa todos los campos requeridos para el despacho y tarjeta.');
       return;
     }
 
@@ -47,7 +47,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, orderSu
           orderId,
           subject: orderSubject,
           amount: totalAmount,
-          email: formData.email,
+          email: formData.email || 'contacto@coronadeflores.cl',
           customerName: formData.name
         });
 
@@ -63,7 +63,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, orderSu
         });
       } else if (paymentMethod === 'whatsapp') {
         setIsProcessing(false);
-        const text = `*NUEVO PEDIDO CORONA DE FLORES*\n*Orden:* ${orderId}\n*Cliente:* ${formData.name}\n*Email:* ${formData.email}\n*Teléfono:* ${formData.phone}\n*Total:* ${formatCLP(totalAmount)}\n*Método:* Pedido directo WhatsApp`;
+        const text = `*NUEVO PEDIDO CORONA DE FLORES*\n*Orden:* ${orderId}\n*¿A quién entrega condolencia?:* ${formData.recipient}\n*Dirección de Entrega:* ${formData.deliveryAddress}\n*Texto Tarjeta / Cinta:* ${formData.cardMessage}\n*Solicitante:* ${formData.name}\n*Teléfono:* ${formData.phone}\n*Email:* ${formData.email || 'No indicado'}\n*Total:* ${formatCLP(totalAmount)}\n*Productos:* ${cartItems.map(i => `${i.quantity}x ${i.title}`).join(', ')}`;
         window.open(`https://wa.me/${brand.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(text)}`, '_blank');
         onPaymentSuccess({
           orderId,
@@ -130,8 +130,8 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, orderSu
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
           <ShieldCheck size={28} style={{ color: '#166534' }} />
           <div>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a' }}>Checkout Seguro</h2>
-            <p style={{ fontSize: '0.82rem', color: '#64748b' }}>Completa tus datos de despacho para procesar la orden mediante Pasarela Flow Webpay</p>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a' }}>Datos para tu Envío y Pago</h2>
+            <p style={{ fontSize: '0.82rem', color: '#64748b' }}>Completa los datos de la condolencia y despacho para procesar tu orden</p>
           </div>
         </div>
 
@@ -145,45 +145,78 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, orderSu
           {/* Left Column: Customer Form */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#1b4230', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.5rem' }}>
-              1. Datos del Solicitante / Despacho
+              1. Datos de la Condolencia y Entrega
             </h3>
 
             <div>
-              <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', display: 'block', marginBottom: '0.35rem' }}>
-                Nombre Completo *
+              <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1e293b', display: 'block', marginBottom: '0.35rem' }}>
+                1. ¿A quién entrega la condolencia? *
               </label>
-              <div style={{ position: 'relative' }}>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Ej: Silvana Morales"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="input-field"
-                  style={{ paddingLeft: '2.4rem' }}
-                />
-                <User size={16} style={{ position: 'absolute', left: '0.8rem', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
-              </div>
+              <input
+                type="text"
+                name="recipient"
+                required
+                placeholder="Ej: Familia Pérez González / Nombre del Fallecido"
+                value={formData.recipient}
+                onChange={handleInputChange}
+                className="input-field"
+                style={{ width: '100%', padding: '0.65rem 0.85rem', borderRadius: '8px', border: '1px solid #cbd5e1' }}
+              />
             </div>
+
+            <div>
+              <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1e293b', display: 'block', marginBottom: '0.35rem' }}>
+                2. Dirección de Entrega / Velatorio *
+              </label>
+              <input
+                type="text"
+                name="deliveryAddress"
+                required
+                placeholder="Ej: Parque del Recuerdo (Capilla 2) o Dirección particular"
+                value={formData.deliveryAddress}
+                onChange={handleInputChange}
+                className="input-field"
+                style={{ width: '100%', padding: '0.65rem 0.85rem', borderRadius: '8px', border: '1px solid #cbd5e1' }}
+              />
+            </div>
+
+            <div>
+              <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1e293b', display: 'block', marginBottom: '0.35rem' }}>
+                3. Texto de la Tarjeta o Cinta *
+              </label>
+              <textarea
+                name="cardMessage"
+                required
+                rows={2}
+                placeholder="Ej: Con sinceras condolencias y afecto de Familia Soto Martínez"
+                value={formData.cardMessage}
+                onChange={handleInputChange}
+                className="input-field"
+                style={{ width: '100%', padding: '0.65rem 0.85rem', borderRadius: '8px', border: '1px solid #cbd5e1', resize: 'vertical' }}
+              />
+            </div>
+
+            <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1b4230', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.4rem', marginTop: '0.5rem' }}>
+              Datos de Contacto del Solicitante
+            </h3>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.75rem' }}>
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', display: 'block', marginBottom: '0.35rem' }}>
-                  Correo Electrónico *
+                  Tu Nombre *
                 </label>
                 <div style={{ position: 'relative' }}>
                   <input
-                    type="email"
-                    name="email"
+                    type="text"
+                    name="name"
                     required
-                    placeholder="contacto@cliente.cl"
-                    value={formData.email}
+                    placeholder="Ej: Juan Silva"
+                    value={formData.name}
                     onChange={handleInputChange}
                     className="input-field"
-                    style={{ paddingLeft: '2.4rem' }}
+                    style={{ paddingLeft: '2.4rem', width: '100%', padding: '0.6rem 0.6rem 0.6rem 2.4rem', borderRadius: '8px', border: '1px solid #cbd5e1' }}
                   />
-                  <Mail size={16} style={{ position: 'absolute', left: '0.8rem', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
+                  <User size={16} style={{ position: 'absolute', left: '0.8rem', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
                 </div>
               </div>
 
@@ -200,43 +233,32 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, orderSu
                     value={formData.phone}
                     onChange={handleInputChange}
                     className="input-field"
-                    style={{ paddingLeft: '2.4rem' }}
+                    style={{ paddingLeft: '2.4rem', width: '100%', padding: '0.6rem 0.6rem 0.6rem 2.4rem', borderRadius: '8px', border: '1px solid #cbd5e1' }}
                   />
                   <Phone size={16} style={{ position: 'absolute', left: '0.8rem', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
                 </div>
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.75rem' }}>
-              <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', display: 'block', marginBottom: '0.35rem' }}>
-                  RUT (Facturación/Boleta)
-                </label>
+            <div>
+              <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', display: 'block', marginBottom: '0.35rem' }}>
+                Correo Electrónico (para comprobante Flow)
+              </label>
+              <div style={{ position: 'relative' }}>
                 <input
-                  type="text"
-                  name="rut"
-                  placeholder="12.345.678-9"
-                  value={formData.rut}
+                  type="email"
+                  name="email"
+                  placeholder="contacto@cliente.cl"
+                  value={formData.email}
                   onChange={handleInputChange}
                   className="input-field"
+                  style={{ paddingLeft: '2.4rem', width: '100%', padding: '0.6rem 0.6rem 0.6rem 2.4rem', borderRadius: '8px', border: '1px solid #cbd5e1' }}
                 />
-              </div>
-              <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#475569', display: 'block', marginBottom: '0.35rem' }}>
-                  Velatorio / Dirección de Entrega
-                </label>
-                <input
-                  type="text"
-                  name="company"
-                  placeholder="Ej: Velatorio Parque del Recuerdo"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  className="input-field"
-                />
+                <Mail size={16} style={{ position: 'absolute', left: '0.8rem', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
               </div>
             </div>
 
-            <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#1b4230', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.5rem', marginTop: '0.5rem' }}>
+            <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1b4230', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.4rem', marginTop: '0.5rem' }}>
               2. Método de Pago
             </h3>
 

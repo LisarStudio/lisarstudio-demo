@@ -28,8 +28,19 @@ subprocess.run(["git", "add", "-A"], check=True)
 subprocess.run(["git", "commit", "-m", "Deploy Corona de Flores live demo to GitHub Pages"], check=True)
 subprocess.run(["git", "branch", "-M", "gh-pages"], check=True)
 subprocess.run(["git", "remote", "add", "origin", "https://github.com/LisarStudio/lisarstudio-demo.git"], check=True)
+subprocess.run(["git", "config", "http.postBuffer", "524288000"], check=True)
+subprocess.run(["git", "config", "http.version", "HTTP/1.1"], check=True)
 
 print("Force pushing dist to gh-pages...")
-subprocess.run(["git", "push", "-f", "origin", "gh-pages"], check=True)
-print("Deployment to GitHub Pages successfully completed!")
+for attempt in range(1, 4):
+    try:
+        subprocess.run(["git", "push", "-f", "origin", "gh-pages"], check=True)
+        print("Deployment to GitHub Pages successfully completed!")
+        break
+    except subprocess.CalledProcessError:
+        if attempt == 3:
+            raise
+        print(f"Push attempt {attempt} failed, retrying in 3 seconds...")
+        import time
+        time.sleep(3)
 
