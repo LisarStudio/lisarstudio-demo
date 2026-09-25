@@ -103,9 +103,9 @@ function cdf_serve_react_frontend($template) {
         esc_url(home_url('/'))
     );
 
-    // Inyectar config y base href en el <head>
+    // Inyectar config en el <head> (SIN <base href> para preservar el dominio propio www.coronadeflores.cl)
     if (strpos($html, '<head>') !== false) {
-        $html = str_replace('<head>', "<head>\n    <base href=\"" . esc_url($app_url) . "\">\n    " . $asset_config, $html);
+        $html = str_replace('<head>', "<head>\n    " . $asset_config, $html);
     }
 
     // Enviar encabezados HTTP limpios y el HTML completo
