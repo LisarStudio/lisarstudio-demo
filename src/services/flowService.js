@@ -19,10 +19,12 @@ export class FlowService {
    * Creates a payment order and returns the Flow checkout URL or simulation response.
    */
   async createPayment({ orderId, subject, amount, email, _customerName, returnUrl }) {
-    // 1. If a secure backend server URL is configured, call it
-    if (this.backendUrl) {
+    const wpEndpoint = this.backendUrl || (window.location.hostname.includes('coronadeflores.cl') ? `${window.location.origin}/wp-json/coronadeflores/v1/create-order` : '');
+    
+    // 1. If WordPress backend or configured endpoint is available, call it
+    if (wpEndpoint) {
       try {
-        const response = await fetch(`${this.backendUrl}/api/flow/create-payment`, {
+        const response = await fetch(wpEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -31,24 +33,25 @@ export class FlowService {
             currency: 'CLP',
             amount: Math.round(amount),
             email,
-            urlConfirmation: `${window.location.origin}/api/flow/confirm`,
-            urlReturn: returnUrl || `${window.location.origin}?flow_return=1&orderId=${orderId}`
+            customer: _customerName && typeof _customerName === 'object' ? _customerName : { name: _customerName, email },
+            returnUrl: returnUrl || `${window.location.origin}?flow_return=1&orderId=${orderId}`
           })
         });
 
         if (response.ok) {
           const data = await response.json();
-          // Flow returns { url: "https://sandbox.flow.cl/app/webpay/pay.php", token: "..." }
-          return {
-            success: true,
-            redirectUrl: `${data.url}?token=${data.token}`,
-            token: data.token,
-            flowOrder: data.flowOrder || orderId,
-            mode: 'REMOTE_BACKEND'
-          };
+          if (data.redirectUrl) {
+            return {
+              success: true,
+              redirectUrl: data.redirectUrl,
+              token: data.flowToken || null,
+              orderId: data.orderId || orderId,
+              mode: 'WORDPRESS_WOOCOMMERCE_FLOW'
+            };
+          }
         }
       } catch (err) {
-        console.warn('FlowService: Backend endpoint unavailable, falling back to secure client flow simulation.', err);
+        console.warn('FlowService: WordPress REST bridge unavailable, falling back to client mode.', err);
       }
     }
 
