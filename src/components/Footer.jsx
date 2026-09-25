@@ -2,7 +2,7 @@ import React from 'react';
 import { productRepository } from '../services/productRepository';
 import { clientData } from '../data/clientData';
 import './Footer.css';
-import { Mail, Phone, MapPin, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, MapPin, ShieldCheck, Flower2 } from 'lucide-react';
 
 export function Footer({ onSelectCategory }) {
   const brand = productRepository.getBrandInfo();
@@ -12,13 +12,16 @@ export function Footer({ onSelectCategory }) {
       <div className="container footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1.2fr', gap: '3rem', marginBottom: '3rem' }}>
         {/* Brand & Slogan */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <img
-              src={brand.logo}
-              alt={brand.name}
-              style={{ height: '54px', width: 'auto', maxWidth: '240px', objectFit: 'contain', filter: 'brightness(1.15) contrast(1.05)' }}
-              onError={(e) => { e.target.style.display = 'none'; }}
-            />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+              <Flower2 size={26} style={{ color: '#6ea820' }} />
+              <span style={{ fontSize: '1.45rem', fontWeight: 800, fontFamily: 'Georgia, serif', color: '#ffffff', letterSpacing: '-0.3px' }}>
+                Corona de <span style={{ color: '#c59b27' }}>Flores</span>
+              </span>
+            </div>
+            <span style={{ fontSize: '0.72rem', letterSpacing: '1.5px', textTransform: 'uppercase', color: '#94a3b8', fontWeight: 600, paddingLeft: '32px' }}>
+              Floristería Fúnebre Chile
+            </span>
           </div>
 
           <p style={{ lineHeight: 1.6, maxWidth: '400px', color: '#94a3b8' }}>
