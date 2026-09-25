@@ -21,9 +21,13 @@ export default function App() {
   const [page, setPage] = useState(getPage);
   useEffect(() => {
     const onHashChange = () => {
-      setPage(getPage());
-      window.scrollTo(0, 0);
-    document.body.scrollTo(0, 0);
+      const nextPage = getPage();
+      setPage(prev => {
+        if (prev !== nextPage) {
+          window.scrollTo(0, 0);
+        }
+        return nextPage;
+      });
     };
     window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);

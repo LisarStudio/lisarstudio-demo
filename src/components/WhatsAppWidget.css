@@ -4,9 +4,8 @@
 .whatsapp-widget:focus-visible { outline: 2px solid #365310; outline-offset: 3px; }
 /* Reserved mobile rail: page content remains above the help link. */
 @media(max-width:767px) {
-  html { height: 100%; overflow: hidden; }
-  body { height: calc(100dvh - 66px); overflow-y: auto; scrollbar-width: none; }
-  .whatsapp-widget { bottom: 0; left: 0; width: 100%; height: 66px; padding: 6px 22px; background: #fff; border-top: 1px solid #eee; }
+  .whatsapp-widget { position: fixed; bottom: 16px; left: 16px; z-index: 45; width: auto; height: auto; padding: 0; background: transparent; border: none; }
+  .whatsapp-widget-icon { width: 48px; height: 48px; }
 }
 @media (min-width: 768px) {
   .whatsapp-widget { position: absolute; top: 6px; right: 20px; bottom: auto; left: auto; }
