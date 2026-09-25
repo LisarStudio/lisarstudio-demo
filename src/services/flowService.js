@@ -19,9 +19,9 @@ export class FlowService {
    * Creates a payment order and returns the Flow checkout URL or simulation response.
    */
   async createPayment({ orderId, subject, amount, email, _customerName, returnUrl }) {
-    const wpEndpoint = this.backendUrl || (window.location.hostname.includes('coronadeflores.cl') ? `${window.location.origin}/wp-json/coronadeflores/v1/create-order` : '');
+    const wpEndpoint = this.backendUrl || 'https://coronadeflores.cl/wp-json/coronadeflores/v1/create-order';
     
-    // 1. If WordPress backend or configured endpoint is available, call it
+    // 1. Call WordPress WooCommerce & Flow REST bridge endpoint
     if (wpEndpoint) {
       try {
         const response = await fetch(wpEndpoint, {
@@ -32,8 +32,10 @@ export class FlowService {
             subject: subject || `Orden #${orderId} - ${clientData.brand.name}`,
             currency: 'CLP',
             amount: Math.round(amount),
-            email,
+            paymentMethod: 'flow',
+            email: (typeof _customerName === 'object' ? _customerName.email : email) || email,
             customer: _customerName && typeof _customerName === 'object' ? _customerName : { name: _customerName, email },
+            cartItems: Array.isArray(_customerName?.cartItems) ? _customerName.cartItems : (Array.isArray(arguments[0]?.cartItems) ? arguments[0].cartItems : []),
             returnUrl: returnUrl || `${window.location.origin}?flow_return=1&orderId=${orderId}`
           })
         });
@@ -51,7 +53,7 @@ export class FlowService {
           }
         }
       } catch (err) {
-        console.warn('FlowService: WordPress REST bridge unavailable, falling back to client mode.', err);
+        console.warn('FlowService: WordPress REST bridge error, falling back to client simulation.', err);
       }
     }
 

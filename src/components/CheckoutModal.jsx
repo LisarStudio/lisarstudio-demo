@@ -48,12 +48,20 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, orderSu
           subject: orderSubject,
           amount: totalAmount,
           email: formData.email || 'contacto@coronadeflores.cl',
-          customerName: formData.name
+          _customerName: formData,
+          cartItems
         });
 
         setIsProcessing(false);
+
+        if (flowResult?.redirectUrl && flowResult.redirectUrl.includes('flow.cl')) {
+          // Redirect customer to official Flow Webpay Plus gateway
+          window.location.href = flowResult.redirectUrl;
+          return;
+        }
+
         onPaymentSuccess({
-          orderId,
+          orderId: flowResult?.orderId || orderId,
           paymentMethod: 'Flow (Webpay Plus)',
           customer: formData,
           totalAmount,
