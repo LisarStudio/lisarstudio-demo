@@ -16,12 +16,9 @@ export function Footer({ onSelectCategory }) {
             <img
               src={brand.logo}
               alt={brand.name}
-              style={{ height: '42px', width: 'auto', borderRadius: '6px', background: '#ffffff', padding: '2px' }}
+              style={{ height: '54px', width: 'auto', maxWidth: '240px', objectFit: 'contain', filter: 'brightness(1.15) contrast(1.05)' }}
               onError={(e) => { e.target.style.display = 'none'; }}
             />
-            <span style={{ fontSize: '1.3rem', fontWeight: 800, color: '#ffffff' }}>
-              CORONA DE <span style={{ color: '#c59b27' }}>FLORES</span>
-            </span>
           </div>
 
           <p style={{ lineHeight: 1.6, maxWidth: '400px', color: '#94a3b8' }}>

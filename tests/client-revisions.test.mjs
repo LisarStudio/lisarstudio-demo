@@ -44,7 +44,7 @@ test('saved baskets use current prices and names and merge obsolete ribbon lines
 
 test('client logo and revised product images exist on disk', () => {
   const publicDir = new URL('../public/', import.meta.url);
-  const logoPath = new URL('client_images/corona-de-flores-logo-2026.jpg', publicDir);
+  const logoPath = new URL('client_images/corona-de-flores-logo-2026.png', publicDir);
   assert.ok(fs.existsSync(logoPath), 'Logo file must exist');
 
   const revisedIds = [
