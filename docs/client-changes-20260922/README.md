@@ -1,4 +1,4 @@
-﻿# Cambios solicitados el 21 y 22 de septiembre de 2026
+# Cambios solicitados el 21 y 22 de septiembre de 2026
 
 Fuente: exportación de conversación entregada por Peter. Se documentan únicamente los requisitos comerciales necesarios; no se publica el chat ni datos bancarios.
 
@@ -23,15 +23,13 @@ Fuente: exportación de conversación entregada por Peter. Se documentan únicam
 | 09:00 | Ofrendas Florales 3 | Corona emotiva | $48.990 |
 | 09:05 | Ofrendas Florales 4 | Arreglo blanco delicado | $28.990 |
 
-Se mantienen IDs, slugs, imágenes y galerías actuales. Los reemplazos fotográficos no están completos: faltan los adjuntos.
+- Galería y fotos principales actualizadas para los nueve productos del 22/09 con las imágenes reales enviadas por el cliente.
+- Logo oficial actualizado en cabecera, pie de página y metadatos (`client_images/corona-de-flores-logo-2026.jpg`).
 
-## Pendiente por material ausente
-El ZIP solo contiene chat.txt y chat.md; ambos omiten imágenes y audios.
-
-- Logo enviado el 21/09 a las 20:05.
-- Imagen de referencia del 21/09 a las 16:57.
-- Fotografías de los nueve grupos del 22/09 (08:01–09:04).
-- Audios del cliente del 21/09. No se puede inferir si contienen otros cambios, secciones a eliminar o decisiones sobre administración.
+## Material de chat integrado
+- Logo enviado el 21/09 a las 20:05 aplicado en cabecera, favicon y pie de página.
+- Fotografías de los nueve grupos del 22/09 (08:01–09:04) extraídas y vinculadas al catálogo en `public/client_images/revisions_20260922/`.
+- Teléfono verificado (+56 9 4650 9718), tarifa plana de envío de $4.000 y eliminación de selección de cintas.
 
 ## Integración pendiente
 La versión de GitHub Pages continúa siendo una demostración. Flow usa una simulación sin backend configurado y la nueva interfaz no crea pedidos reales de WooCommerce. Mi cuenta enlaza a la tienda original. Este cambio corrige catálogo y cálculo de envío; no acredita integración de pagos, administración ni publicación en el dominio del cliente.

@@ -5,12 +5,9 @@
 .store-topbar .container { display: flex; align-items: center; gap: 30px; height: 45px; font-size: 11px; color: #555; }
 .store-topbar span { margin-left: auto; font-size: 10px; letter-spacing: .5px; }
 .store-header-row { position: relative; display: flex; align-items: center; gap: 30px; min-height: 71.42px; }
-.store-brand { display: flex; align-items: center; gap: 8px; width: 205px; flex-shrink: 0; color: #166534; }
-.store-brand img { display: block; width: 44px; height: 44px; object-fit: contain; }
-.store-brand-copy { min-width: 0; }
-.store-brand-name { display: block; white-space: nowrap; font-family: Georgia, serif; font-size: 18px; font-weight: 800; line-height: 1.1; letter-spacing: -.4px; }
-.store-brand-name > span { color: #c59b27; }
-.store-brand-tagline { display: block; font-size: 7.5px; font-weight: 600; color: #64748b; letter-spacing: .4px; margin-top: 5px; white-space: nowrap; }
+.store-brand { display: flex; align-items: center; gap: 8px; max-width: 240px; flex-shrink: 0; color: #166534; text-decoration: none; }
+.store-brand img { display: block; height: 48px; width: auto; max-width: 220px; object-fit: contain; }
+.store-brand-copy { display: none; }
 .store-search { display: flex; flex: 1; height: 38px; min-width: 0; border: 2px solid #6ea820; border-radius: 24px 0 0 24px; }
 .store-search input { width: 100%; min-width: 0; border: 0; background: transparent; border-radius: inherit; padding: 0 20px; font: inherit; font-size: 13px; color: #555; }
 .store-search button { display: grid; place-items: center; width: 54px; flex-shrink: 0; background: #6ea820; color: #fff; }
@@ -51,10 +48,8 @@
   .store-topbar span { font-size: 8px; }
   .store-header-row { display: grid; grid-template-columns: 32px minmax(0, 1fr) 100px; gap: 0; min-height: 69px; }
   .mobile-toggle { display: grid; place-items: center start; width: 32px; height: 44px; }
-  .store-brand { width: 200px; max-width: 100%; gap: 7px; }
-  .store-brand img { width: 40px; height: 40px; }
-  .store-brand-name { font-size: 19px; }
-  .store-brand-tagline { font-size: 7px; letter-spacing: .15px; }
+  .store-brand { width: auto; max-width: calc(100% - 140px); gap: 7px; }
+  .store-brand img { height: 38px; width: auto; max-width: 170px; }
   .store-header-actions { margin: 0; gap: 13px; justify-content: flex-end; }
   .store-account { display: none; }
   .mobile-search-toggle { display: grid; place-items: center; width: 31px; height: 44px; flex-shrink: 0; }
@@ -72,18 +67,14 @@
 }
 @media (max-width: 575px) { .store-header-row { min-height: 67.42px; } }
 @media (max-width: 480px) {
-  .store-brand-name { font-size: 17px; }
-  .store-brand img { width: 36px; height: 36px; }
-  .store-brand-tagline { font-size: 6px; }
+  .store-brand img { height: 34px; max-width: 150px; }
 }
 @media (max-width: 359px) {
   .store-header .container { padding-inline: 12px; }
   .store-header-row { grid-template-columns: 28px minmax(0, 1fr) 87px; }
   .store-header-actions { gap: 4px; }
   .store-brand { gap: 4px; }
-  .store-brand img { width: 28px; height: 28px; }
-  .store-brand-name { font-size: 15px; }
-  .store-brand-tagline { font-size: 5px; }
+  .store-brand img { height: 30px; max-width: 130px; }
   .store-topbar span { font-size: 7px; }
 }
 
@@ -107,9 +98,7 @@
   .store-header-row { display: block; height: 93px; min-height: 93px; }
   .mobile-toggle { position: absolute; top: 3px; left: 22px; height: 30px; }
   .store-brand { position: absolute; bottom: 9px; left: 22px; width: calc(100% - 100px); gap: 9px; }
-  .store-brand img { width: 43px; height: 43px; }
-  .store-brand-name { font-size: 21px; }
-  .store-brand-tagline { font-size: 7px; letter-spacing: .2px; }
+  .store-brand img { height: 42px; width: auto; max-width: 200px; }
   .store-header-actions { position: absolute; right: 22px; top: 15px; flex-direction: column; gap: 4px; align-items: flex-end; }
   .mobile-search-toggle { height: 32px; }
   .mobile-search-toggle svg { width: 29px; height: 29px; stroke-width: 1.5; }
@@ -118,7 +107,5 @@
   .store-nav.is-open { max-height: calc(100dvh - 94px); overflow-y: auto; }
 }
 @media(max-width:359px) {
-  .store-brand img { width: 36px; height: 36px; }
-  .store-brand-name { font-size: 17px; }
-  .store-brand-tagline { font-size: 6px; }
+  .store-brand img { height: 32px; max-width: 140px; }
 }

@@ -18,7 +18,7 @@ export const clientData = {
     name: "Corona de Flores",
     tagline: "Floristería Especializada en Coronas Fúnebres & Arreglos de Condolencias en Santiago",
     domain: "coronadeflores.cl",
-    logo: getAssetUrl("client_images/2021/04/Corona-de-Flores-logo-nuevo-.jpg"),
+    logo: getAssetUrl("client_images/corona-de-flores-logo-2026.jpg"),
     heroLogo: getAssetUrl("client_images/products/corona_rosas_lirios.jpg"),
     whatsapp: "+56946509718",
     whatsappFormatted: "+56 9 4650 9718",

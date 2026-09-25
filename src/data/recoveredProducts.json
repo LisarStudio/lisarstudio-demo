@@ -11,7 +11,7 @@
     "price": 42990,
     "regularPrice": 42990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-803",
     "stockStatus": "instock",
@@ -40,7 +40,7 @@
     "price": 42990,
     "regularPrice": 42990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-804",
     "stockStatus": "instock",
@@ -65,7 +65,7 @@
     "price": 42999,
     "regularPrice": 42999,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-805",
     "stockStatus": "instock",
@@ -90,7 +90,7 @@
     "price": 42990,
     "regularPrice": 42990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-785",
     "stockStatus": "instock",
@@ -119,7 +119,7 @@
     "price": 42990,
     "regularPrice": 42990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-784",
     "stockStatus": "instock",
@@ -149,7 +149,7 @@
     "price": 42990,
     "regularPrice": 42990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-783",
     "stockStatus": "instock",
@@ -161,9 +161,10 @@
       "tarjeta"
     ],
     "variants": [],
-    "image": "client_images/recovered/6fdf8031eff67616.jpg",
+    "image": "client_images/revisions_20260922/legacy-783-1.jpg",
     "gallery": [
-      "client_images/recovered/f55356aaae95806c.jpg"
+      "client_images/revisions_20260922/legacy-783-2.jpg",
+      "client_images/revisions_20260922/legacy-783-3.jpg"
     ]
   },
   {
@@ -178,7 +179,7 @@
     "price": 67990,
     "regularPrice": 67990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-884",
     "stockStatus": "instock",
@@ -205,7 +206,7 @@
     "price": 67990,
     "regularPrice": 67990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-885",
     "stockStatus": "instock",
@@ -232,7 +233,7 @@
     "price": 42990,
     "regularPrice": 42990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-781",
     "stockStatus": "instock",
@@ -261,7 +262,7 @@
     "price": 42990,
     "regularPrice": 42990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-886",
     "stockStatus": "instock",
@@ -288,7 +289,7 @@
     "price": 62990,
     "regularPrice": 62990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-780",
     "stockStatus": "instock",
@@ -318,7 +319,7 @@
     "price": 42990,
     "regularPrice": 42990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-887",
     "stockStatus": "instock",
@@ -345,7 +346,7 @@
     "price": 42990,
     "regularPrice": 42990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-788",
     "stockStatus": "instock",
@@ -357,11 +358,11 @@
       "tarjeta"
     ],
     "variants": [],
-    "image": "client_images/recovered/ae983b3a9aa3c648.jpg",
+    "image": "client_images/revisions_20260922/legacy-788-1.jpg",
     "gallery": [
-      "client_images/recovered/f79bcff4914fff60.jpg",
-      "client_images/recovered/38fc505c0b64ea4d.jpeg",
-      "client_images/recovered/562c526746925d2b.png"
+      "client_images/revisions_20260922/legacy-788-2.jpg",
+      "client_images/revisions_20260922/legacy-788-3.jpg",
+      "client_images/revisions_20260922/legacy-788-4.jpg"
     ]
   },
   {
@@ -376,7 +377,7 @@
     "price": 94990,
     "regularPrice": 94990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-888",
     "stockStatus": "instock",
@@ -403,7 +404,7 @@
     "price": 42990,
     "regularPrice": 42990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-779",
     "stockStatus": "instock",
@@ -432,7 +433,7 @@
     "price": 72990,
     "regularPrice": 72990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-787",
     "stockStatus": "instock",
@@ -461,7 +462,7 @@
     "price": 62990,
     "regularPrice": 62990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-786",
     "stockStatus": "instock",
@@ -491,7 +492,7 @@
     "price": 94990,
     "regularPrice": 94990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-782",
     "stockStatus": "instock",
@@ -520,7 +521,7 @@
     "price": 104900,
     "regularPrice": 104900,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-1324",
     "stockStatus": "instock",
@@ -543,7 +544,7 @@
     "price": 114900,
     "regularPrice": 114900,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-1326",
     "stockStatus": "instock",
@@ -566,7 +567,7 @@
     "price": 32990,
     "regularPrice": 32990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-792",
     "stockStatus": "instock",
@@ -632,7 +633,7 @@
     "price": 41990,
     "regularPrice": 41990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-793",
     "stockStatus": "instock",
@@ -690,7 +691,7 @@
     "price": 34990,
     "regularPrice": 34990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-794",
     "stockStatus": "instock",
@@ -737,9 +738,10 @@
         "priceModifier": 0
       }
     ],
-    "image": "client_images/recovered/f862f00022d0a302.jpg",
+    "image": "client_images/revisions_20260922/legacy-794-1.jpg",
     "gallery": [
-      "client_images/recovered/c5a9f8d55325e506.jpg"
+      "client_images/revisions_20260922/legacy-794-2.jpg",
+      "client_images/revisions_20260922/legacy-794-3.jpg"
     ],
     "variantLabel": "Color:"
   },
@@ -755,7 +757,7 @@
     "price": 41990,
     "regularPrice": 41990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-795",
     "stockStatus": "instock",
@@ -818,7 +820,7 @@
     "price": 41990,
     "regularPrice": 41990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-796",
     "stockStatus": "instock",
@@ -881,7 +883,7 @@
     "price": 47990,
     "regularPrice": 47990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-797",
     "stockStatus": "instock",
@@ -944,7 +946,7 @@
     "price": 47990,
     "regularPrice": 47990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-798",
     "stockStatus": "instock",
@@ -1004,7 +1006,7 @@
     "price": 47990,
     "regularPrice": 47990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-799",
     "stockStatus": "instock",
@@ -1064,7 +1066,7 @@
     "price": 59990,
     "regularPrice": 59990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-880",
     "stockStatus": "instock",
@@ -1075,9 +1077,10 @@
       "tarjeta"
     ],
     "variants": [],
-    "image": "client_images/recovered/4f8a380f5c4e2858.jpg",
+    "image": "client_images/revisions_20260922/legacy-880-1.jpg",
     "gallery": [
-      "client_images/recovered/301e086abafe02bc.jpg"
+      "client_images/revisions_20260922/legacy-880-2.jpg",
+      "client_images/revisions_20260922/legacy-880-3.jpg"
     ]
   },
   {
@@ -1092,7 +1095,7 @@
     "price": 59990,
     "regularPrice": 59990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-878",
     "stockStatus": "instock",
@@ -1122,7 +1125,7 @@
     "price": 114990,
     "regularPrice": 114990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-778",
     "stockStatus": "instock",
@@ -1133,8 +1136,10 @@
       "tarjeta"
     ],
     "variants": [],
-    "image": "client_images/recovered/a11c05d972c903eb.jpg",
-    "gallery": []
+    "image": "client_images/revisions_20260922/legacy-778-1.jpg",
+    "gallery": [
+      "client_images/revisions_20260922/legacy-778-2.jpg"
+    ]
   },
   {
     "id": "legacy-789",
@@ -1148,7 +1153,7 @@
     "price": 64990,
     "regularPrice": 64990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-789",
     "stockStatus": "instock",
@@ -1159,9 +1164,11 @@
       "tarjeta"
     ],
     "variants": [],
-    "image": "client_images/recovered/ef15ab119d02ccb8.jpg",
+    "image": "client_images/revisions_20260922/legacy-789-1.jpg",
     "gallery": [
-      "client_images/recovered/42a91c290e520285.jpg"
+      "client_images/revisions_20260922/legacy-789-2.jpg",
+      "client_images/revisions_20260922/legacy-789-3.jpg",
+      "client_images/revisions_20260922/legacy-789-4.jpg"
     ]
   },
   {
@@ -1176,7 +1183,7 @@
     "price": 48990,
     "regularPrice": 48990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-790",
     "stockStatus": "instock",
@@ -1187,9 +1194,11 @@
       "tarjeta"
     ],
     "variants": [],
-    "image": "client_images/recovered/0a37133a4a7b0cd5.jpg",
+    "image": "client_images/revisions_20260922/legacy-790-1.jpg",
     "gallery": [
-      "client_images/recovered/42a91c290e520285.jpg"
+      "client_images/revisions_20260922/legacy-790-2.jpg",
+      "client_images/revisions_20260922/legacy-790-3.jpg",
+      "client_images/revisions_20260922/legacy-790-4.jpg"
     ]
   },
   {
@@ -1204,7 +1213,7 @@
     "price": 28990,
     "regularPrice": 28990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-791",
     "stockStatus": "instock",
@@ -1215,9 +1224,11 @@
       "tarjeta"
     ],
     "variants": [],
-    "image": "client_images/recovered/115d8abcf3e3a3d9.jpg",
+    "image": "client_images/revisions_20260922/legacy-791-1.jpg",
     "gallery": [
-      "client_images/recovered/42a91c290e520285.jpg"
+      "client_images/revisions_20260922/legacy-791-2.jpg",
+      "client_images/revisions_20260922/legacy-791-3.jpg",
+      "client_images/revisions_20260922/legacy-791-4.jpg"
     ]
   },
   {
@@ -1232,7 +1243,7 @@
     "price": 46990,
     "regularPrice": 46990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-800",
     "stockStatus": "instock",
@@ -1258,7 +1269,7 @@
     "price": 64990,
     "regularPrice": 64990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-801",
     "stockStatus": "instock",
@@ -1281,7 +1292,7 @@
     "price": 52990,
     "regularPrice": 52990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-802",
     "stockStatus": "instock",
@@ -1307,7 +1318,7 @@
     "price": 46990,
     "regularPrice": 46990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-879",
     "stockStatus": "instock",
@@ -1341,12 +1352,8 @@
     "description": "Envío: $4.000 por pedido.",
     "features": [],
     "variants": [],
-    "image": "client_images/recovered/8d83f0fe4dd0b7d3.jpg",
-    "gallery": [
-      "client_images/recovered/bf5e6d4cacc29030.jpg",
-      "client_images/recovered/67b7b6ca3b97da58.jpg",
-      "client_images/recovered/ae898c3c95e7e9f6.jpg"
-    ]
+    "image": "client_images/revisions_20260922/archive-573-1.jpg",
+    "gallery": []
   },
   {
     "id": "legacy-881",
@@ -1360,7 +1367,7 @@
     "price": 27990,
     "regularPrice": 27990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-881",
     "stockStatus": "instock",
@@ -1386,7 +1393,7 @@
     "price": 27990,
     "regularPrice": 27990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-882",
     "stockStatus": "instock",
@@ -1412,7 +1419,7 @@
     "price": 27990,
     "regularPrice": 27990,
     "badge": "",
-    "rating": 0.0,
+    "rating": 0,
     "reviewsCount": 0,
     "sku": "WC-883",
     "stockStatus": "instock",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { clientData, getAssetUrl } from '../data/clientData';
-import { ExternalLink, Sparkles, ShieldCheck, Heart, Truck } from 'lucide-react';
+import { Sparkles, ShieldCheck } from 'lucide-react';
 
 export function PortfolioShowcase() {
   const portfolio = clientData.portfolio || [];

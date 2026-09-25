@@ -1,4 +1,4 @@
-﻿
+
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -40,5 +40,24 @@ test('saved baskets use current prices and names and merge obsolete ribbon lines
   assert.equal(restored[0].price,59990);assert.ok(!('ribbonText' in restored[0]));
   assert.equal(restored[1].price,42990);assert.equal(calculateOrderTotals(restored).shipping,4000);
   assert.deepEqual(restoreCart({},products),[]);
+});
+
+test('client logo and revised product images exist on disk', () => {
+  const publicDir = new URL('../public/', import.meta.url);
+  const logoPath = new URL('client_images/corona-de-flores-logo-2026.jpg', publicDir);
+  assert.ok(fs.existsSync(logoPath), 'Logo file must exist');
+
+  const revisedIds = [
+    'legacy-788', 'legacy-783', 'legacy-794', 'legacy-880',
+    'legacy-778', 'archive-573', 'legacy-789', 'legacy-790', 'legacy-791'
+  ];
+  for (const id of revisedIds) {
+    const product = products.find(p => p.id === id);
+    assert.ok(product, `Product ${id} must exist in catalog`);
+    assert.ok(fs.existsSync(new URL(product.image, publicDir)), `Main image for ${id} must exist: ${product.image}`);
+    for (const g of (product.gallery || [])) {
+      assert.ok(fs.existsSync(new URL(g, publicDir)), `Gallery image for ${id} must exist: ${g}`);
+    }
+  }
 });
 

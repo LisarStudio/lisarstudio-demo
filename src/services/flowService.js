@@ -18,7 +18,7 @@ export class FlowService {
   /**
    * Creates a payment order and returns the Flow checkout URL or simulation response.
    */
-  async createPayment({ orderId, subject, amount, email, customerName, returnUrl }) {
+  async createPayment({ orderId, subject, amount, email, _customerName, returnUrl }) {
     // 1. If a secure backend server URL is configured, call it
     if (this.backendUrl) {
       try {
