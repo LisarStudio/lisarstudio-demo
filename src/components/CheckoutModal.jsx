@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CreditCard, ShieldCheck, Lock, Building, Mail, Phone, User } from 'lucide-react';
+import { X, CreditCard, ShieldCheck, Lock, Mail, Phone, User } from 'lucide-react';
 import { flowService } from '../services/flowService';
 import { productRepository } from '../services/productRepository';
 
@@ -76,17 +76,6 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, orderSu
         onPaymentSuccess({
           orderId,
           paymentMethod: 'WhatsApp Directo',
-          customer: formData,
-          totalAmount,
-          orderSummary,
-          cartItems
-        });
-      } else {
-        // Transferencia
-        setIsProcessing(false);
-        onPaymentSuccess({
-          orderId,
-          paymentMethod: 'Transferencia Bancaria Directa',
           customer: formData,
           totalAmount,
           orderSummary,
@@ -300,34 +289,6 @@ export function CheckoutModal({ isOpen, onClose, cartItems, totalAmount, orderSu
                 <CreditCard size={20} style={{ color: '#166534' }} />
               </label>
 
-              {/* Transfer Radio */}
-              <label style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '0.85rem',
-                borderRadius: 'var(--radius-md)',
-                background: paymentMethod === 'transfer' ? '#f0fdf4' : '#f8fafc',
-                border: paymentMethod === 'transfer' ? '1px solid #166534' : '1px solid #e2e8f0',
-                cursor: 'pointer'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                  <input
-                    type="radio"
-                    name="paymentMethod"
-                    value="transfer"
-                    checked={paymentMethod === 'transfer'}
-                    onChange={() => setPaymentMethod('transfer')}
-                  />
-                  <div>
-                    <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0f172a', display: 'block' }}>
-                      Transferencia Bancaria Directa
-                    </span>
-                    <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Datos de la cuenta de Corona de Flores</span>
-                  </div>
-                </div>
-                <Building size={20} style={{ color: '#c59b27' }} />
-              </label>
             </div>
           </div>
 
